@@ -405,6 +405,35 @@
             font-size: 14px;
         }
 
+        .expand-toggle {
+            width: 100%;
+            padding: 12px;
+            background: rgba(102, 126, 234, 0.1);
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            color: #667eea;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 16px 0;
+            transition: all 0.2s ease;
+        }
+
+        .expand-toggle:hover {
+            background: rgba(102, 126, 234, 0.2);
+        }
+
+        .collapsible-content {
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        .collapsible-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 36px;
@@ -437,6 +466,14 @@
             <p><strong>Secrets Vallarta Bay (Option 1 or 4)</strong> delivers the best value for four 26-year-olds seeking a social, party-friendly atmosphere. Book through Costco Travel for shop cards and transfers, or direct through Hyatt for potential $400 savings if you book by October 2nd. The resort attracts younger couples, features swim-up bars, themed party nights, and creates the vibrant energy your group wants—all within your $1,500/person budget.</p>
         </div>
 
+        <div class="recommendation" style="background: linear-gradient(135deg, rgba(240, 147, 251, 0.1) 0%, rgba(245, 87, 108, 0.1) 100%); border: 3px solid rgba(240, 147, 251, 0.3);">
+            <h2>🏨 Alternative: Boutique Hotels in Romantic Zone</h2>
+            <p><strong>For a completely different experience,</strong> consider boutique hotels in Puerto Vallarta's Romantic Zone (Zona Romántica). Instead of an all-inclusive resort, you'll stay in a walkable urban neighborhood with 100+ restaurants, vibrant nightlife, and authentic Mexican culture—all steps from Los Muertos Beach.</p>
+            <p style="margin-top: 16px;"><strong>Best budget option:</strong> V Azul condos ($140-210 per person) with full kitchens let you save $200-400 per person on food while staying in the heart of the action. You'll have $1,100+ remaining per person for amazing dinners, activities, and nightlife.</p>
+            <p style="margin-top: 12px;"><strong>Social atmosphere:</strong> Casa Cupula ($490-770 pp) or Almar Resort ($770-1,050 pp) offer legendary pool parties and LGBT+-friendly vibes perfect for meeting other travelers.</p>
+            <p style="margin-top: 12px; font-style: italic; color: #6e6e73;">Scroll down to see all 5 boutique options with detailed comparisons.</p>
+        </div>
+
         <div class="cards">
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&h=500&fit=crop" alt="Secrets Vallarta Bay Resort" class="card-image">
@@ -447,7 +484,12 @@
                     <div class="price">$1,400-1,600</div>
                     <div class="price-detail">per person / 7 nights</div>
                     
-                    <ul class="features">
+                    <button class="expand-toggle" onclick="toggleExpand(this)">
+                        <span class="expand-text">👇 Show Full Details</span>
+                    </button>
+
+                    <div class="collapsible-content collapsed">
+                        <ul class="features">
                         <li>7 gourmet restaurants + 6 more at Dreams</li>
                         <li>Unlimited top-shelf spirits</li>
                         <li>24/7 room service with "Secrets Box"</li>
@@ -455,9 +497,9 @@
                         <li>Swim-up bars & beach service</li>
                         <li>Costco Shop Card ($100-300 value)</li>
                         <li>Airport transfers included</li>
-                    </ul>
+                        </ul>
 
-                    <div class="pros-cons">
+                        <div class="pros-cons">
                         <div class="pros">
                             <h4>Pros</h4>
                             <ul>
@@ -504,7 +546,12 @@
                     <div class="price">$1,800-2,000</div>
                     <div class="price-detail">per person / 7 nights</div>
                     
-                    <ul class="features">
+                    <button class="expand-toggle" onclick="toggleExpand(this)">
+                        <span class="expand-text">👇 Show Full Details</span>
+                    </button>
+
+                    <div class="collapsible-content collapsed">
+                        <ul class="features">
                         <li>Connecting suites (2,122 sq ft for all 4)</li>
                         <li>9 gourmet restaurants</li>
                         <li>AAA Five Diamond property</li>
@@ -512,9 +559,9 @@
                         <li>Butler service included</li>
                         <li>Premium spirits (Hendrick's, Hennessy VSOP)</li>
                         <li>$200 resort credit</li>
-                    </ul>
+                        </ul>
 
-                    <div class="pros-cons">
+                        <div class="pros-cons">
                         <div class="pros">
                             <h4>Pros</h4>
                             <ul>
@@ -548,16 +595,21 @@
                     <div class="price">$909</div>
                     <div class="price-detail">per person / 7 nights</div>
                     
-                    <ul class="features">
+                    <button class="expand-toggle" onclick="toggleExpand(this)">
+                        <span class="expand-text">👇 Show Full Details</span>
+                    </button>
+
+                    <div class="collapsible-content collapsed">
+                        <ul class="features">
                         <li>All-suite accommodations</li>
                         <li>Multiple dining venues</li>
                         <li>Pool & beach access</li>
                         <li>Entertainment program</li>
                         <li>Standard all-inclusive amenities</li>
                         <li>Save $600 per person vs other options</li>
-                    </ul>
+                        </ul>
 
-                    <div class="pros-cons">
+                        <div class="pros-cons">
                         <div class="pros">
                             <h4>Pros</h4>
                             <ul>
@@ -579,6 +631,265 @@
 
                     <button class="gallery-button" onclick="openModal('modal3')">📸 View Photo Gallery</button>
                     <a href="https://www.united.com/packages/en-us/vacation-packages-from-san-francisco-to-puerto-vallarta" class="cta-button">Book on United Vacations</a>
+                </div>
+            </div>
+
+            <!-- Boutique Hotel Options -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800&h=500&fit=crop" alt="V Azul Condos" class="card-image">
+                <div class="card-content">
+                    <span class="badge budget">Best Budget</span>
+                    <h3>Boutique Option 1</h3>
+                    <div class="hotel-name">V Azul - Luxury Condos in Romantic Zone</div>
+                    <div class="price">$140-210</div>
+                    <div class="price-detail">per person / 7 nights (room only)</div>
+                    
+                    <button class="expand-toggle" onclick="toggleExpand(this)">
+                        <span class="expand-text">👇 Show Full Details</span>
+                    </button>
+
+                    <div class="collapsible-content collapsed">
+                        <ul class="features">
+                            <li>Full kitchen & in-unit washer/dryer</li>
+                            <li>1-bedroom condo sleeps 4 (queen + sofa bed)</li>
+                            <li>Rooftop pool with panoramic views</li>
+                            <li>100 meters (1-min walk) from Los Muertos Beach</li>
+                            <li>Walking distance to 100+ restaurants</li>
+                            <li>Adults-only (18+), gay-friendly</li>
+                            <li>Self-catering saves $200-400 per person on food</li>
+                        </ul>
+
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <h4>Pros</h4>
+                                <ul>
+                                    <li>Incredible value - saves $350-600+ vs resorts</li>
+                                    <li>Full kitchen for budget-friendly meal prep</li>
+                                    <li>Perfect Romantic Zone location</li>
+                                    <li>Apartment-style independence</li>
+                                    <li>All 4 guests in ONE unit (not 2 rooms)</li>
+                                </ul>
+                            </div>
+                            <div class="cons">
+                                <h4>Cons</h4>
+                                <ul>
+                                    <li>Weekly housekeeping only (not daily)</li>
+                                    <li>Requires meal planning/cooking</li>
+                                    <li>No on-site restaurant or bar</li>
+                                    <li>Smaller 12-unit property (quieter vibe)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="gallery-button" onclick="openModal('modal4')">📸 View Photo Gallery</button>
+                    <a href="https://www.booking.com/hotel/mx/vazul.html" class="cta-button">Book on Booking.com</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=500&fit=crop" alt="Casa Cupula" class="card-image">
+                <div class="card-content">
+                    <span class="badge luxury">Boutique Luxury</span>
+                    <h3>Boutique Option 2</h3>
+                    <div class="hotel-name">Casa Cupula - Hillside LGBT+ Resort</div>
+                    <div class="price">$490-770</div>
+                    <div class="price-detail">per person / 7 nights (room only)</div>
+                    
+                    <button class="expand-toggle" onclick="toggleExpand(this)">
+                        <span class="expand-text">👇 Show Full Details</span>
+                    </button>
+
+                    <div class="collapsible-content collapsed">
+                        <ul class="features">
+                            <li>19-room intimate boutique with ocean views</li>
+                            <li>3 pools including clothing-optional Pool Club</li>
+                            <li>Weekend pool parties with DJs (Fri-Sat)</li>
+                            <li>Monthly Big Gay Drag Brunch events</li>
+                            <li>5-minute walk to Los Muertos Beach</li>
+                            <li>Premium Egyptian cotton linens & robes</li>
+                            <li>LGBT-centered but welcoming to all</li>
+                        </ul>
+
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <h4>Pros</h4>
+                                <ul>
+                                    <li>Perfect balance of social + peaceful</li>
+                                    <li>Legendary weekend pool parties</li>
+                                    <li>Stunning hillside ocean views</li>
+                                    <li>Intimate boutique character (19 rooms)</li>
+                                    <li>Excellent on-site bistro restaurant</li>
+                                </ul>
+                            </div>
+                            <div class="cons">
+                                <h4>Cons</h4>
+                                <ul>
+                                    <li>Pool Club noise during parties (bring earplugs)</li>
+                                    <li>Hillside location = uphill walks</li>
+                                    <li>Breakfast costs extra (~$15-20)</li>
+                                    <li>Higher price point</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="gallery-button" onclick="openModal('modal5')">📸 View Photo Gallery</button>
+                    <a href="https://casacupula.com/" class="cta-button">Book Direct</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&h=500&fit=crop" alt="Almar Resort" class="card-image">
+                <div class="card-content">
+                    <h3>Boutique Option 3</h3>
+                    <div class="hotel-name">Almar Resort - LGBT+ Beachfront</div>
+                    <div class="price">$770-1,050</div>
+                    <div class="price-detail">per person / 7 nights (room only)</div>
+                    
+                    <button class="expand-toggle" onclick="toggleExpand(this)">
+                        <span class="expand-text">👇 Show Full Details</span>
+                    </button>
+
+                    <div class="collapsible-content collapsed">
+                        <ul class="features">
+                            <li>Directly on Los Muertos Beach</li>
+                            <li>The Top Sky Bar (13th floor) with DJs & drag shows</li>
+                            <li>Mantamar Beach Club with Olympic infinity pool</li>
+                            <li>Weekly drag shows & cabaret (Thu-Sun)</li>
+                            <li>Multiple pool options across 2 towers</li>
+                            <li>134 rooms with modern amenities</li>
+                            <li>Premier LGBT+ party destination</li>
+                        </ul>
+
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <h4>Pros</h4>
+                                <ul>
+                                    <li>Unbeatable beachfront location</li>
+                                    <li>24/7 party atmosphere on-site</li>
+                                    <li>World-class LGBT+ entertainment</li>
+                                    <li>Never need to leave for nightlife</li>
+                                    <li>Perfect for meeting other travelers</li>
+                                </ul>
+                            </div>
+                            <div class="cons">
+                                <h4>Cons</h4>
+                                <ul>
+                                    <li>Exceeds $1,500 budget by $270-550 pp</li>
+                                    <li>VERY loud (techno 9am, parties till late)</li>
+                                    <li>Breakfast & resort fees cost extra</li>
+                                    <li>Timeshare presentations at check-in</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="gallery-button" onclick="openModal('modal6')">📸 View Photo Gallery</button>
+                    <a href="https://www.almarresort.com/" class="cta-button">Book Direct</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=500&fit=crop" alt="Rivera del Rio" class="card-image">
+                <div class="card-content">
+                    <h3>Boutique Option 4</h3>
+                    <div class="hotel-name">Rivera del Rio - Artistic Boutique</div>
+                    <div class="price">$210-413</div>
+                    <div class="price-detail">per person / 7 nights (includes breakfast)</div>
+                    
+                    <button class="expand-toggle" onclick="toggleExpand(this)">
+                        <span class="expand-text">👇 Show Full Details</span>
+                    </button>
+
+                    <div class="collapsible-content collapsed">
+                        <ul class="features">
+                            <li>19-room art boutique hotel (9.4/10 rating)</li>
+                            <li>3 pools + rooftop jacuzzi with 360° views</li>
+                            <li>Complimentary breakfast included</li>
+                            <li>Each room uniquely decorated (art museum vibe)</li>
+                            <li>2-min walk to restaurants, 7-min to beach</li>
+                            <li>Rooftop bar with panoramic views</li>
+                            <li>Celebrity pedigree, featured in Vogue</li>
+                        </ul>
+
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <h4>Pros</h4>
+                                <ul>
+                                    <li>Exceptional design & unique décor</li>
+                                    <li>One of highest-rated boutiques (9.4/10)</li>
+                                    <li>Breakfast included (saves $15-20/day)</li>
+                                    <li>Instagram-worthy throughout</li>
+                                    <li>Quiet but close to action</li>
+                                </ul>
+                            </div>
+                            <div class="cons">
+                                <h4>Cons</h4>
+                                <ul>
+                                    <li>Not beachfront (15-min walk)</li>
+                                    <li>No on-site restaurant beyond breakfast</li>
+                                    <li>Artistic/romantic vs party vibe</li>
+                                    <li>Quirky layout can be confusing</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="gallery-button" onclick="openModal('modal7')">📸 View Photo Gallery</button>
+                    <a href="https://www.booking.com/hotel/mx/rivera-del-rio.html" class="cta-button">Book on Booking.com</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1559599238-919a519c6fa2?w=800&h=500&fit=crop" alt="Emperador Vallarta" class="card-image">
+                <div class="card-content">
+                    <span class="badge budget">Beachfront Budget</span>
+                    <h3>Boutique Option 5</h3>
+                    <div class="hotel-name">Emperador Vallarta - Classic Beachfront</div>
+                    <div class="price">$140-263</div>
+                    <div class="price-detail">per person / 7 nights (room only)</div>
+                    
+                    <button class="expand-toggle" onclick="toggleExpand(this)">
+                        <span class="expand-text">👇 Show Full Details</span>
+                    </button>
+
+                    <div class="collapsible-content collapsed">
+                        <ul class="features">
+                            <li>Direct Los Muertos Beach access</li>
+                            <li>50 rooms, traditional Mexican charm</li>
+                            <li>Beach loungers & umbrellas included</li>
+                            <li>Si Señor Beach Club on-site</li>
+                            <li>50 meters from Los Muertos Pier</li>
+                            <li>Rooftop terrace bar with ocean views</li>
+                            <li>Most affordable beachfront option</li>
+                        </ul>
+
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <h4>Pros</h4>
+                                <ul>
+                                    <li>Unbeatable beachfront location for price</li>
+                                    <li>Step directly onto Los Muertos Beach</li>
+                                    <li>Center of Romantic Zone action</li>
+                                    <li>Incredible value ($140-263 pp)</li>
+                                    <li>Authentic Mexican character</li>
+                                </ul>
+                            </div>
+                            <div class="cons">
+                                <h4>Cons</h4>
+                                <ul>
+                                    <li>Dated/older facilities (not luxury)</li>
+                                    <li>Basic rooms, some maintenance issues</li>
+                                    <li>Small rooftop pool</li>
+                                    <li>For budget travelers, not luxury seekers</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="gallery-button" onclick="openModal('modal8')">📸 View Photo Gallery</button>
+                    <a href="https://www.booking.com/hotel/mx/emperador-suites-puerto-vallarta.html" class="cta-button">Book on Booking.com</a>
                 </div>
             </div>
         </div>
@@ -699,9 +1010,192 @@
                 </div>
             </div>
         </div>
+
+        <div id="modal4" class="modal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal4')">×</button>
+                <h3>V Azul - Luxury Condos</h3>
+                <p style="color: #6e6e73; margin-bottom: 20px;">Modern self-catering condos in the heart of Romantic Zone</p>
+                <div class="gallery-grid">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&h=400&fit=crop" alt="Condo living space" class="gallery-image">
+                        <div class="image-caption">Modern condo living area</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=600&h=400&fit=crop" alt="Full kitchen" class="gallery-image">
+                        <div class="image-caption">Full kitchen for self-catering</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600&h=400&fit=crop" alt="Rooftop pool" class="gallery-image">
+                        <div class="image-caption">Rooftop pool with views</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop" alt="Bedroom" class="gallery-image">
+                        <div class="image-caption">Comfortable bedroom</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&h=400&fit=crop" alt="Beach nearby" class="gallery-image">
+                        <div class="image-caption">Los Muertos Beach (100m away)</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&h=400&fit=crop" alt="Romantic Zone" class="gallery-image">
+                        <div class="image-caption">Romantic Zone neighborhood</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal5" class="modal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal5')">×</button>
+                <h3>Casa Cupula</h3>
+                <p style="color: #6e6e73; margin-bottom: 20px;">Sophisticated hillside boutique with legendary pool parties</p>
+                <div class="gallery-grid">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=600&h=400&fit=crop" alt="Ocean views" class="gallery-image">
+                        <div class="image-caption">Stunning hillside ocean views</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&h=400&fit=crop" alt="Boutique room" class="gallery-image">
+                        <div class="image-caption">Unique boutique rooms</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1574643156929-51fa098b0394?w=600&h=400&fit=crop" alt="Pool Club" class="gallery-image">
+                        <div class="image-caption">Legendary Pool Club parties</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Infinity pool" class="gallery-image">
+                        <div class="image-caption">Rooftop infinity pool</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&h=400&fit=crop" alt="Bistro" class="gallery-image">
+                        <div class="image-caption">On-site bistro restaurant</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600&h=400&fit=crop" alt="Terrace" class="gallery-image">
+                        <div class="image-caption">Private terraces</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal6" class="modal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal6')">×</button>
+                <h3>Almar Resort</h3>
+                <p style="color: #6e6e73; margin-bottom: 20px;">Premier LGBT+ beachfront party destination</p>
+                <div class="gallery-grid">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&h=400&fit=crop" alt="Beachfront" class="gallery-image">
+                        <div class="image-caption">Direct Los Muertos Beach access</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&h=400&fit=crop" alt="Sky Bar" class="gallery-image">
+                        <div class="image-caption">The Top Sky Bar (13th floor)</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop" alt="Beach club" class="gallery-image">
+                        <div class="image-caption">Mantamar Beach Club</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Infinity pool" class="gallery-image">
+                        <div class="image-caption">Olympic infinity pool</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&h=400&fit=crop" alt="Room" class="gallery-image">
+                        <div class="image-caption">Modern ocean view rooms</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=600&h=400&fit=crop" alt="Entertainment" class="gallery-image">
+                        <div class="image-caption">World-class drag shows</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal7" class="modal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal7')">×</button>
+                <h3>Rivera del Rio</h3>
+                <p style="color: #6e6e73; margin-bottom: 20px;">Artistic boutique hotel like an art museum</p>
+                <div class="gallery-grid">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=600&h=400&fit=crop" alt="Art hotel" class="gallery-image">
+                        <div class="image-caption">Artistic unique design</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&h=400&fit=crop" alt="Unique rooms" class="gallery-image">
+                        <div class="image-caption">Each room uniquely decorated</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Rooftop pool" class="gallery-image">
+                        <div class="image-caption">Rooftop infinity pool</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1574643156929-51fa098b0394?w=600&h=400&fit=crop" alt="Jacuzzi" class="gallery-image">
+                        <div class="image-caption">Rooftop jacuzzi with 360° views</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600&h=400&fit=crop" alt="Art details" class="gallery-image">
+                        <div class="image-caption">M.C. Escher-style architecture</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&h=400&fit=crop" alt="Rooftop bar" class="gallery-image">
+                        <div class="image-caption">Rooftop bar with panoramic views</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal8" class="modal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal8')">×</button>
+                <h3>Emperador Vallarta</h3>
+                <p style="color: #6e6e73; margin-bottom: 20px;">Classic beachfront hotel with authentic Mexican charm</p>
+                <div class="gallery-grid">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&h=400&fit=crop" alt="Beach access" class="gallery-image">
+                        <div class="image-caption">Direct Los Muertos Beach</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop" alt="Beach club" class="gallery-image">
+                        <div class="image-caption">Si Señor Beach Club</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&h=400&fit=crop" alt="Traditional charm" class="gallery-image">
+                        <div class="image-caption">Traditional Mexican charm</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1559599238-919a519c6fa2?w=600&h=400&fit=crop" alt="Rooftop" class="gallery-image">
+                        <div class="image-caption">Rooftop terrace bar</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&h=400&fit=crop" alt="Rooms" class="gallery-image">
+                        <div class="image-caption">Comfortable rooms</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1561501878-aabd62634533?w=600&h=400&fit=crop" alt="Los Muertos Pier" class="gallery-image">
+                        <div class="image-caption">50m from Los Muertos Pier</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
+        function toggleExpand(button) {
+            const content = button.nextElementSibling;
+            const expandText = button.querySelector('.expand-text');
+            
+            if (content.classList.contains('collapsed')) {
+                content.classList.remove('collapsed');
+                expandText.textContent = '👆 Hide Details';
+            } else {
+                content.classList.add('collapsed');
+                expandText.textContent = '👇 Show Full Details';
+            }
+        }
+
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             if (modal) {
@@ -737,7 +1231,5 @@
             }
         });
     </script>
-</body>
-</html>
 </body>
 </html>
