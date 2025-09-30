@@ -351,23 +351,25 @@
         }
 
         .booking-info {
-            background: rgba(255, 255, 255, 0.95);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            padding: 30px;
+            padding: 40px;
             margin-top: 40px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            border: 3px solid rgba(102, 126, 234, 0.3);
         }
 
         .booking-info h2 {
-            font-size: 28px;
+            font-size: 32px;
             margin-bottom: 20px;
             color: #667eea;
+            text-align: center;
         }
 
         .booking-info p {
             font-size: 16px;
-            color: #6e6e73;
+            color: #1d1d1f;
             margin-bottom: 12px;
         }
 
@@ -383,6 +385,7 @@
             position: relative;
             font-size: 15px;
             color: #1d1d1f;
+            font-weight: 500;
         }
 
         .booking-steps li::before {
@@ -475,6 +478,20 @@
 
                     <button class="gallery-button" onclick="openModal('modal1')">📸 View Photo Gallery</button>
                     <a href="https://www.costcotravel.com/Vacation-Packages/Mexico/Puerto-Vallarta-Riviera-Nayarit/Puerto-Vallarta" class="cta-button">Book on Costco Travel</a>
+                    
+                    <div style="margin-top: 24px; padding-top: 24px; border-top: 2px solid #f5f5f7;">
+                        <h4 style="font-size: 14px; font-weight: 600; color: #86868b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">Alternative Booking Options for Same Hotel</h4>
+                        <div style="display: flex; gap: 12px; flex-direction: column;">
+                            <a href="https://www.hyatt.com/en-US/hotel/mexico/secrets-vallarta-bay/sevpv" style="padding: 12px 16px; background: #f5f5f7; border-radius: 8px; text-decoration: none; color: #1d1d1f; font-size: 14px; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s ease;" onmouseover="this.style.background='#e8e8ed'" onmouseout="this.style.background='#f5f5f7'">
+                                <span><strong>Book Direct via Hyatt</strong> - Up to $400 savings + 3X points</span>
+                                <span style="color: #667eea;">→</span>
+                            </a>
+                            <a href="https://www.expedia.com/" style="padding: 12px 16px; background: #f5f5f7; border-radius: 8px; text-decoration: none; color: #1d1d1f; font-size: 14px; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s ease;" onmouseover="this.style.background='#e8e8ed'" onmouseout="this.style.background='#f5f5f7'">
+                                <span><strong>Compare on Expedia</strong> - Bundle savings up to 43%</span>
+                                <span style="color: #667eea;">→</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -564,93 +581,11 @@
                     <a href="https://www.united.com/packages/en-us/vacation-packages-from-san-francisco-to-puerto-vallarta" class="cta-button">Book on United Vacations</a>
                 </div>
             </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=500&fit=crop" alt="Secrets Vallarta Bay" class="card-image">
-                <div class="card-content">
-                    <h3>Option 4</h3>
-                    <div class="hotel-name">Secrets Vallarta Bay via Hyatt</div>
-                    <div class="price">$1,400-1,600</div>
-                    <div class="price-detail">per person / 7 nights</div>
-                    
-                    <ul class="features">
-                        <li>Same resort as Option 1</li>
-                        <li>All identical amenities</li>
-                        <li>Up to $400 savings (book by Oct 2)</li>
-                        <li>World of Hyatt 3X points</li>
-                        <li>Best rate guarantee</li>
-                        <li>Direct booking flexibility</li>
-                    </ul>
-
-                    <div class="pros-cons">
-                        <div class="pros">
-                            <h4>Pros</h4>
-                            <ul>
-                                <li>Potential $400 promotional savings</li>
-                                <li>Earn Hyatt points (3X rate)</li>
-                                <li>Direct with hotel for flexibility</li>
-                                <li>Same great party atmosphere</li>
-                            </ul>
-                        </div>
-                        <div class="cons">
-                            <h4>Cons</h4>
-                            <ul>
-                                <li>No Costco shop cards or transfer perks</li>
-                                <li>Promo deadline October 2nd</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <button class="gallery-button" onclick="openModal('modal1')">📸 View Photo Gallery</button>
-                    <a href="https://www.hyatt.com/en-US/hotel/mexico/secrets-vallarta-bay/sevpv" class="cta-button">Book on Hyatt.com</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=500&fit=crop" alt="Secrets Vallarta Bay" class="card-image">
-                <div class="card-content">
-                    <h3>Option 5</h3>
-                    <div class="hotel-name">Secrets Vallarta Bay via Expedia</div>
-                    <div class="price">$1,300-1,700</div>
-                    <div class="price-detail">per person / 7 nights</div>
-                    
-                    <ul class="features">
-                        <li>Same resort as Options 1 & 4</li>
-                        <li>All identical amenities</li>
-                        <li>Up to 43% bundle savings</li>
-                        <li>OneKey rewards program</li>
-                        <li>Easy price comparison</li>
-                        <li>Flexible date searches</li>
-                    </ul>
-
-                    <div class="pros-cons">
-                        <div class="pros">
-                            <h4>Pros</h4>
-                            <ul>
-                                <li>Potential bundle discounts</li>
-                                <li>OneKey rewards accumulation</li>
-                                <li>Easy comparison shopping</li>
-                                <li>Price tracking features</li>
-                            </ul>
-                        </div>
-                        <div class="cons">
-                            <h4>Cons</h4>
-                            <ul>
-                                <li>Stricter cancellation policies</li>
-                                <li>Fewer included perks vs Costco</li>
-                                <li>Customer service less personalized</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <button class="gallery-button" onclick="openModal('modal1')">📸 View Photo Gallery</button>
-                    <a href="https://www.expedia.com/" class="cta-button">Search on Expedia</a>
-                </div>
-            </div>
         </div>
 
         <div class="booking-info">
-            <h2>🗓️ Quick Action Plan</h2>
+            <h2>🗓️ Quick Action Plan - Book This Week!</h2>
+            <p style="font-size: 18px; color: #667eea; font-weight: 600; margin-bottom: 24px;">Don't wait - November 9-16 is prime timing and fills up quickly!</p>
             <ol class="booking-steps">
                 <li><strong>This Week:</strong> Call Costco Travel (1-866-921-7925) AND Hyatt (1-800-323-7249) for exact quotes on split-city booking (1 from SFO, 3 from DTW)</li>
                 <li><strong>Compare:</strong> Review total costs including perks (Costco shop cards + transfers vs Hyatt points + $400 promo)</li>
@@ -659,7 +594,7 @@
                 <li><strong>Request Specifics:</strong> "Two Junior Suite Ocean View rooms, connecting/adjacent, all 4 guests on same confirmation, arrivals from SFO + DTW"</li>
             </ol>
             
-            <p style="margin-top: 24px; font-weight: 600; color: #667eea;">💡 Pro Tip: If budget allows, consider upgrading to Hotel Mousai (Option 2) for the only true 4-person suite experience and Five Diamond luxury. The $300-500 premium per person transforms this from a great trip to an unforgettable one.</p>
+            <p style="margin-top: 24px; font-weight: 600; color: #1d1d1f; background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 12px; border-left: 4px solid #667eea;">💡 <strong style="color: #667eea;">Pro Tip:</strong> If budget allows, consider upgrading to Hotel Mousai (Option 2) for the only true 4-person suite experience and Five Diamond luxury. The $300-500 premium per person transforms this from a great trip to an unforgettable one.</p>
         </div>
 
         <!-- Photo Gallery Modals -->
