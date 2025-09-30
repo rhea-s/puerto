@@ -82,7 +82,7 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            padding: 32px;
+            padding: 0;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
@@ -92,6 +92,17 @@
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .card-content {
+            padding: 32px;
         }
 
         .badge {
@@ -235,6 +246,110 @@
             box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
         }
 
+        .gallery-button {
+            display: inline-block;
+            width: 100%;
+            padding: 12px 24px;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            text-align: center;
+            transition: all 0.2s ease;
+            margin-top: 10px;
+            border: 2px solid #667eea;
+            cursor: pointer;
+        }
+
+        .gallery-button:hover {
+            background: rgba(102, 126, 234, 0.2);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 40px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #f5f5f7;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: #e8e8ed;
+        }
+
+        .modal h3 {
+            font-size: 32px;
+            margin-bottom: 24px;
+            color: #667eea;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.05);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-size: 13px;
+            color: #6e6e73;
+            margin-top: 8px;
+        }
+
         .booking-info {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -321,196 +436,216 @@
 
         <div class="cards">
             <div class="card">
-                <span class="badge best">Best Value</span>
-                <h3>Option 1</h3>
-                <div class="hotel-name">Secrets Vallarta Bay via Costco</div>
-                <div class="price">$1,400-1,600</div>
-                <div class="price-detail">per person / 7 nights</div>
-                
-                <ul class="features">
-                    <li>7 gourmet restaurants + 6 more at Dreams</li>
-                    <li>Unlimited top-shelf spirits</li>
-                    <li>24/7 room service with "Secrets Box"</li>
-                    <li>Daily themed party nights</li>
-                    <li>Swim-up bars & beach service</li>
-                    <li>Costco Shop Card ($100-300 value)</li>
-                    <li>Airport transfers included</li>
-                </ul>
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=500&fit=crop" alt="Secrets Vallarta Bay Resort" class="card-image">
+                <div class="card-content">
+                    <span class="badge best">Best Value</span>
+                    <h3>Option 1</h3>
+                    <div class="hotel-name">Secrets Vallarta Bay via Costco</div>
+                    <div class="price">$1,400-1,600</div>
+                    <div class="price-detail">per person / 7 nights</div>
+                    
+                    <ul class="features">
+                        <li>7 gourmet restaurants + 6 more at Dreams</li>
+                        <li>Unlimited top-shelf spirits</li>
+                        <li>24/7 room service with "Secrets Box"</li>
+                        <li>Daily themed party nights</li>
+                        <li>Swim-up bars & beach service</li>
+                        <li>Costco Shop Card ($100-300 value)</li>
+                        <li>Airport transfers included</li>
+                    </ul>
 
-                <div class="pros-cons">
-                    <div class="pros">
-                        <h4>Pros</h4>
-                        <ul>
-                            <li>Perfect social atmosphere for 26-year-olds</li>
-                            <li>Best perks package (shop cards + transfers)</li>
-                            <li>Pool parties and live entertainment</li>
-                            <li>20 min from downtown nightlife</li>
-                        </ul>
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4>Pros</h4>
+                            <ul>
+                                <li>Perfect social atmosphere for 26-year-olds</li>
+                                <li>Best perks package (shop cards + transfers)</li>
+                                <li>Pool parties and live entertainment</li>
+                                <li>20 min from downtown nightlife</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4>Cons</h4>
+                            <ul>
+                                <li>Requires 2 separate rooms (3 person max)</li>
+                                <li>Can feel crowded during events</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="cons">
-                        <h4>Cons</h4>
-                        <ul>
-                            <li>Requires 2 separate rooms (3 person max)</li>
-                            <li>Can feel crowded during events</li>
-                        </ul>
-                    </div>
+
+                    <button class="gallery-button" onclick="openModal('modal1')">📸 View Photo Gallery</button>
+                    <a href="https://www.costcotravel.com/Vacation-Packages/Mexico/Puerto-Vallarta-Riviera-Nayarit/Puerto-Vallarta" class="cta-button">Book on Costco Travel</a>
                 </div>
-
-                <a href="https://www.costcotravel.com/Vacation-Packages/Mexico/Puerto-Vallarta-Riviera-Nayarit/Puerto-Vallarta" class="cta-button">Book on Costco Travel</a>
             </div>
 
             <div class="card">
-                <span class="badge luxury">Luxury Option</span>
-                <h3>Option 2</h3>
-                <div class="hotel-name">Hotel Mousai (Direct)</div>
-                <div class="price">$1,800-2,000</div>
-                <div class="price-detail">per person / 7 nights</div>
-                
-                <ul class="features">
-                    <li>Connecting suites (2,122 sq ft for all 4)</li>
-                    <li>9 gourmet restaurants</li>
-                    <li>AAA Five Diamond property</li>
-                    <li>Rooftop infinity pools at 112m elevation</li>
-                    <li>Butler service included</li>
-                    <li>Premium spirits (Hendrick's, Hennessy VSOP)</li>
-                    <li>$200 resort credit</li>
-                </ul>
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=500&fit=crop" alt="Hotel Mousai" class="card-image">
+                <div class="card-content">
+                    <span class="badge luxury">Luxury Option</span>
+                    <h3>Option 2</h3>
+                    <div class="hotel-name">Hotel Mousai (Direct)</div>
+                    <div class="price">$1,800-2,000</div>
+                    <div class="price-detail">per person / 7 nights</div>
+                    
+                    <ul class="features">
+                        <li>Connecting suites (2,122 sq ft for all 4)</li>
+                        <li>9 gourmet restaurants</li>
+                        <li>AAA Five Diamond property</li>
+                        <li>Rooftop infinity pools at 112m elevation</li>
+                        <li>Butler service included</li>
+                        <li>Premium spirits (Hendrick's, Hennessy VSOP)</li>
+                        <li>$200 resort credit</li>
+                    </ul>
 
-                <div class="pros-cons">
-                    <div class="pros">
-                        <h4>Pros</h4>
-                        <ul>
-                            <li>ONLY hotel fitting all 4 in one space</li>
-                            <li>Ultra-luxury Five Diamond experience</li>
-                            <li>Spectacular rooftop pools with DJs</li>
-                            <li>iPad-controlled room amenities</li>
-                        </ul>
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4>Pros</h4>
+                            <ul>
+                                <li>ONLY hotel fitting all 4 in one space</li>
+                                <li>Ultra-luxury Five Diamond experience</li>
+                                <li>Spectacular rooftop pools with DJs</li>
+                                <li>iPad-controlled room amenities</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4>Cons</h4>
+                            <ul>
+                                <li>$300-500 over budget per person</li>
+                                <li>Hillside location (not beachfront)</li>
+                                <li>More sophisticated, less party vibe</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="cons">
-                        <h4>Cons</h4>
-                        <ul>
-                            <li>$300-500 over budget per person</li>
-                            <li>Hillside location (not beachfront)</li>
-                            <li>More sophisticated, less party vibe</li>
-                        </ul>
-                    </div>
+
+                    <button class="gallery-button" onclick="openModal('modal2')">📸 View Photo Gallery</button>
+                    <a href="https://puertovallarta.hotelmousai.com/" class="cta-button">Book Direct</a>
                 </div>
-
-                <a href="https://puertovallarta.hotelmousai.com/" class="cta-button">Book Direct</a>
             </div>
 
             <div class="card">
-                <span class="badge budget">Budget Pick</span>
-                <h3>Option 3</h3>
-                <div class="hotel-name">Grand Miramar All Luxury Suites</div>
-                <div class="price">$909</div>
-                <div class="price-detail">per person / 7 nights</div>
-                
-                <ul class="features">
-                    <li>All-suite accommodations</li>
-                    <li>Multiple dining venues</li>
-                    <li>Pool & beach access</li>
-                    <li>Entertainment program</li>
-                    <li>Standard all-inclusive amenities</li>
-                    <li>Save $600 per person vs other options</li>
-                </ul>
+                <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=500&fit=crop" alt="Grand Miramar" class="card-image">
+                <div class="card-content">
+                    <span class="badge budget">Budget Pick</span>
+                    <h3>Option 3</h3>
+                    <div class="hotel-name">Grand Miramar All Luxury Suites</div>
+                    <div class="price">$909</div>
+                    <div class="price-detail">per person / 7 nights</div>
+                    
+                    <ul class="features">
+                        <li>All-suite accommodations</li>
+                        <li>Multiple dining venues</li>
+                        <li>Pool & beach access</li>
+                        <li>Entertainment program</li>
+                        <li>Standard all-inclusive amenities</li>
+                        <li>Save $600 per person vs other options</li>
+                    </ul>
 
-                <div class="pros-cons">
-                    <div class="pros">
-                        <h4>Pros</h4>
-                        <ul>
-                            <li>Incredible value ($600 savings/person)</li>
-                            <li>Extra budget for excursions & activities</li>
-                            <li>All-suite property</li>
-                            <li>Good reviews and quality</li>
-                        </ul>
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4>Pros</h4>
+                            <ul>
+                                <li>Incredible value ($600 savings/person)</li>
+                                <li>Extra budget for excursions & activities</li>
+                                <li>All-suite property</li>
+                                <li>Good reviews and quality</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4>Cons</h4>
+                            <ul>
+                                <li>Not adults-only (family-friendly)</li>
+                                <li>Less vibrant party atmosphere</li>
+                                <li>Limited info on social scene</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="cons">
-                        <h4>Cons</h4>
-                        <ul>
-                            <li>Not adults-only (family-friendly)</li>
-                            <li>Less vibrant party atmosphere</li>
-                            <li>Limited info on social scene</li>
-                        </ul>
-                    </div>
+
+                    <button class="gallery-button" onclick="openModal('modal3')">📸 View Photo Gallery</button>
+                    <a href="https://www.united.com/packages/en-us/vacation-packages-from-san-francisco-to-puerto-vallarta" class="cta-button">Book on United Vacations</a>
                 </div>
-
-                <a href="https://www.united.com/packages/en-us/vacation-packages-from-san-francisco-to-puerto-vallarta" class="cta-button">Book on United Vacations</a>
             </div>
 
             <div class="card">
-                <h3>Option 4</h3>
-                <div class="hotel-name">Secrets Vallarta Bay via Hyatt</div>
-                <div class="price">$1,400-1,600</div>
-                <div class="price-detail">per person / 7 nights</div>
-                
-                <ul class="features">
-                    <li>Same resort as Option 1</li>
-                    <li>All identical amenities</li>
-                    <li>Up to $400 savings (book by Oct 2)</li>
-                    <li>World of Hyatt 3X points</li>
-                    <li>Best rate guarantee</li>
-                    <li>Direct booking flexibility</li>
-                </ul>
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=500&fit=crop" alt="Secrets Vallarta Bay" class="card-image">
+                <div class="card-content">
+                    <h3>Option 4</h3>
+                    <div class="hotel-name">Secrets Vallarta Bay via Hyatt</div>
+                    <div class="price">$1,400-1,600</div>
+                    <div class="price-detail">per person / 7 nights</div>
+                    
+                    <ul class="features">
+                        <li>Same resort as Option 1</li>
+                        <li>All identical amenities</li>
+                        <li>Up to $400 savings (book by Oct 2)</li>
+                        <li>World of Hyatt 3X points</li>
+                        <li>Best rate guarantee</li>
+                        <li>Direct booking flexibility</li>
+                    </ul>
 
-                <div class="pros-cons">
-                    <div class="pros">
-                        <h4>Pros</h4>
-                        <ul>
-                            <li>Potential $400 promotional savings</li>
-                            <li>Earn Hyatt points (3X rate)</li>
-                            <li>Direct with hotel for flexibility</li>
-                            <li>Same great party atmosphere</li>
-                        </ul>
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4>Pros</h4>
+                            <ul>
+                                <li>Potential $400 promotional savings</li>
+                                <li>Earn Hyatt points (3X rate)</li>
+                                <li>Direct with hotel for flexibility</li>
+                                <li>Same great party atmosphere</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4>Cons</h4>
+                            <ul>
+                                <li>No Costco shop cards or transfer perks</li>
+                                <li>Promo deadline October 2nd</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="cons">
-                        <h4>Cons</h4>
-                        <ul>
-                            <li>No Costco shop cards or transfer perks</li>
-                            <li>Promo deadline October 2nd</li>
-                        </ul>
-                    </div>
+
+                    <button class="gallery-button" onclick="openModal('modal1')">📸 View Photo Gallery</button>
+                    <a href="https://www.hyatt.com/en-US/hotel/mexico/secrets-vallarta-bay/sevpv" class="cta-button">Book on Hyatt.com</a>
                 </div>
-
-                <a href="https://www.hyatt.com/en-US/hotel/mexico/secrets-vallarta-bay/sevpv" class="cta-button">Book on Hyatt.com</a>
             </div>
 
             <div class="card">
-                <h3>Option 5</h3>
-                <div class="hotel-name">Secrets Vallarta Bay via Expedia</div>
-                <div class="price">$1,300-1,700</div>
-                <div class="price-detail">per person / 7 nights</div>
-                
-                <ul class="features">
-                    <li>Same resort as Options 1 & 4</li>
-                    <li>All identical amenities</li>
-                    <li>Up to 43% bundle savings</li>
-                    <li>OneKey rewards program</li>
-                    <li>Easy price comparison</li>
-                    <li>Flexible date searches</li>
-                </ul>
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=500&fit=crop" alt="Secrets Vallarta Bay" class="card-image">
+                <div class="card-content">
+                    <h3>Option 5</h3>
+                    <div class="hotel-name">Secrets Vallarta Bay via Expedia</div>
+                    <div class="price">$1,300-1,700</div>
+                    <div class="price-detail">per person / 7 nights</div>
+                    
+                    <ul class="features">
+                        <li>Same resort as Options 1 & 4</li>
+                        <li>All identical amenities</li>
+                        <li>Up to 43% bundle savings</li>
+                        <li>OneKey rewards program</li>
+                        <li>Easy price comparison</li>
+                        <li>Flexible date searches</li>
+                    </ul>
 
-                <div class="pros-cons">
-                    <div class="pros">
-                        <h4>Pros</h4>
-                        <ul>
-                            <li>Potential bundle discounts</li>
-                            <li>OneKey rewards accumulation</li>
-                            <li>Easy comparison shopping</li>
-                            <li>Price tracking features</li>
-                        </ul>
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4>Pros</h4>
+                            <ul>
+                                <li>Potential bundle discounts</li>
+                                <li>OneKey rewards accumulation</li>
+                                <li>Easy comparison shopping</li>
+                                <li>Price tracking features</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4>Cons</h4>
+                            <ul>
+                                <li>Stricter cancellation policies</li>
+                                <li>Fewer included perks vs Costco</li>
+                                <li>Customer service less personalized</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="cons">
-                        <h4>Cons</h4>
-                        <ul>
-                            <li>Stricter cancellation policies</li>
-                            <li>Fewer included perks vs Costco</li>
-                            <li>Customer service less personalized</li>
-                        </ul>
-                    </div>
+
+                    <button class="gallery-button" onclick="openModal('modal1')">📸 View Photo Gallery</button>
+                    <a href="https://www.expedia.com/" class="cta-button">Search on Expedia</a>
                 </div>
-
-                <a href="https://www.expedia.com/" class="cta-button">Search on Expedia</a>
             </div>
         </div>
 
@@ -526,6 +661,148 @@
             
             <p style="margin-top: 24px; font-weight: 600; color: #667eea;">💡 Pro Tip: If budget allows, consider upgrading to Hotel Mousai (Option 2) for the only true 4-person suite experience and Five Diamond luxury. The $300-500 premium per person transforms this from a great trip to an unforgettable one.</p>
         </div>
+
+        <!-- Photo Gallery Modals -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal1')">×</button>
+                <h3>Secrets Vallarta Bay</h3>
+                <p style="color: #6e6e73; margin-bottom: 20px;">Adults-only beachfront paradise with vibrant social atmosphere</p>
+                <div class="gallery-grid">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop" alt="Beach view" class="gallery-image">
+                        <div class="image-caption">Beachfront pools & cabanas</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1615460549969-36fa19521a4f?w=600&h=400&fit=crop" alt="Pool area" class="gallery-image">
+                        <div class="image-caption">Swim-up bar & infinity pool</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&h=400&fit=crop" alt="Restaurant" class="gallery-image">
+                        <div class="image-caption">Gourmet dining venues</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&h=400&fit=crop" alt="Room" class="gallery-image">
+                        <div class="image-caption">Junior Suite Ocean View</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&h=400&fit=crop" alt="Beach" class="gallery-image">
+                        <div class="image-caption">Private beach access</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&h=400&fit=crop" alt="Entertainment" class="gallery-image">
+                        <div class="image-caption">Evening entertainment & parties</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal2" class="modal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal2')">×</button>
+                <h3>Hotel Mousai</h3>
+                <p style="color: #6e6e73; margin-bottom: 20px;">Five Diamond ultra-luxury with rooftop infinity pools</p>
+                <div class="gallery-grid">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Rooftop pool" class="gallery-image">
+                        <div class="image-caption">Rooftop infinity pool at 112m</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&h=400&fit=crop" alt="Suite interior" class="gallery-image">
+                        <div class="image-caption">Luxury suite with ocean views</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1574643156929-51fa098b0394?w=600&h=400&fit=crop" alt="Terrace" class="gallery-image">
+                        <div class="image-caption">Private terrace with plunge pool</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&h=400&fit=crop" alt="Restaurant" class="gallery-image">
+                        <div class="image-caption">Award-winning dining</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=600&h=400&fit=crop" alt="View" class="gallery-image">
+                        <div class="image-caption">Panoramic bay views</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600&h=400&fit=crop" alt="Lounge" class="gallery-image">
+                        <div class="image-caption">Rooftop bar & lounge</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal3" class="modal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal3')">×</button>
+                <h3>Grand Miramar All Luxury Suites</h3>
+                <p style="color: #6e6e73; margin-bottom: 20px;">All-suite resort with exceptional value</p>
+                <div class="gallery-grid">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&h=400&fit=crop" alt="Resort view" class="gallery-image">
+                        <div class="image-caption">Resort grounds & pools</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600&h=400&fit=crop" alt="Suite" class="gallery-image">
+                        <div class="image-caption">Spacious suite accommodations</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=600&h=400&fit=crop" alt="Pool" class="gallery-image">
+                        <div class="image-caption">Multiple pool areas</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop" alt="Dining" class="gallery-image">
+                        <div class="image-caption">All-inclusive dining</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&h=400&fit=crop" alt="Beach" class="gallery-image">
+                        <div class="image-caption">Beach access</div>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1561501878-aabd62634533?w=600&h=400&fit=crop" alt="Terrace" class="gallery-image">
+                        <div class="image-caption">Ocean view terraces</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script>
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.querySelectorAll('.modal.active');
+                modals.forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
 </body>
 </html>
