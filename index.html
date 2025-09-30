@@ -404,7 +404,36 @@
             font-weight: 700;
             font-size: 14px;
         }
-        
+
+        .expand-toggle {
+            width: 100%;
+            padding: 12px;
+            background: rgba(102, 126, 234, 0.1);
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            color: #667eea;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 16px 0;
+            transition: all 0.2s ease;
+        }
+
+        .expand-toggle:hover {
+            background: rgba(102, 126, 234, 0.2);
+        }
+
+        .collapsible-content {
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        .collapsible-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 36px;
