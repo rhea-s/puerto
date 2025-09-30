@@ -1,1238 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puerto Vallarta - November 2025</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Puerto Vallarta Escape &mdash; Executive Summary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            color-scheme: light;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #1d1d1f;
-            line-height: 1.6;
-            padding: 40px 20px;
+            font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont,
+                "Helvetica Neue", sans-serif;
+            background: radial-gradient(circle at top left, #f5f8ff 0%, #eef2ff 40%, #f7f7fb 100%);
+            color: #0f172a;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .glass-card {
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(244, 245, 255, 0.66));
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 30px 60px -35px rgba(15, 23, 42, 0.45);
         }
 
-        header {
-            text-align: center;
-            color: white;
-            margin-bottom: 60px;
+        .floating-blob {
+            filter: blur(90px);
+            opacity: 0.48;
         }
 
-        h1 {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
+        .gradient-text {
+            background: linear-gradient(120deg, #0f172a, #4f46e5, #0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .subtitle {
-            font-size: 24px;
-            font-weight: 400;
-            opacity: 0.9;
-            margin-bottom: 8px;
-        }
-
-        .dates {
-            font-size: 18px;
-            opacity: 0.85;
-            font-weight: 300;
-        }
-
-        .recommendation {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-        }
-
-        .recommendation h2 {
-            font-size: 28px;
-            margin-bottom: 15px;
-            color: #667eea;
-        }
-
-        .recommendation p {
-            font-size: 17px;
-            color: #6e6e73;
-            line-height: 1.7;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
-            margin-bottom: 40px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 0;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-        }
-
-        .card-image {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 20px 20px 0 0;
-        }
-
-        .card-content {
-            padding: 32px;
-        }
-
-        .badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .badge.best {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .badge.luxury {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            color: #1d1d1f;
-        }
-
-        .badge.budget {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: #1d1d1f;
-        }
-
-        .card h3 {
-            font-size: 26px;
-            margin-bottom: 8px;
-            margin-top: 20px;
-        }
-
-        .hotel-name {
-            font-size: 15px;
-            color: #86868b;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        .price {
-            font-size: 42px;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 4px;
-        }
-
-        .price-detail {
-            font-size: 14px;
-            color: #86868b;
-            margin-bottom: 24px;
-        }
-
-        .features {
-            list-style: none;
-            margin-bottom: 24px;
-        }
-
-        .features li {
-            padding: 10px 0;
-            border-bottom: 1px solid #f5f5f7;
-            font-size: 15px;
-            color: #1d1d1f;
-        }
-
-        .features li:last-child {
-            border-bottom: none;
-        }
-
-        .features li::before {
-            content: "✓";
-            color: #667eea;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        .pros-cons {
-            margin: 20px 0;
-        }
-
-        .pros, .cons {
-            margin-bottom: 16px;
-        }
-
-        .pros h4, .cons h4 {
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-        }
-
-        .pros h4 {
-            color: #34c759;
-        }
-
-        .cons h4 {
-            color: #ff3b30;
-        }
-
-        .pros ul, .cons ul {
-            list-style: none;
-            font-size: 14px;
-            color: #6e6e73;
-        }
-
-        .pros li::before {
-            content: "+";
-            color: #34c759;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-
-        .cons li::before {
-            content: "−";
-            color: #ff3b30;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            width: 100%;
-            padding: 16px 24px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 16px;
-            text-align: center;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            margin-top: 10px;
-        }
-
-        .cta-button:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-
-        .gallery-button {
-            display: inline-block;
-            width: 100%;
-            padding: 12px 24px;
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 14px;
-            text-align: center;
-            transition: all 0.2s ease;
-            margin-top: 10px;
-            border: 2px solid #667eea;
-            cursor: pointer;
-        }
-
-        .gallery-button:hover {
-            background: rgba(102, 126, 234, 0.2);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 20px;
-            max-width: 900px;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            padding: 40px;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: #f5f5f7;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s ease;
-        }
-
-        .modal-close:hover {
-            background: #e8e8ed;
-        }
-
-        .modal h3 {
-            font-size: 32px;
-            margin-bottom: 24px;
-            color: #667eea;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 16px;
-            margin-top: 24px;
-        }
-
-        .gallery-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-
-        .gallery-image:hover {
-            transform: scale(1.05);
-        }
-
-        .image-caption {
-            text-align: center;
-            font-size: 13px;
-            color: #6e6e73;
-            margin-top: 8px;
-        }
-
-        .booking-info {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            margin-top: 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            border: 3px solid rgba(102, 126, 234, 0.3);
-        }
-
-        .booking-info h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            color: #667eea;
-            text-align: center;
-        }
-
-        .booking-info p {
-            font-size: 16px;
-            color: #1d1d1f;
-            margin-bottom: 12px;
-        }
-
-        .booking-steps {
-            list-style: none;
-            counter-reset: step-counter;
-        }
-
-        .booking-steps li {
-            counter-increment: step-counter;
-            padding: 16px 0;
-            padding-left: 50px;
-            position: relative;
-            font-size: 15px;
-            color: #1d1d1f;
-            font-weight: 500;
-        }
-
-        .booking-steps li::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 12px;
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        .expand-toggle {
-            width: 100%;
-            padding: 12px;
-            background: rgba(102, 126, 234, 0.1);
-            border: 2px solid #667eea;
-            border-radius: 8px;
-            color: #667eea;
-            font-weight: 600;
-            cursor: pointer;
-            margin: 16px 0;
-            transition: all 0.2s ease;
-        }
-
-        .expand-toggle:hover {
-            background: rgba(102, 126, 234, 0.2);
-        }
-
-        .collapsible-content {
-            max-height: 2000px;
-            overflow: hidden;
-            transition: max-height 0.3s ease, opacity 0.3s ease;
-            opacity: 1;
-        }
-
-        .collapsible-content.collapsed {
-            max-height: 0;
-            opacity: 0;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 36px;
-            }
-
-            .subtitle {
-                font-size: 20px;
-            }
-
-            .cards {
-                grid-template-columns: 1fr;
-            }
-
-            .price {
-                font-size: 36px;
-            }
+        .tag {
+            border: 1px solid rgba(79, 70, 229, 0.18);
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Puerto Vallarta 2025</h1>
-            <div class="subtitle">Your Perfect November Escape</div>
-            <div class="dates">📍 Recommended: November 9-16, 2025 (7 nights)</div>
+<body class="min-h-screen relative overflow-x-hidden">
+    <div class="absolute inset-x-0 -top-32 flex justify-center" aria-hidden="true">
+        <div class="floating-blob h-72 w-72 rounded-full bg-indigo-300/60"></div>
+    </div>
+    <div class="absolute -bottom-24 -right-20 floating-blob h-64 w-64 rounded-full bg-sky-200/70" aria-hidden="true"></div>
+
+    <main class="relative mx-auto flex w-full max-w-6xl flex-col gap-20 px-6 pb-24 pt-16 sm:px-10 lg:px-16">
+        <header class="grid gap-12 rounded-3xl bg-white/80 p-12 shadow-2xl shadow-indigo-100/70 ring-1 ring-white/60 sm:grid-cols-[1.1fr_0.9fr]">
+            <div class="flex flex-col gap-8">
+                <p class="text-sm uppercase tracking-[0.3em] text-slate-500">Executive Retreat &mdash; Discovery Deck</p>
+                <h1 class="text-4xl font-semibold leading-tight text-slate-900 sm:text-5xl lg:text-6xl">
+                    Puerto Vallarta Girls' Retreat
+                    <span class="block gradient-text text-4xl font-semibold sm:text-[3.4rem]">Luxury Escape &amp; Immersive Itinerary</span>
+                </h1>
+                <p class="text-lg leading-relaxed text-slate-600 sm:text-xl">
+                    A curated long weekend in Mexico designed for relaxation, reconnection, and elevated experiences.
+                    Explore a contemporary estate in the hills of Conchas Chinas, savor haute cuisine, and uncover the
+                    destination's coastal energy through bespoke excursions.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <span class="tag rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-indigo-600">
+                        March 6 &ndash; 10, 2025
+                    </span>
+                    <span class="tag rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-indigo-600">
+                        Puerto Vallarta, MX
+                    </span>
+                    <span class="tag rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-indigo-600">
+                        Group of 6</span>
+                </div>
+            </div>
+            <figure class="relative overflow-hidden rounded-3xl">
+                <img
+                    src="https://images.unsplash.com/photo-1526481280695-3c46947a6bc9?auto=format&fit=crop&w=1200&q=80"
+                    alt="Sunset over a tropical coastline with modern villa"
+                    class="h-full w-full object-cover"
+                    loading="lazy"
+                />
+                <figcaption class="absolute bottom-6 left-6 rounded-full bg-white/80 px-4 py-1 text-xs font-medium text-slate-600 shadow-sm backdrop-blur">
+                    Conchas Chinas hillside, Puerto Vallarta
+                </figcaption>
+            </figure>
         </header>
 
-        <div class="recommendation">
-            <h2>🎯 Our Top Recommendation</h2>
-            <p><strong>Secrets Vallarta Bay (Option 1 or 4)</strong> delivers the best value for four 26-year-olds seeking a social, party-friendly atmosphere. Book through Costco Travel for shop cards and transfers, or direct through Hyatt for potential $400 savings if you book by October 2nd. The resort attracts younger couples, features swim-up bars, themed party nights, and creates the vibrant energy your group wants—all within your $1,500/person budget.</p>
-        </div>
-
-        <div class="recommendation" style="background: linear-gradient(135deg, rgba(240, 147, 251, 0.1) 0%, rgba(245, 87, 108, 0.1) 100%); border: 3px solid rgba(240, 147, 251, 0.3);">
-            <h2>🏨 Alternative: Boutique Hotels in Romantic Zone</h2>
-            <p><strong>For a completely different experience,</strong> consider boutique hotels in Puerto Vallarta's Romantic Zone (Zona Romántica). Instead of an all-inclusive resort, you'll stay in a walkable urban neighborhood with 100+ restaurants, vibrant nightlife, and authentic Mexican culture—all steps from Los Muertos Beach.</p>
-            <p style="margin-top: 16px;"><strong>Best budget option:</strong> V Azul condos ($140-210 per person) with full kitchens let you save $200-400 per person on food while staying in the heart of the action. You'll have $1,100+ remaining per person for amazing dinners, activities, and nightlife.</p>
-            <p style="margin-top: 12px;"><strong>Social atmosphere:</strong> Casa Cupula ($490-770 pp) or Almar Resort ($770-1,050 pp) offer legendary pool parties and LGBT+-friendly vibes perfect for meeting other travelers.</p>
-            <p style="margin-top: 12px; font-style: italic; color: #6e6e73;">Scroll down to see all 5 boutique options with detailed comparisons.</p>
-        </div>
-
-        <div class="cards">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&h=500&fit=crop" alt="Secrets Vallarta Bay Resort" class="card-image">
-                <div class="card-content">
-                    <span class="badge best">Best Value</span>
-                    <h3>Option 1</h3>
-                    <div class="hotel-name">Secrets Vallarta Bay via Costco</div>
-                    <div class="price">$1,400-1,600</div>
-                    <div class="price-detail">per person / 7 nights</div>
-                    
-                    <button class="expand-toggle" onclick="toggleExpand(this)">
-                        <span class="expand-text">👇 Show Full Details</span>
-                    </button>
-
-                    <div class="collapsible-content collapsed">
-                        <ul class="features">
-                        <li>7 gourmet restaurants + 6 more at Dreams</li>
-                        <li>Unlimited top-shelf spirits</li>
-                        <li>24/7 room service with "Secrets Box"</li>
-                        <li>Daily themed party nights</li>
-                        <li>Swim-up bars & beach service</li>
-                        <li>Costco Shop Card ($100-300 value)</li>
-                        <li>Airport transfers included</li>
-                        </ul>
-
-                        <div class="pros-cons">
-                        <div class="pros">
-                            <h4>Pros</h4>
-                            <ul>
-                                <li>Perfect social atmosphere for 26-year-olds</li>
-                                <li>Best perks package (shop cards + transfers)</li>
-                                <li>Pool parties and live entertainment</li>
-                                <li>20 min from downtown nightlife</li>
-                            </ul>
-                        </div>
-                        <div class="cons">
-                            <h4>Cons</h4>
-                            <ul>
-                                <li>Requires 2 separate rooms (3 person max)</li>
-                                <li>Can feel crowded during events</li>
-                            </ul>
-                        </div>
-                        </div>
+        <section class="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
+            <article class="glass-card rounded-3xl p-10">
+                <h2 class="text-2xl font-semibold text-slate-900 sm:text-3xl">The Estate</h2>
+                <p class="mt-4 text-base leading-relaxed text-slate-600">
+                    Casa Horizonte is a private, architect-designed villa blending minimalist lines with organic
+                    textures. Floor-to-ceiling glass opens to a vanishing-edge pool overlooking Banderas Bay.
+                    Dedicated staff delivers daily housekeeping, chef-prepared brunch, and evening turndown service.
+                </p>
+                <dl class="mt-10 grid gap-6 text-sm text-slate-500 sm:grid-cols-2">
+                    <div class="flex flex-col gap-1 rounded-2xl bg-white/60 p-4 shadow-sm shadow-slate-200/50">
+                        <dt class="text-xs uppercase tracking-[0.3em] text-slate-400">Capacity</dt>
+                        <dd class="text-lg font-semibold text-slate-800">6 guests &middot; 3 king suites</dd>
                     </div>
+                    <div class="flex flex-col gap-1 rounded-2xl bg-white/60 p-4 shadow-sm shadow-slate-200/50">
+                        <dt class="text-xs uppercase tracking-[0.3em] text-slate-400">Investment</dt>
+                        <dd class="text-lg font-semibold text-slate-800">$6,150 total stay</dd>
+                    </div>
+                    <div class="flex flex-col gap-1 rounded-2xl bg-white/60 p-4 shadow-sm shadow-slate-200/50">
+                        <dt class="text-xs uppercase tracking-[0.3em] text-slate-400">Amenities</dt>
+                        <dd class="text-lg font-semibold text-slate-800">Infinity pool, rooftop lounge, private cinema</dd>
+                    </div>
+                    <div class="flex flex-col gap-1 rounded-2xl bg-white/60 p-4 shadow-sm shadow-slate-200/50">
+                        <dt class="text-xs uppercase tracking-[0.3em] text-slate-400">Staff</dt>
+                        <dd class="text-lg font-semibold text-slate-800">Chef + concierge + housekeeper</dd>
+                    </div>
+                </dl>
+            </article>
 
-                    <button class="gallery-button" onclick="openModal('modal1')">📸 View Photo Gallery</button>
-                    <a href="https://www.costcotravel.com/Vacation-Packages/Mexico/Puerto-Vallarta-Riviera-Nayarit/Puerto-Vallarta" class="cta-button">Book on Costco Travel</a>
-                    
-                    <div style="margin-top: 24px; padding-top: 24px; border-top: 2px solid #f5f5f7;">
-                        <h4 style="font-size: 14px; font-weight: 600; color: #86868b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">Alternative Booking Options for Same Hotel</h4>
-                        <div style="display: flex; gap: 12px; flex-direction: column;">
-                            <a href="https://www.hyatt.com/en-US/hotel/mexico/secrets-vallarta-bay/sevpv" style="padding: 12px 16px; background: #f5f5f7; border-radius: 8px; text-decoration: none; color: #1d1d1f; font-size: 14px; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s ease;" onmouseover="this.style.background='#e8e8ed'" onmouseout="this.style.background='#f5f5f7'">
-                                <span><strong>Book Direct via Hyatt</strong> - Up to $400 savings + 3X points</span>
-                                <span style="color: #667eea;">→</span>
-                            </a>
-                            <a href="https://www.expedia.com/" style="padding: 12px 16px; background: #f5f5f7; border-radius: 8px; text-decoration: none; color: #1d1d1f; font-size: 14px; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s ease;" onmouseover="this.style.background='#e8e8ed'" onmouseout="this.style.background='#f5f5f7'">
-                                <span><strong>Compare on Expedia</strong> - Bundle savings up to 43%</span>
-                                <span style="color: #667eea;">→</span>
-                            </a>
-                        </div>
+            <article class="flex flex-col gap-6 rounded-3xl bg-white/70 p-10 shadow-[0_25px_40px_-20px_rgba(79,70,229,0.25)]">
+                <h2 class="text-2xl font-semibold text-slate-900 sm:text-3xl">Signature Experiences</h2>
+                <ul class="mt-2 space-y-4 text-base leading-relaxed text-slate-600">
+                    <li class="flex gap-3">
+                        <span class="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-indigo-500"></span>
+                        Chef-led sunset tasting menu featuring heirloom Mexican cuisine and curated agave pairings.
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-indigo-500"></span>
+                        Private catamaran charter to the Marietas Islands with onboard mixologist and ocean plunge.
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-indigo-500"></span>
+                        Mindful morning: guided sound bath, breathwork, and beach yoga on Playa Amapas.
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-indigo-500"></span>
+                        Design-forward shopping tour through Zona Rom&aacute;ntica with personal stylist.
+                    </li>
+                </ul>
+                <div class="mt-6 rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-sky-400 p-[1px]">
+                    <div class="rounded-[1.3rem] bg-white/90 p-6">
+                        <p class="text-sm uppercase tracking-[0.3em] text-slate-400">Snapshot</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-800">Four nights &middot; Immersive &amp; restorative &middot; White-glove support</p>
                     </div>
                 </div>
-            </div>
+            </article>
+        </section>
 
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=500&fit=crop" alt="Hotel Mousai" class="card-image">
-                <div class="card-content">
-                    <span class="badge luxury">Luxury Option</span>
-                    <h3>Option 2</h3>
-                    <div class="hotel-name">Hotel Mousai (Direct)</div>
-                    <div class="price">$1,800-2,000</div>
-                    <div class="price-detail">per person / 7 nights</div>
-                    
-                    <button class="expand-toggle" onclick="toggleExpand(this)">
-                        <span class="expand-text">👇 Show Full Details</span>
-                    </button>
-
-                    <div class="collapsible-content collapsed">
-                        <ul class="features">
-                        <li>Connecting suites (2,122 sq ft for all 4)</li>
-                        <li>9 gourmet restaurants</li>
-                        <li>AAA Five Diamond property</li>
-                        <li>Rooftop infinity pools at 112m elevation</li>
-                        <li>Butler service included</li>
-                        <li>Premium spirits (Hendrick's, Hennessy VSOP)</li>
-                        <li>$200 resort credit</li>
-                        </ul>
-
-                        <div class="pros-cons">
-                        <div class="pros">
-                            <h4>Pros</h4>
-                            <ul>
-                                <li>ONLY hotel fitting all 4 in one space</li>
-                                <li>Ultra-luxury Five Diamond experience</li>
-                                <li>Spectacular rooftop pools with DJs</li>
-                                <li>iPad-controlled room amenities</li>
-                            </ul>
-                        </div>
-                        <div class="cons">
-                            <h4>Cons</h4>
-                            <ul>
-                                <li>$300-500 over budget per person</li>
-                                <li>Hillside location (not beachfront)</li>
-                                <li>More sophisticated, less party vibe</li>
-                            </ul>
-                        </div>
-                        </div>
-                    </div>
-
-                    <button class="gallery-button" onclick="openModal('modal2')">📸 View Photo Gallery</button>
-                    <a href="https://puertovallarta.hotelmousai.com/" class="cta-button">Book Direct</a>
+        <section class="rounded-3xl bg-white/80 p-10 shadow-2xl shadow-indigo-100/70 ring-1 ring-white/50">
+            <div class="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+                <div class="max-w-xl">
+                    <h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">Itinerary At-a-Glance</h2>
+                    <p class="mt-4 text-base leading-relaxed text-slate-600">
+                        A rhythm of mindful mornings, curated culinary adventures, and oceanfront evenings keeps the
+                        group engaged and deeply connected to the destination.
+                    </p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span class="rounded-full bg-indigo-50 px-5 py-2 text-sm font-semibold text-indigo-600">Private Driver</span>
+                    <span class="rounded-full bg-indigo-50 px-5 py-2 text-sm font-semibold text-indigo-600">Concierge App</span>
                 </div>
             </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=500&fit=crop" alt="Grand Miramar" class="card-image">
-                <div class="card-content">
-                    <span class="badge budget">Budget Pick</span>
-                    <h3>Option 3</h3>
-                    <div class="hotel-name">Grand Miramar All Luxury Suites</div>
-                    <div class="price">$909</div>
-                    <div class="price-detail">per person / 7 nights</div>
-                    
-                    <button class="expand-toggle" onclick="toggleExpand(this)">
-                        <span class="expand-text">👇 Show Full Details</span>
-                    </button>
-
-                    <div class="collapsible-content collapsed">
-                        <ul class="features">
-                        <li>All-suite accommodations</li>
-                        <li>Multiple dining venues</li>
-                        <li>Pool & beach access</li>
-                        <li>Entertainment program</li>
-                        <li>Standard all-inclusive amenities</li>
-                        <li>Save $600 per person vs other options</li>
-                        </ul>
-
-                        <div class="pros-cons">
-                        <div class="pros">
-                            <h4>Pros</h4>
-                            <ul>
-                                <li>Incredible value ($600 savings/person)</li>
-                                <li>Extra budget for excursions & activities</li>
-                                <li>All-suite property</li>
-                                <li>Good reviews and quality</li>
-                            </ul>
-                        </div>
-                        <div class="cons">
-                            <h4>Cons</h4>
-                            <ul>
-                                <li>Not adults-only (family-friendly)</li>
-                                <li>Less vibrant party atmosphere</li>
-                                <li>Limited info on social scene</li>
-                            </ul>
-                        </div>
-                        </div>
-                    </div>
-
-                    <button class="gallery-button" onclick="openModal('modal3')">📸 View Photo Gallery</button>
-                    <a href="https://www.united.com/packages/en-us/vacation-packages-from-san-francisco-to-puerto-vallarta" class="cta-button">Book on United Vacations</a>
-                </div>
-            </div>
-
-            <!-- Boutique Hotel Options -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800&h=500&fit=crop" alt="V Azul Condos" class="card-image">
-                <div class="card-content">
-                    <span class="badge budget">Best Budget</span>
-                    <h3>Boutique Option 1</h3>
-                    <div class="hotel-name">V Azul - Luxury Condos in Romantic Zone</div>
-                    <div class="price">$140-210</div>
-                    <div class="price-detail">per person / 7 nights (room only)</div>
-                    
-                    <button class="expand-toggle" onclick="toggleExpand(this)">
-                        <span class="expand-text">👇 Show Full Details</span>
-                    </button>
-
-                    <div class="collapsible-content collapsed">
-                        <ul class="features">
-                            <li>Full kitchen & in-unit washer/dryer</li>
-                            <li>1-bedroom condo sleeps 4 (queen + sofa bed)</li>
-                            <li>Rooftop pool with panoramic views</li>
-                            <li>100 meters (1-min walk) from Los Muertos Beach</li>
-                            <li>Walking distance to 100+ restaurants</li>
-                            <li>Adults-only (18+), gay-friendly</li>
-                            <li>Self-catering saves $200-400 per person on food</li>
-                        </ul>
-
-                        <div class="pros-cons">
-                            <div class="pros">
-                                <h4>Pros</h4>
-                                <ul>
-                                    <li>Incredible value - saves $350-600+ vs resorts</li>
-                                    <li>Full kitchen for budget-friendly meal prep</li>
-                                    <li>Perfect Romantic Zone location</li>
-                                    <li>Apartment-style independence</li>
-                                    <li>All 4 guests in ONE unit (not 2 rooms)</li>
-                                </ul>
-                            </div>
-                            <div class="cons">
-                                <h4>Cons</h4>
-                                <ul>
-                                    <li>Weekly housekeeping only (not daily)</li>
-                                    <li>Requires meal planning/cooking</li>
-                                    <li>No on-site restaurant or bar</li>
-                                    <li>Smaller 12-unit property (quieter vibe)</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="gallery-button" onclick="openModal('modal4')">📸 View Photo Gallery</button>
-                    <a href="https://www.booking.com/hotel/mx/vazul.html" class="cta-button">Book on Booking.com</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=500&fit=crop" alt="Casa Cupula" class="card-image">
-                <div class="card-content">
-                    <span class="badge luxury">Boutique Luxury</span>
-                    <h3>Boutique Option 2</h3>
-                    <div class="hotel-name">Casa Cupula - Hillside LGBT+ Resort</div>
-                    <div class="price">$490-770</div>
-                    <div class="price-detail">per person / 7 nights (room only)</div>
-                    
-                    <button class="expand-toggle" onclick="toggleExpand(this)">
-                        <span class="expand-text">👇 Show Full Details</span>
-                    </button>
-
-                    <div class="collapsible-content collapsed">
-                        <ul class="features">
-                            <li>19-room intimate boutique with ocean views</li>
-                            <li>3 pools including clothing-optional Pool Club</li>
-                            <li>Weekend pool parties with DJs (Fri-Sat)</li>
-                            <li>Monthly Big Gay Drag Brunch events</li>
-                            <li>5-minute walk to Los Muertos Beach</li>
-                            <li>Premium Egyptian cotton linens & robes</li>
-                            <li>LGBT-centered but welcoming to all</li>
-                        </ul>
-
-                        <div class="pros-cons">
-                            <div class="pros">
-                                <h4>Pros</h4>
-                                <ul>
-                                    <li>Perfect balance of social + peaceful</li>
-                                    <li>Legendary weekend pool parties</li>
-                                    <li>Stunning hillside ocean views</li>
-                                    <li>Intimate boutique character (19 rooms)</li>
-                                    <li>Excellent on-site bistro restaurant</li>
-                                </ul>
-                            </div>
-                            <div class="cons">
-                                <h4>Cons</h4>
-                                <ul>
-                                    <li>Pool Club noise during parties (bring earplugs)</li>
-                                    <li>Hillside location = uphill walks</li>
-                                    <li>Breakfast costs extra (~$15-20)</li>
-                                    <li>Higher price point</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="gallery-button" onclick="openModal('modal5')">📸 View Photo Gallery</button>
-                    <a href="https://casacupula.com/" class="cta-button">Book Direct</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&h=500&fit=crop" alt="Almar Resort" class="card-image">
-                <div class="card-content">
-                    <h3>Boutique Option 3</h3>
-                    <div class="hotel-name">Almar Resort - LGBT+ Beachfront</div>
-                    <div class="price">$770-1,050</div>
-                    <div class="price-detail">per person / 7 nights (room only)</div>
-                    
-                    <button class="expand-toggle" onclick="toggleExpand(this)">
-                        <span class="expand-text">👇 Show Full Details</span>
-                    </button>
-
-                    <div class="collapsible-content collapsed">
-                        <ul class="features">
-                            <li>Directly on Los Muertos Beach</li>
-                            <li>The Top Sky Bar (13th floor) with DJs & drag shows</li>
-                            <li>Mantamar Beach Club with Olympic infinity pool</li>
-                            <li>Weekly drag shows & cabaret (Thu-Sun)</li>
-                            <li>Multiple pool options across 2 towers</li>
-                            <li>134 rooms with modern amenities</li>
-                            <li>Premier LGBT+ party destination</li>
-                        </ul>
-
-                        <div class="pros-cons">
-                            <div class="pros">
-                                <h4>Pros</h4>
-                                <ul>
-                                    <li>Unbeatable beachfront location</li>
-                                    <li>24/7 party atmosphere on-site</li>
-                                    <li>World-class LGBT+ entertainment</li>
-                                    <li>Never need to leave for nightlife</li>
-                                    <li>Perfect for meeting other travelers</li>
-                                </ul>
-                            </div>
-                            <div class="cons">
-                                <h4>Cons</h4>
-                                <ul>
-                                    <li>Exceeds $1,500 budget by $270-550 pp</li>
-                                    <li>VERY loud (techno 9am, parties till late)</li>
-                                    <li>Breakfast & resort fees cost extra</li>
-                                    <li>Timeshare presentations at check-in</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="gallery-button" onclick="openModal('modal6')">📸 View Photo Gallery</button>
-                    <a href="https://www.almarresort.com/" class="cta-button">Book Direct</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=500&fit=crop" alt="Rivera del Rio" class="card-image">
-                <div class="card-content">
-                    <h3>Boutique Option 4</h3>
-                    <div class="hotel-name">Rivera del Rio - Artistic Boutique</div>
-                    <div class="price">$210-413</div>
-                    <div class="price-detail">per person / 7 nights (includes breakfast)</div>
-                    
-                    <button class="expand-toggle" onclick="toggleExpand(this)">
-                        <span class="expand-text">👇 Show Full Details</span>
-                    </button>
-
-                    <div class="collapsible-content collapsed">
-                        <ul class="features">
-                            <li>19-room art boutique hotel (9.4/10 rating)</li>
-                            <li>3 pools + rooftop jacuzzi with 360° views</li>
-                            <li>Complimentary breakfast included</li>
-                            <li>Each room uniquely decorated (art museum vibe)</li>
-                            <li>2-min walk to restaurants, 7-min to beach</li>
-                            <li>Rooftop bar with panoramic views</li>
-                            <li>Celebrity pedigree, featured in Vogue</li>
-                        </ul>
-
-                        <div class="pros-cons">
-                            <div class="pros">
-                                <h4>Pros</h4>
-                                <ul>
-                                    <li>Exceptional design & unique décor</li>
-                                    <li>One of highest-rated boutiques (9.4/10)</li>
-                                    <li>Breakfast included (saves $15-20/day)</li>
-                                    <li>Instagram-worthy throughout</li>
-                                    <li>Quiet but close to action</li>
-                                </ul>
-                            </div>
-                            <div class="cons">
-                                <h4>Cons</h4>
-                                <ul>
-                                    <li>Not beachfront (15-min walk)</li>
-                                    <li>No on-site restaurant beyond breakfast</li>
-                                    <li>Artistic/romantic vs party vibe</li>
-                                    <li>Quirky layout can be confusing</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="gallery-button" onclick="openModal('modal7')">📸 View Photo Gallery</button>
-                    <a href="https://www.booking.com/hotel/mx/rivera-del-rio.html" class="cta-button">Book on Booking.com</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1559599238-919a519c6fa2?w=800&h=500&fit=crop" alt="Emperador Vallarta" class="card-image">
-                <div class="card-content">
-                    <span class="badge budget">Beachfront Budget</span>
-                    <h3>Boutique Option 5</h3>
-                    <div class="hotel-name">Emperador Vallarta - Classic Beachfront</div>
-                    <div class="price">$140-263</div>
-                    <div class="price-detail">per person / 7 nights (room only)</div>
-                    
-                    <button class="expand-toggle" onclick="toggleExpand(this)">
-                        <span class="expand-text">👇 Show Full Details</span>
-                    </button>
-
-                    <div class="collapsible-content collapsed">
-                        <ul class="features">
-                            <li>Direct Los Muertos Beach access</li>
-                            <li>50 rooms, traditional Mexican charm</li>
-                            <li>Beach loungers & umbrellas included</li>
-                            <li>Si Señor Beach Club on-site</li>
-                            <li>50 meters from Los Muertos Pier</li>
-                            <li>Rooftop terrace bar with ocean views</li>
-                            <li>Most affordable beachfront option</li>
-                        </ul>
-
-                        <div class="pros-cons">
-                            <div class="pros">
-                                <h4>Pros</h4>
-                                <ul>
-                                    <li>Unbeatable beachfront location for price</li>
-                                    <li>Step directly onto Los Muertos Beach</li>
-                                    <li>Center of Romantic Zone action</li>
-                                    <li>Incredible value ($140-263 pp)</li>
-                                    <li>Authentic Mexican character</li>
-                                </ul>
-                            </div>
-                            <div class="cons">
-                                <h4>Cons</h4>
-                                <ul>
-                                    <li>Dated/older facilities (not luxury)</li>
-                                    <li>Basic rooms, some maintenance issues</li>
-                                    <li>Small rooftop pool</li>
-                                    <li>For budget travelers, not luxury seekers</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="gallery-button" onclick="openModal('modal8')">📸 View Photo Gallery</button>
-                    <a href="https://www.booking.com/hotel/mx/emperador-suites-puerto-vallarta.html" class="cta-button">Book on Booking.com</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="booking-info">
-            <h2>🗓️ Quick Action Plan - Book This Week!</h2>
-            <p style="font-size: 18px; color: #667eea; font-weight: 600; margin-bottom: 24px;">Don't wait - November 9-16 is prime timing and fills up quickly!</p>
-            <ol class="booking-steps">
-                <li><strong>This Week:</strong> Call Costco Travel (1-866-921-7925) AND Hyatt (1-800-323-7249) for exact quotes on split-city booking (1 from SFO, 3 from DTW)</li>
-                <li><strong>Compare:</strong> Review total costs including perks (Costco shop cards + transfers vs Hyatt points + $400 promo)</li>
-                <li><strong>Book Within 7 Days:</strong> November 9-16 is prime timing—don't wait past October to secure dates</li>
-                <li><strong>Coordinate Group:</strong> Designate one person to handle hotel booking for all 4 to ensure same confirmation and adjacent rooms</li>
-                <li><strong>Request Specifics:</strong> "Two Junior Suite Ocean View rooms, connecting/adjacent, all 4 guests on same confirmation, arrivals from SFO + DTW"</li>
+            <ol class="mt-12 space-y-8 border-l border-slate-200 pl-8">
+                <li class="relative">
+                    <span class="absolute -left-11 flex h-12 w-12 items-center justify-center rounded-full bg-indigo-500 text-white font-semibold">Day 1</span>
+                    <h3 class="text-xl font-semibold text-slate-900">Arrivals &amp; Elevated Welcome</h3>
+                    <p class="mt-2 text-base text-slate-600">
+                        VIP transfer to the villa, hydrating welcome elixirs, and a twilight terrace dinner with live acoustic set.
+                    </p>
+                </li>
+                <li class="relative">
+                    <span class="absolute -left-11 flex h-12 w-12 items-center justify-center rounded-full bg-indigo-500 text-white font-semibold">Day 2</span>
+                    <h3 class="text-xl font-semibold text-slate-900">Wellness Immersion &amp; Rooftop Soir&eacute;e</h3>
+                    <p class="mt-2 text-base text-slate-600">
+                        Sunrise yoga on Playa Amapas, chef-prepared brunch, afternoon spa rituals, and rooftop mixology with panoramic sunsets.
+                    </p>
+                </li>
+                <li class="relative">
+                    <span class="absolute -left-11 flex h-12 w-12 items-center justify-center rounded-full bg-indigo-500 text-white font-semibold">Day 3</span>
+                    <h3 class="text-xl font-semibold text-slate-900">Ocean Expedition</h3>
+                    <p class="mt-2 text-base text-slate-600">
+                        Exclusive catamaran charter to hidden coves, guided snorkeling, onboard tasting menu, and bioluminescent night swim option.
+                    </p>
+                </li>
+                <li class="relative">
+                    <span class="absolute -left-11 flex h-12 w-12 items-center justify-center rounded-full bg-indigo-500 text-white font-semibold">Day 4</span>
+                    <h3 class="text-xl font-semibold text-slate-900">Design &amp; Culture Circuit</h3>
+                    <p class="mt-2 text-base text-slate-600">
+                        Boutique exploration in Zona Rom&aacute;ntica, private gallery preview, and dinner at Michelin-lauded Tintoque.
+                    </p>
+                </li>
+                <li class="relative">
+                    <span class="absolute -left-11 flex h-12 w-12 items-center justify-center rounded-full bg-indigo-500 text-white font-semibold">Day 5</span>
+                    <h3 class="text-xl font-semibold text-slate-900">Departure &amp; Reflection</h3>
+                    <p class="mt-2 text-base text-slate-600">
+                        Slow breakfast, mindfulness journaling, and coordinated luxury transfers to PVR.</p>
+                </li>
             </ol>
-            
-            <p style="margin-top: 24px; font-weight: 600; color: #1d1d1f; background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 12px; border-left: 4px solid #667eea;">💡 <strong style="color: #667eea;">Pro Tip:</strong> If budget allows, consider upgrading to Hotel Mousai (Option 2) for the only true 4-person suite experience and Five Diamond luxury. The $300-500 premium per person transforms this from a great trip to an unforgettable one.</p>
-        </div>
+        </section>
 
-        <!-- Photo Gallery Modals -->
-        <div id="modal1" class="modal">
-            <div class="modal-content">
-                <button class="modal-close" onclick="closeModal('modal1')">×</button>
-                <h3>Secrets Vallarta Bay</h3>
-                <p style="color: #6e6e73; margin-bottom: 20px;">Adults-only beachfront paradise with vibrant social atmosphere</p>
-                <div class="gallery-grid">
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop" alt="Beach view" class="gallery-image">
-                        <div class="image-caption">Beachfront pools & cabanas</div>
+        <section class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+            <article class="glass-card rounded-3xl p-10">
+                <h2 class="text-2xl font-semibold text-slate-900 sm:text-3xl">Investment Overview</h2>
+                <div class="mt-6 space-y-6 text-base text-slate-600">
+                    <div class="flex items-center justify-between rounded-2xl bg-white/60 p-4 shadow-sm shadow-slate-200/50">
+                        <span>Villa buyout (4 nights)</span>
+                        <span class="font-semibold text-slate-900">$3,950</span>
                     </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1615460549969-36fa19521a4f?w=600&h=400&fit=crop" alt="Pool area" class="gallery-image">
-                        <div class="image-caption">Swim-up bar & infinity pool</div>
+                    <div class="flex items-center justify-between rounded-2xl bg-white/60 p-4 shadow-sm shadow-slate-200/50">
+                        <span>Private experiences &amp; dining</span>
+                        <span class="font-semibold text-slate-900">$1,450</span>
                     </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&h=400&fit=crop" alt="Restaurant" class="gallery-image">
-                        <div class="image-caption">Gourmet dining venues</div>
+                    <div class="flex items-center justify-between rounded-2xl bg-white/60 p-4 shadow-sm shadow-slate-200/50">
+                        <span>On-site staff gratuities</span>
+                        <span class="font-semibold text-slate-900">$450</span>
                     </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&h=400&fit=crop" alt="Room" class="gallery-image">
-                        <div class="image-caption">Junior Suite Ocean View</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&h=400&fit=crop" alt="Beach" class="gallery-image">
-                        <div class="image-caption">Private beach access</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&h=400&fit=crop" alt="Entertainment" class="gallery-image">
-                        <div class="image-caption">Evening entertainment & parties</div>
+                    <div class="flex items-center justify-between rounded-2xl bg-white/60 p-4 shadow-sm shadow-slate-200/50">
+                        <span>Transportation &amp; concierge</span>
+                        <span class="font-semibold text-slate-900">$300</span>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div id="modal2" class="modal">
-            <div class="modal-content">
-                <button class="modal-close" onclick="closeModal('modal2')">×</button>
-                <h3>Hotel Mousai</h3>
-                <p style="color: #6e6e73; margin-bottom: 20px;">Five Diamond ultra-luxury with rooftop infinity pools</p>
-                <div class="gallery-grid">
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Rooftop pool" class="gallery-image">
-                        <div class="image-caption">Rooftop infinity pool at 112m</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&h=400&fit=crop" alt="Suite interior" class="gallery-image">
-                        <div class="image-caption">Luxury suite with ocean views</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1574643156929-51fa098b0394?w=600&h=400&fit=crop" alt="Terrace" class="gallery-image">
-                        <div class="image-caption">Private terrace with plunge pool</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&h=400&fit=crop" alt="Restaurant" class="gallery-image">
-                        <div class="image-caption">Award-winning dining</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=600&h=400&fit=crop" alt="View" class="gallery-image">
-                        <div class="image-caption">Panoramic bay views</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600&h=400&fit=crop" alt="Lounge" class="gallery-image">
-                        <div class="image-caption">Rooftop bar & lounge</div>
-                    </div>
+                <div class="mt-8 flex items-center justify-between rounded-2xl bg-slate-900 px-6 py-5 text-white">
+                    <span class="text-sm uppercase tracking-[0.3em] text-slate-300">Total Program Value</span>
+                    <span class="text-2xl font-semibold">$6,150</span>
                 </div>
-            </div>
-        </div>
+            </article>
 
-        <div id="modal3" class="modal">
-            <div class="modal-content">
-                <button class="modal-close" onclick="closeModal('modal3')">×</button>
-                <h3>Grand Miramar All Luxury Suites</h3>
-                <p style="color: #6e6e73; margin-bottom: 20px;">All-suite resort with exceptional value</p>
-                <div class="gallery-grid">
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&h=400&fit=crop" alt="Resort view" class="gallery-image">
-                        <div class="image-caption">Resort grounds & pools</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600&h=400&fit=crop" alt="Suite" class="gallery-image">
-                        <div class="image-caption">Spacious suite accommodations</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=600&h=400&fit=crop" alt="Pool" class="gallery-image">
-                        <div class="image-caption">Multiple pool areas</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop" alt="Dining" class="gallery-image">
-                        <div class="image-caption">All-inclusive dining</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&h=400&fit=crop" alt="Beach" class="gallery-image">
-                        <div class="image-caption">Beach access</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1561501878-aabd62634533?w=600&h=400&fit=crop" alt="Terrace" class="gallery-image">
-                        <div class="image-caption">Ocean view terraces</div>
-                    </div>
+            <article class="flex flex-col justify-between rounded-3xl bg-slate-900 px-10 py-12 text-white shadow-2xl shadow-slate-900/30">
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-semibold">Why It Works</h2>
+                    <p class="text-base leading-relaxed text-slate-200">
+                        Strategically sequenced experiences support a balanced energy flow&mdash;pairing mindful grounding
+                        with high-impact moments. Dedicated hospitality teams maintain effortless execution, while the
+                        villa's design-forward setting feels both intimate and expansive.
+                    </p>
+                    <ul class="space-y-4 text-sm text-slate-200">
+                        <li class="flex gap-3">
+                            <span class="mt-1 h-2 w-2 rounded-full bg-indigo-300"></span>
+                            Elevated culinary program with local sourcing and contemporary technique.
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="mt-1 h-2 w-2 rounded-full bg-indigo-300"></span>
+                            Flexible pacing accommodates recharge time and spontaneous exploration.
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="mt-1 h-2 w-2 rounded-full bg-indigo-300"></span>
+                            Concierge-managed logistics reduce friction from arrival to departure.
+                        </li>
+                    </ul>
                 </div>
-            </div>
-        </div>
-
-        <div id="modal4" class="modal">
-            <div class="modal-content">
-                <button class="modal-close" onclick="closeModal('modal4')">×</button>
-                <h3>V Azul - Luxury Condos</h3>
-                <p style="color: #6e6e73; margin-bottom: 20px;">Modern self-catering condos in the heart of Romantic Zone</p>
-                <div class="gallery-grid">
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&h=400&fit=crop" alt="Condo living space" class="gallery-image">
-                        <div class="image-caption">Modern condo living area</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=600&h=400&fit=crop" alt="Full kitchen" class="gallery-image">
-                        <div class="image-caption">Full kitchen for self-catering</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600&h=400&fit=crop" alt="Rooftop pool" class="gallery-image">
-                        <div class="image-caption">Rooftop pool with views</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop" alt="Bedroom" class="gallery-image">
-                        <div class="image-caption">Comfortable bedroom</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&h=400&fit=crop" alt="Beach nearby" class="gallery-image">
-                        <div class="image-caption">Los Muertos Beach (100m away)</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&h=400&fit=crop" alt="Romantic Zone" class="gallery-image">
-                        <div class="image-caption">Romantic Zone neighborhood</div>
-                    </div>
+                <div class="mt-10 flex flex-wrap items-center gap-4">
+                    <a
+                        href="#"
+                        class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-white/40 transition hover:shadow-xl hover:shadow-white/50"
+                    >Download Full Dossier</a>
+                    <a
+                        href="#"
+                        class="inline-flex items-center justify-center rounded-full bg-transparent px-6 py-3 text-sm font-semibold text-white ring-1 ring-white/30 transition hover:bg-white/10"
+                    >Schedule Planning Call</a>
                 </div>
+            </article>
+        </section>
+
+        <footer class="flex flex-col gap-6 rounded-3xl bg-white/70 px-10 py-12 text-sm text-slate-500 shadow-inner shadow-indigo-100/60 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+                <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Curated by</p>
+                <p class="mt-2 text-base font-semibold text-slate-700">Sonder &amp; Sage Travel Collective</p>
+                <p class="mt-1 text-sm text-slate-500">Bespoke experiences for modern women on the move.</p>
             </div>
-        </div>
-
-        <div id="modal5" class="modal">
-            <div class="modal-content">
-                <button class="modal-close" onclick="closeModal('modal5')">×</button>
-                <h3>Casa Cupula</h3>
-                <p style="color: #6e6e73; margin-bottom: 20px;">Sophisticated hillside boutique with legendary pool parties</p>
-                <div class="gallery-grid">
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=600&h=400&fit=crop" alt="Ocean views" class="gallery-image">
-                        <div class="image-caption">Stunning hillside ocean views</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&h=400&fit=crop" alt="Boutique room" class="gallery-image">
-                        <div class="image-caption">Unique boutique rooms</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1574643156929-51fa098b0394?w=600&h=400&fit=crop" alt="Pool Club" class="gallery-image">
-                        <div class="image-caption">Legendary Pool Club parties</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Infinity pool" class="gallery-image">
-                        <div class="image-caption">Rooftop infinity pool</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&h=400&fit=crop" alt="Bistro" class="gallery-image">
-                        <div class="image-caption">On-site bistro restaurant</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600&h=400&fit=crop" alt="Terrace" class="gallery-image">
-                        <div class="image-caption">Private terraces</div>
-                    </div>
-                </div>
+            <div class="flex flex-wrap items-center gap-3 text-xs font-medium text-slate-400">
+                <span class="rounded-full bg-indigo-50 px-4 py-2 text-indigo-600">24/7 concierge</span>
+                <span class="rounded-full bg-indigo-50 px-4 py-2 text-indigo-600">Carbon-offset travel</span>
+                <span class="rounded-full bg-indigo-50 px-4 py-2 text-indigo-600">Safety-first partners</span>
             </div>
-        </div>
-
-        <div id="modal6" class="modal">
-            <div class="modal-content">
-                <button class="modal-close" onclick="closeModal('modal6')">×</button>
-                <h3>Almar Resort</h3>
-                <p style="color: #6e6e73; margin-bottom: 20px;">Premier LGBT+ beachfront party destination</p>
-                <div class="gallery-grid">
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&h=400&fit=crop" alt="Beachfront" class="gallery-image">
-                        <div class="image-caption">Direct Los Muertos Beach access</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&h=400&fit=crop" alt="Sky Bar" class="gallery-image">
-                        <div class="image-caption">The Top Sky Bar (13th floor)</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop" alt="Beach club" class="gallery-image">
-                        <div class="image-caption">Mantamar Beach Club</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Infinity pool" class="gallery-image">
-                        <div class="image-caption">Olympic infinity pool</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&h=400&fit=crop" alt="Room" class="gallery-image">
-                        <div class="image-caption">Modern ocean view rooms</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=600&h=400&fit=crop" alt="Entertainment" class="gallery-image">
-                        <div class="image-caption">World-class drag shows</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="modal7" class="modal">
-            <div class="modal-content">
-                <button class="modal-close" onclick="closeModal('modal7')">×</button>
-                <h3>Rivera del Rio</h3>
-                <p style="color: #6e6e73; margin-bottom: 20px;">Artistic boutique hotel like an art museum</p>
-                <div class="gallery-grid">
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=600&h=400&fit=crop" alt="Art hotel" class="gallery-image">
-                        <div class="image-caption">Artistic unique design</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&h=400&fit=crop" alt="Unique rooms" class="gallery-image">
-                        <div class="image-caption">Each room uniquely decorated</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Rooftop pool" class="gallery-image">
-                        <div class="image-caption">Rooftop infinity pool</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1574643156929-51fa098b0394?w=600&h=400&fit=crop" alt="Jacuzzi" class="gallery-image">
-                        <div class="image-caption">Rooftop jacuzzi with 360° views</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600&h=400&fit=crop" alt="Art details" class="gallery-image">
-                        <div class="image-caption">M.C. Escher-style architecture</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&h=400&fit=crop" alt="Rooftop bar" class="gallery-image">
-                        <div class="image-caption">Rooftop bar with panoramic views</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="modal8" class="modal">
-            <div class="modal-content">
-                <button class="modal-close" onclick="closeModal('modal8')">×</button>
-                <h3>Emperador Vallarta</h3>
-                <p style="color: #6e6e73; margin-bottom: 20px;">Classic beachfront hotel with authentic Mexican charm</p>
-                <div class="gallery-grid">
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&h=400&fit=crop" alt="Beach access" class="gallery-image">
-                        <div class="image-caption">Direct Los Muertos Beach</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop" alt="Beach club" class="gallery-image">
-                        <div class="image-caption">Si Señor Beach Club</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&h=400&fit=crop" alt="Traditional charm" class="gallery-image">
-                        <div class="image-caption">Traditional Mexican charm</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1559599238-919a519c6fa2?w=600&h=400&fit=crop" alt="Rooftop" class="gallery-image">
-                        <div class="image-caption">Rooftop terrace bar</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&h=400&fit=crop" alt="Rooms" class="gallery-image">
-                        <div class="image-caption">Comfortable rooms</div>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1561501878-aabd62634533?w=600&h=400&fit=crop" alt="Los Muertos Pier" class="gallery-image">
-                        <div class="image-caption">50m from Los Muertos Pier</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function toggleExpand(button) {
-            const content = button.nextElementSibling;
-            const expandText = button.querySelector('.expand-text');
-            
-            if (content.classList.contains('collapsed')) {
-                content.classList.remove('collapsed');
-                expandText.textContent = '👆 Hide Details';
-            } else {
-                content.classList.add('collapsed');
-                expandText.textContent = '👇 Show Full Details';
-            }
-        }
-
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Close modal when clicking outside
-        window.addEventListener('click', function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                const modals = document.querySelectorAll('.modal.active');
-                modals.forEach(modal => {
-                    modal.classList.remove('active');
-                });
-                document.body.style.overflow = 'auto';
-            }
-        });
-    </script>
+        </footer>
+    </main>
 </body>
 </html>
