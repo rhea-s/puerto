@@ -406,6 +406,42 @@
             border-radius: 4px;
         }
 
+        /* Gallery Arrow Navigation */
+        .gallery-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+            z-index: 10;
+        }
+
+        .gallery-arrow:hover {
+            opacity: 1;
+            background: rgba(0, 0, 0, 0.8);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .gallery-arrow.prev {
+            left: 1rem;
+        }
+
+        .gallery-arrow.next {
+            right: 1rem;
+        }
+
         /* Hotel Info Section */
         .hotel-info {
             padding: 3rem;
@@ -1065,6 +1101,8 @@
                 <div class="hotel-card">
                     <div class="image-gallery">
                         <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80" alt="Casa Maria Pool" class="gallery-main" id="casa-maria-img">
+                        <button class="gallery-arrow prev" onclick="previousImage('casa-maria', event)">‹</button>
+                        <button class="gallery-arrow next" onclick="nextImage('casa-maria', event)">›</button>
                         <div class="gallery-nav">
                             <div class="gallery-dot active" onclick="changeImage('casa-maria', 0, event)"></div>
                             <div class="gallery-dot" onclick="changeImage('casa-maria', 1, event)"></div>
@@ -1195,6 +1233,8 @@
                 <div class="hotel-card">
                     <div class="image-gallery">
                         <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1600&q=80" alt="Rivera Del Rio" class="gallery-main" id="rivera-img">
+                        <button class="gallery-arrow prev" onclick="previousImage('rivera', event)">‹</button>
+                        <button class="gallery-arrow next" onclick="nextImage('rivera', event)">›</button>
                         <div class="gallery-nav">
                             <div class="gallery-dot active" onclick="changeImage('rivera', 0, event)"></div>
                             <div class="gallery-dot" onclick="changeImage('rivera', 1, event)"></div>
@@ -1325,6 +1365,8 @@
                 <div class="hotel-card">
                     <div class="image-gallery">
                         <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&q=80" alt="Almar Resort" class="gallery-main" id="almar-img">
+                        <button class="gallery-arrow prev" onclick="previousImage('almar', event)">‹</button>
+                        <button class="gallery-arrow next" onclick="nextImage('almar', event)">›</button>
                         <div class="gallery-nav">
                             <div class="gallery-dot active" onclick="changeImage('almar', 0, event)"></div>
                             <div class="gallery-dot" onclick="changeImage('almar', 1, event)"></div>
@@ -1455,6 +1497,8 @@
                 <div class="hotel-card">
                     <div class="image-gallery">
                         <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1600&q=80" alt="Vallarta Shores" class="gallery-main" id="vallarta-img">
+                        <button class="gallery-arrow prev" onclick="previousImage('vallarta', event)">‹</button>
+                        <button class="gallery-arrow next" onclick="nextImage('vallarta', event)">›</button>
                         <div class="gallery-nav">
                             <div class="gallery-dot active" onclick="changeImage('vallarta', 0, event)"></div>
                             <div class="gallery-dot" onclick="changeImage('vallarta', 1, event)"></div>
@@ -1895,6 +1939,50 @@
 
         // Hotel comparison functionality
         
+        /* ============================================
+           TO UPDATE WITH REAL HOTEL IMAGES:
+           ============================================
+           
+           Visit these official hotel photo galleries to grab real image URLs:
+           
+           1. CASA MARIA HOTEL:
+              - Official site: https://casamariahotel.mx/
+              - Booking.com photos: https://www.booking.com/hotel/mx/casa-maria-amp-gallery.html
+              - TripAdvisor photos: https://www.tripadvisor.com/Hotel_Review-g150793-d17649889-Reviews-Casa_Maria_Hotel_Boutique_Gallery-Puerto_Vallarta.html
+              → Look for: pool views, room interiors, rooftop terrace, art gallery
+           
+           2. RIVERA DEL RIO:
+              - Official site: https://www.riveradelrio.com/
+              - Carlotta Suite page: https://www.riveradelrio.com/rooms/carlotta-suite.html
+              - Booking.com photos: https://www.booking.com/hotel/mx/rivera-del-rio.html
+              - TripAdvisor: https://www.tripadvisor.com/Hotel_Review-g150793-d308275-Reviews-Hotel_Boutique_Rivera_del_Rio-Puerto_Vallarta.html
+              → Look for: Carlotta Suite interior, pools, river views, historic architecture
+           
+           3. ALMAR RESORT:
+              - Official site: https://www.almarresort.com/
+              - Booking.com photos: https://www.booking.com/hotel/mx/almar-resort-luxury-all-suites-amp-spa.html
+              - TripAdvisor photos: https://www.tripadvisor.com/Hotel_Review-g150793-d2643729-Reviews-Almar_Resort_Luxury_Lgbt_Beach_Front_Experience-Puerto_Vallarta.html
+              - Mantamar Beach Club: https://mantamar.com/
+              - The Top Sky Bar: https://thetopskybar.com/
+              → Look for: beachfront suites, Eden Pool, Mantamar Beach Club, Top Sky Bar views, spa areas
+           
+           4. VALLARTA SHORES:
+              - Official site: https://vallartashores.com/
+              - Booking.com photos: https://www.booking.com/hotel/mx/shore-condohotel.html
+              - TripAdvisor photos: https://www.tripadvisor.com/Hotel_Review-g150793-d225452-Reviews-Vallarta_Shores-Puerto_Vallarta.html
+              → Look for: beachfront suites, ocean-view balconies, infinity pool, living areas
+           
+           INSTRUCTIONS:
+           1. Right-click on hotel photos → "Copy Image Address"
+           2. Replace the URLs below in each hotel's array
+           3. Keep 3 images per hotel for the gallery rotation
+           4. Ensure images are high-resolution (minimum 1200px wide)
+           5. Test image loading and verify URLs work before finalizing
+           
+           CURRENT STATUS: Real hotel images are already integrated below!
+           
+        ============================================ */
+        
         const hotelImages = {
             'casa-maria': [
                 'https://r.profitroom.pl/casamariahotelboutique/images/gallery/202311231747060.WhatsApp_Image_2023_11_17_at_17.58.15_Easy_Resize.com.jpg',  // Pool view
@@ -1944,11 +2032,34 @@
             });
         }
 
+        // New arrow navigation functions
+        let currentImageIndex = {
+            'casa-maria': 0,
+            'rivera': 0,
+            'almar': 0,
+            'vallarta': 0
+        };
+
+        function nextImage(hotelId, event) {
+            event.stopPropagation();
+            const maxIndex = hotelImages[hotelId].length - 1;
+            currentImageIndex[hotelId] = (currentImageIndex[hotelId] + 1) % (maxIndex + 1);
+            changeImage(hotelId, currentImageIndex[hotelId], event);
+        }
+
+        function previousImage(hotelId, event) {
+            event.stopPropagation();
+            const maxIndex = hotelImages[hotelId].length - 1;
+            currentImageIndex[hotelId] = currentImageIndex[hotelId] === 0 ? maxIndex : currentImageIndex[hotelId] - 1;
+            changeImage(hotelId, currentImageIndex[hotelId], event);
+        }
+
         function changeImage(hotelId, imageIndex, event) {
             event.stopPropagation();
             const imgElement = document.getElementById(hotelId + '-img');
             const dots = document.querySelectorAll(`#${hotelId} .gallery-dot`);
             
+            currentImageIndex[hotelId] = imageIndex;
             imgElement.src = hotelImages[hotelId][imageIndex];
             
             dots.forEach((dot, index) => {
