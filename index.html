@@ -245,65 +245,347 @@
             background: white;
         }
 
-        .hotel-showcase {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        /* Quick Comparison Table */
+        .quick-comparison {
+            background: white;
+            margin: 3rem auto;
             border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            margin-top: 3rem;
-            color: white;
+            max-width: 1200px;
         }
 
-        .hotel-image {
+        .comparison-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
+            border-bottom: 1px solid #e5e5e7;
+        }
+
+        .comparison-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0;
+        }
+
+        .comparison-item {
+            padding: 2rem;
+            border-right: 1px solid #e5e5e7;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+
+        .comparison-item:last-child {
+            border-right: none;
+        }
+
+        .comparison-item:hover {
+            background: #f5f5f7;
+        }
+
+        .hotel-name-small {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #667eea;
+        }
+
+        .price-large {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1d1d1f;
+        }
+
+        .price-per-person {
+            font-size: 0.9rem;
+            color: #86868b;
+            margin-top: 0.25rem;
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 0.5rem;
+            margin: 3rem 0 2rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+
+        .tab-button {
+            background: white;
+            border: 2px solid #e5e5e7;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            color: #1d1d1f;
+        }
+
+        .tab-button:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* Hotel Cards */
+        .hotel-content {
+            display: none;
+        }
+
+        .hotel-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .hotel-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            position: relative;
+            height: 500px;
+            background: #f5f5f7;
+            overflow: hidden;
+        }
+
+        .gallery-main {
             width: 100%;
-            height: 400px;
+            height: 100%;
             object-fit: cover;
         }
 
-        .hotel-content {
+        .gallery-nav {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 1rem;
+            border-radius: 50px;
+        }
+
+        .gallery-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-dot.active {
+            background: white;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* Hotel Info Section */
+        .hotel-info {
             padding: 3rem;
         }
 
-        .hotel-content h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+        .hotel-header {
+            margin-bottom: 2rem;
         }
 
-        .hotel-amenities {
+        .hotel-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .hotel-subtitle {
+            font-size: 1.2rem;
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .price-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
+            border-radius: 18px;
+            margin-bottom: 2rem;
+        }
+
+        .price-item h3 {
+            font-size: 0.9rem;
+            color: #86868b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-item p {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1d1d1f;
+        }
+
+        .room-config {
+            background: #f5f5f7;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .room-config h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: #1d1d1f;
+        }
+
+        .room-config p {
+            color: #6e6e73;
+        }
+
+        /* Amenities Grid */
+        .amenities {
+            margin: 3rem 0;
+        }
+
+        .amenities h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .amenities-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
-            margin-top: 2rem;
         }
 
-        .amenity {
+        .amenity-item {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            gap: 1rem;
             padding: 1rem;
+            background: #f5f5f7;
             border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .amenity-item:hover {
+            transform: translateX(5px);
         }
 
         .amenity-icon {
             font-size: 1.5rem;
+            min-width: 30px;
         }
 
-        .hotel-booking {
-            margin-top: 2rem;
-            display: inline-block;
+        .amenity-text {
+            font-size: 0.95rem;
+            color: #1d1d1f;
+        }
+
+        /* Highlights Section */
+        .highlights {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 3rem;
+            border-radius: 18px;
+            color: white;
+            margin: 2rem 0;
+        }
+
+        .highlights h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlights-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+        }
+
+        .highlight-check {
+            font-size: 1.5rem;
+            min-width: 25px;
+        }
+
+        /* Location Info */
+        .location-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .location-item {
             background: white;
+            border: 2px solid #e5e5e7;
+            padding: 1.5rem;
+            border-radius: 18px;
+            text-align: center;
+        }
+
+        .location-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
             color: #667eea;
-            padding: 1rem 2.5rem;
+        }
+
+        .location-item p {
+            color: #6e6e73;
+            font-size: 0.95rem;
+        }
+
+        /* Booking Button */
+        .booking-section {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid #e5e5e7;
+        }
+
+        .book-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.25rem 3rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
         }
 
-        .hotel-booking:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        .book-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
         }
 
         .itinerary-section {
@@ -561,7 +843,28 @@
                 padding-right: 0;
             }
 
-            .hotel-content {
+            .image-gallery {
+                height: 300px;
+            }
+
+            .hotel-info {
+                padding: 2rem;
+            }
+
+            .hotel-title {
+                font-size: 2rem;
+            }
+
+            .comparison-item {
+                border-right: none;
+                border-bottom: 1px solid #e5e5e7;
+            }
+
+            .comparison-item:last-child {
+                border-bottom: none;
+            }
+
+            .highlights {
                 padding: 2rem;
             }
 
@@ -709,47 +1012,565 @@
 
     <section class="hotel-section">
         <div class="container">
-            <h2>Accommodation</h2>
-            <p class="section-subtitle">Your home away from home</p>
+            <h2>Accommodation Options</h2>
+            <p class="section-subtitle">Compare 4 carefully selected hotels</p>
             
-            <div class="hotel-showcase">
-                <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&q=80" alt="Luxury resort pool" class="hotel-image">
-                <div class="hotel-content">
-                    <h3>Almar Resort Luxury LGBT Beach Front Experience</h3>
-                    <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Adults-only luxury in the heart of Zona Romántica</p>
-                    
-                    <p><strong>Booking:</strong> 2 ocean-view standard rooms for 6 nights<br>
-                    <strong>Cost:</strong> ~$2,570 (including taxes & resort fees)<br>
-                    <strong>Rate:</strong> $180 per room per night</p>
-                    
-                    <div class="hotel-amenities">
-                        <div class="amenity">
-                            <span class="amenity-icon">🏖️</span>
-                            <span>Beach Access</span>
-                        </div>
-                        <div class="amenity">
-                            <span class="amenity-icon">🏊</span>
-                            <span>Rooftop Pools</span>
-                        </div>
-                        <div class="amenity">
-                            <span class="amenity-icon">💆</span>
-                            <span>Full Spa</span>
-                        </div>
-                        <div class="amenity">
-                            <span class="amenity-icon">🍹</span>
-                            <span>Beach Club</span>
-                        </div>
-                        <div class="amenity">
-                            <span class="amenity-icon">🌅</span>
-                            <span>Ocean Views</span>
-                        </div>
-                        <div class="amenity">
-                            <span class="amenity-icon">🎉</span>
-                            <span>Nightlife Access</span>
+            <!-- Quick Comparison -->
+            <div class="quick-comparison">
+                <div class="comparison-header">
+                    <h3>Quick Price Comparison</h3>
+                    <p style="color: #86868b; font-size: 0.95rem;">6 nights (Nov 14-20, 2025) for 4 travelers</p>
+                </div>
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <div class="hotel-name-small">Casa Maria</div>
+                        <div class="price-large">$1,040</div>
+                        <div class="price-per-person">$260 per person</div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="hotel-name-small">Rivera Del Rio</div>
+                        <div class="price-large">$1,194</div>
+                        <div class="price-per-person">$299 per person</div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="hotel-name-small">Almar Resort</div>
+                        <div class="price-large">$1,549</div>
+                        <div class="price-per-person">$387 per person</div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="hotel-name-small">Vallarta Shores</div>
+                        <div class="price-large">$1,800</div>
+                        <div class="price-per-person">$450 per person</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="tab-nav">
+                <button class="tab-button active" onclick="showHotel('casa-maria')">Casa Maria Hotel</button>
+                <button class="tab-button" onclick="showHotel('rivera')">Rivera Del Rio</button>
+                <button class="tab-button" onclick="showHotel('almar')">Almar Resort</button>
+                <button class="tab-button" onclick="showHotel('vallarta')">Vallarta Shores</button>
+            </div>
+
+            <!-- Hotel 1: Casa Maria -->
+            <div id="casa-maria" class="hotel-content active">
+                <div class="hotel-card">
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80" alt="Casa Maria Pool" class="gallery-main" id="casa-maria-img">
+                        <div class="gallery-nav">
+                            <div class="gallery-dot active" onclick="changeImage('casa-maria', 0, event)"></div>
+                            <div class="gallery-dot" onclick="changeImage('casa-maria', 1, event)"></div>
+                            <div class="gallery-dot" onclick="changeImage('casa-maria', 2, event)"></div>
                         </div>
                     </div>
-                    
-                    <a href="https://www.almarresort.com" target="_blank" class="hotel-booking">Book Your Stay</a>
+
+                    <div class="hotel-info">
+                        <div class="hotel-header">
+                            <h2 class="hotel-title">Casa Maria Hotel Boutique & Gallery</h2>
+                            <p class="hotel-subtitle">Adults-Only Artistic Oasis</p>
+                        </div>
+
+                        <div class="price-section">
+                            <div class="price-item">
+                                <h3>Total Price</h3>
+                                <p>$1,040.30</p>
+                            </div>
+                            <div class="price-item">
+                                <h3>Per Person</h3>
+                                <p>$260</p>
+                            </div>
+                            <div class="price-item">
+                                <h3>Per Night</h3>
+                                <p>$173</p>
+                            </div>
+                        </div>
+
+                        <div class="room-config">
+                            <h3>📍 Room: Standard Queen Suite</h3>
+                            <p><strong>Configuration:</strong> 2 Queen Beds</p>
+                            <p><strong>Features:</strong> Balcony, Pool View, Air Conditioning, Mini-bar, Microwave, Safe Box</p>
+                            <p><strong>Size:</strong> 35m² (377 sq ft)</p>
+                        </div>
+
+                        <div class="amenities">
+                            <h3>Key Amenities</h3>
+                            <div class="amenities-grid">
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🏊</span>
+                                    <span class="amenity-text">Rooftop Pool</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🍳</span>
+                                    <span class="amenity-text">Free Breakfast</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🎨</span>
+                                    <span class="amenity-text">Art Gallery</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">📶</span>
+                                    <span class="amenity-text">Free WiFi</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🍹</span>
+                                    <span class="amenity-text">Pool Bar</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🔞</span>
+                                    <span class="amenity-text">Adults Only (18+)</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">❄️</span>
+                                    <span class="amenity-text">Air Conditioning</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🛎️</span>
+                                    <span class="amenity-text">24/7 Concierge</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="location-info">
+                            <div class="location-item">
+                                <h4>🏖️ Beach Distance</h4>
+                                <p>2 minute walk to Los Muertos Beach</p>
+                            </div>
+                            <div class="location-item">
+                                <h4>🌃 Nightlife</h4>
+                                <p>In the heart of Zona Romántica</p>
+                            </div>
+                            <div class="location-item">
+                                <h4>✈️ Airport</h4>
+                                <p>6.8 miles / 20 min drive</p>
+                            </div>
+                        </div>
+
+                        <div class="highlights">
+                            <h3>✨ Why Choose Casa Maria?</h3>
+                            <div class="highlights-list">
+                                <div class="highlight-item">
+                                    <span class="highlight-check">✓</span>
+                                    <div>
+                                        <strong>Best Value:</strong> Most affordable option at $260 per person with breakfast included
+                                    </div>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-check">✓</span>
+                                    <div>
+                                        <strong>Perfect Location:</strong> Steps from beach, restaurants, and nightlife. Rated 9.8 for location
+                                    </div>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-check">✓</span>
+                                    <div>
+                                        <strong>Artistic Vibe:</strong> Beautifully decorated with Mexican art, on-site gallery, and daily poolside happy hour
+                                    </div>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-check">✓</span>
+                                    <div>
+                                        <strong>Social Atmosphere:</strong> Small boutique (20 rooms) with friendly staff and intimate, welcoming vibe
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="booking-section">
+                            <a href="https://casamariahotel.mx/" target="_blank" class="book-button">Book Casa Maria →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hotel 2: Rivera Del Rio -->
+            <div id="rivera" class="hotel-content">
+                <div class="hotel-card">
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1600&q=80" alt="Rivera Del Rio" class="gallery-main" id="rivera-img">
+                        <div class="gallery-nav">
+                            <div class="gallery-dot active" onclick="changeImage('rivera', 0, event)"></div>
+                            <div class="gallery-dot" onclick="changeImage('rivera', 1, event)"></div>
+                            <div class="gallery-dot" onclick="changeImage('rivera', 2, event)"></div>
+                        </div>
+                    </div>
+
+                    <div class="hotel-info">
+                        <div class="hotel-header">
+                            <h2 class="hotel-title">Hotel Boutique Rivera Del Rio</h2>
+                            <p class="hotel-subtitle">Historic Elegance by the River</p>
+                        </div>
+
+                        <div class="price-section">
+                            <div class="price-item">
+                                <h3>Total Price</h3>
+                                <p>$1,194</p>
+                            </div>
+                            <div class="price-item">
+                                <h3>Per Person</h3>
+                                <p>$299</p>
+                            </div>
+                            <div class="price-item">
+                                <h3>Per Night</h3>
+                                <p>$199</p>
+                            </div>
+                        </div>
+
+                        <div class="room-config">
+                            <h3>📍 Room: Carlotta 2-Bed Suite</h3>
+                            <p><strong>Configuration:</strong> 2 Bedrooms with private entrance</p>
+                            <p><strong>Features:</strong> Panoramic jungle & river views, winding stairway, private mosaic pool (15-foot), state-of-the-art kitchen access, entertaining spaces</p>
+                            <p><strong>Unique:</strong> Famous "Silver's boat-style divan," wedge-wood walls with Empress Carlotta castle design, blazing fireplace, twinkling wall lights</p>
+                        </div>
+
+                        <div class="amenities">
+                            <h3>Key Amenities</h3>
+                            <div class="amenities-grid">
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🏊</span>
+                                    <span class="amenity-text">3 Pools + Rooftop</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">♨️</span>
+                                    <span class="amenity-text">Jacuzzi with 360° Views</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🍳</span>
+                                    <span class="amenity-text">Breakfast Available ($12)</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🎨</span>
+                                    <span class="amenity-text">Historic Artwork</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🍳</span>
+                                    <span class="amenity-text">Kitchen Access</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">💆</span>
+                                    <span class="amenity-text">Spa Services</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">📶</span>
+                                    <span class="amenity-text">Free WiFi</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🐕</span>
+                                    <span class="amenity-text">Pet Friendly</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="location-info">
+                            <div class="location-item">
+                                <h4>🏖️ Beach Distance</h4>
+                                <p>15 minute walk to Los Muertos Beach</p>
+                            </div>
+                            <div class="location-item">
+                                <h4>🌃 Nightlife</h4>
+                                <p>Zona Romántica - quiet yet accessible</p>
+                            </div>
+                            <div class="location-item">
+                                <h4>🏞️ Views</h4>
+                                <p>River & jungle views, peaceful setting</p>
+                            </div>
+                        </div>
+
+                        <div class="highlights">
+                            <h3>✨ Why Choose Rivera Del Rio?</h3>
+                            <div class="highlights-list">
+                                <div class="highlight-item">
+                                    <span class="highlight-check">✓</span>
+                                    <div>
+                                        <strong>Unique Character:</strong> Historic mansion built by legendary designer "Silver," featured in Vogue and Italian Elle
+                                    </div>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-check">✓</span>
+                                    <div>
+                                        <strong>Carlotta Suite:</strong> Most spectacular suite with private pool, unique mosaic floors, and entertaining spaces
+                                    </div>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-check">✓</span>
+                                    <div>
+                                        <strong>Privacy & Space:</strong> 2-bedroom suite with private entrance, perfect for group of 4 friends
+                                    </div>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-check">✓</span>
+                                    <div>
+                                        <strong>Multiple Pools:</strong> 3 pools including rooftop with panoramic city views and jacuzzi
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="booking-section">
+                            <a href="https://www.riveradelrio.com/" target="_blank" class="book-button">Book Rivera Del Rio →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hotel 3: Almar Resort -->
+            <div id="almar" class="hotel-content">
+                <div class="hotel-card">
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&q=80" alt="Almar Resort" class="gallery-main" id="almar-img">
+                        <div class="gallery-nav">
+                            <div class="gallery-dot active" onclick="changeImage('almar', 0, event)"></div>
+                            <div class="gallery-dot" onclick="changeImage('almar', 1, event)"></div>
+                            <div class="gallery-dot" onclick="changeImage('almar', 2, event)"></div>
+                        </div>
+                    </div>
+
+                    <div class="hotel-info">
+                        <div class="hotel-header">
+                            <h2 class="hotel-title">Almar Resort Luxury LGBT Beach Front</h2>
+                            <p class="hotel-subtitle">Beachfront Party & Luxury Experience</p>
+                        </div>
+
+                        <div class="price-section">
+                            <div class="price-item">
+                                <h3>Total Price</h3>
+                                <p>$1,549</p>
+                            </div>
+                            <div class="price-item">
+                                <h3>Per Person</h3>
+                                <p>$387</p>
+                            </div>
+                            <div class="price-item">
+                                <h3>Per Night</h3>
+                                <p>$258</p>
+                            </div>
+                        </div>
+
+                        <div class="room-config">
+                            <h3>📍 Room: Garden View Suite</h3>
+                            <p><strong>Configuration:</strong> Suite with garden views from Eden Pool & Lounge</p>
+                            <p><strong>Features:</strong> Balcony/terrace, premium bedding, rainfall shower, L'Occitane toiletries, mini-bar, flat-screen TV, safe</p>
+                            <p><strong>Tower:</strong> Almar Tower (recently remodeled with fresh luxury design)</p>
+                        </div>
+
+                        <div class="amenities">
+                            <h3>Key Amenities</h3>
+                            <div class="amenities-grid">
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🏖️</span>
+                                    <span class="amenity-text">Direct Beach Access</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🏊</span>
+                                    <span class="amenity-text">Eden Pool & Mantamar Beach Club</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🍹</span>
+                                    <span class="amenity-text">The Top Sky Bar (13th Floor)</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">💆</span>
+                                    <span class="amenity-text">Full-Service Spa</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🍽️</span>
+                                    <span class="amenity-text">2 Restaurants + Sushi Bar</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🎭</span>
+                                    <span class="amenity-text">Nightly Shows & DJs</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">💪</span>
+                                    <span class="amenity-text">Ocean View Gym</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🔞</span>
+                                    <span class="amenity-text">Adults Only (18+)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="location-info">
+                            <div class="location-item">
+                                <h4>🏖️ Beach Distance</h4>
+                                <p>ON the beach - Los Muertos Beach</p>
+                            </div>
+                            <div class="location-item">
+                                <h4>🌃 Nightlife</h4>
+                                <p>Built-in nightlife + Zona Romántica</p>
+                            </div>
+                            <div class="location-item">
+                                <h4>🎉 Vibe</h4>
+                                <p>LGBT-friendly party atmosphere</p>
+                            </div>
+                        </div>
+
+                        <div class="highlights">
+                            <h3>✨ Why Choose Almar Resort?</h3>
+                            <div class="highlights-list">
+                                <div class="highlight-item">
+                                    <span class="highlight-check">✓</span>
+                                    <div>
+                                        <strong>Ultimate Beachfront:</strong> Only LGBT luxury beachfront resort, steps from Los Muertos Beach with private beach area
+                                    </div>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-check">✓</span>
+                                    <div>
+                                        <strong>Party Central:</strong> Mantamar Beach Club with international DJs, The Top Sky Bar with cabaret shows, built-in nightlife
+                                    </div>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-check">✓</span>
+                                    <div>
+                                        <strong>All-Inclusive Vibe:</strong> Everything on-site - restaurants, bars, spa, gym, pools, entertainment. No need to leave!
+                                    </div>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-check">✓</span>
+                                    <div>
+                                        <strong>Luxury Amenities:</strong> Premium bedding, L'Occitane toiletries, rooftop infinity pools, Eden Pool garden oasis
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="booking-section">
+                            <a href="https://www.almarresort.com/" target="_blank" class="book-button">Book Almar Resort →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hotel 4: Vallarta Shores -->
+            <div id="vallarta" class="hotel-content">
+                <div class="hotel-card">
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1600&q=80" alt="Vallarta Shores" class="gallery-main" id="vallarta-img">
+                        <div class="gallery-nav">
+                            <div class="gallery-dot active" onclick="changeImage('vallarta', 0, event)"></div>
+                            <div class="gallery-dot" onclick="changeImage('vallarta', 1, event)"></div>
+                            <div class="gallery-dot" onclick="changeImage('vallarta', 2, event)"></div>
+                        </div>
+                    </div>
+
+                    <div class="hotel-info">
+                        <div class="hotel-header">
+                            <h2 class="hotel-title">Vallarta Shores Beach Hotel</h2>
+                            <p class="hotel-subtitle">Beachfront Condo-Hotel Paradise</p>
+                        </div>
+
+                        <div class="price-section">
+                            <div class="price-item">
+                                <h3>Total Price</h3>
+                                <p>$1,800</p>
+                            </div>
+                            <div class="price-item">
+                                <h3>Per Person</h3>
+                                <p>$450</p>
+                            </div>
+                            <div class="price-item">
+                                <h3>Per Night</h3>
+                                <p>$300</p>
+                            </div>
+                        </div>
+
+                        <div class="room-config">
+                            <h3>📍 Room: 2-Bedroom Suite with Balcony</h3>
+                            <p><strong>Configuration:</strong> 2 King Beds in separate bedrooms</p>
+                            <p><strong>Suites Available:</strong> Suite 2, Suite 5, or Suite 7 (based on availability)</p>
+                            <p><strong>Features:</strong> Beachfront balcony with ocean views, full kitchen, living area, dining room, private terrace overlooking Banderas Bay</p>
+                            <p><strong>Size:</strong> Spacious condo-style with complete amenities</p>
+                        </div>
+
+                        <div class="amenities">
+                            <h3>Key Amenities</h3>
+                            <div class="amenities-grid">
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🏖️</span>
+                                    <span class="amenity-text">ON Los Muertos Beach</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🍳</span>
+                                    <span class="amenity-text">Full Kitchen</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🏊</span>
+                                    <span class="amenity-text">Beachfront Infinity Pool</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🍽️</span>
+                                    <span class="amenity-text">Living & Dining Areas</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">👨‍🍳</span>
+                                    <span class="amenity-text">Private Chef Available</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">💆</span>
+                                    <span class="amenity-text">Massage Services</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">📶</span>
+                                    <span class="amenity-text">Free WiFi</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🅿️</span>
+                                    <span class="amenity-text">Free Valet Parking</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="location-info">
+                            <div class="location-item">
+                                <h4>🏖️ Beach Distance</h4>
+                                <p>ON the beach - exclusive beachfront</p>
+                            </div>
+                            <div class="location-item">
+                                <h4>🌃 Nightlife</h4>
+                                <p>5 min walk to Zona Romántica</p>
+                            </div>
+                            <div class="location-item">
+                                <h4>🏠 Style</h4>
+                                <p>Private condo with hotel services</p>
+                            </div>
+                        </div>
+
+                        <div class="highlights">
+                            <h3>✨ Why Choose Vallarta Shores?</h3>
+                            <div class="highlights-list">
+                                <div class="highlight-item">
+                                    <span class="highlight-check">✓</span>
+                                    <div>
+                                        <strong>Most Space & Privacy:</strong> Full 2-bedroom condo-style suite with separate bedrooms, living room, and full kitchen
+                                    </div>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-check">✓</span>
+                                    <div>
+                                        <strong>Prime Beachfront:</strong> Direct beach access, panoramic ocean views from balcony, watch sunsets from your private terrace
+                                    </div>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-check">✓</span>
+                                    <div>
+                                        <strong>Home-Away-From-Home:</strong> Cook your own meals, host pre-drinks, have entertaining space - perfect for groups
+                                    </div>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-check">✓</span>
+                                    <div>
+                                        <strong>Luxury Touches:</strong> Option for private chef service, massage services, individually decorated with high-end finishes
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="booking-section">
+                            <a href="https://vallartashores.com/" target="_blank" class="book-button">Book Vallarta Shores →</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1064,6 +1885,72 @@
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
         });
+
+        // Hotel comparison functionality
+        const hotelImages = {
+            'casa-maria': [
+                'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80',
+                'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&q=80',
+                'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1600&q=80'
+            ],
+            'rivera': [
+                'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1600&q=80',
+                'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80',
+                'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=1600&q=80'
+            ],
+            'almar': [
+                'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&q=80',
+                'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1600&q=80',
+                'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80'
+            ],
+            'vallarta': [
+                'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1600&q=80',
+                'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&q=80',
+                'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=1600&q=80'
+            ]
+        };
+
+        function showHotel(hotelId) {
+            // Hide all hotel content
+            document.querySelectorAll('.hotel-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected hotel
+            document.getElementById(hotelId).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+
+            // Scroll to top of hotel section
+            const hotelSection = document.querySelector('.hotel-section');
+            const offset = 100;
+            window.scrollTo({
+                top: hotelSection.offsetTop - offset,
+                behavior: 'smooth'
+            });
+        }
+
+        function changeImage(hotelId, imageIndex, event) {
+            event.stopPropagation();
+            const imgElement = document.getElementById(hotelId + '-img');
+            const dots = document.querySelectorAll(`#${hotelId} .gallery-dot`);
+            
+            imgElement.src = hotelImages[hotelId][imageIndex];
+            
+            dots.forEach((dot, index) => {
+                if (index === imageIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
     </script>
 </body>
 </html>
