@@ -1,273 +1,1069 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Puerto Vallarta Escape &mdash; Executive Summary</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puerto Vallarta Getaway | Nov 14-20, 2025</title>
     <style>
-        :root {
-            color-scheme: light;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont,
-                "Helvetica Neue", sans-serif;
-            background: radial-gradient(circle at top left, #f5f8ff 0%, #eef2ff 40%, #f7f7fb 100%);
-            color: #0f172a;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1d1d1f;
+            background: #fbfbfd;
+            overflow-x: hidden;
         }
 
-        .glass-card {
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(244, 245, 255, 0.66));
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 30px 60px -35px rgba(15, 23, 42, 0.45);
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
         }
 
-        .floating-blob {
-            filter: blur(90px);
-            opacity: 0.48;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=1600&q=80') center/cover;
+            opacity: 0.3;
+            animation: subtleZoom 20s ease-in-out infinite alternate;
         }
 
-        .gradient-text {
-            background: linear-gradient(120deg, #0f172a, #4f46e5, #0ea5e9);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        @keyframes subtleZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
         }
 
-        .tag {
-            border: 1px solid rgba(79, 70, 229, 0.18);
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .trip-dates {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #86868b;
+            margin-bottom: 3rem;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .overview-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 18px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .overview-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #667eea;
+        }
+
+        .overview-card p {
+            color: #6e6e73;
+            font-size: 1rem;
+        }
+
+        .travelers {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .traveler-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .flights-section {
+            background: linear-gradient(180deg, #fbfbfd 0%, #f5f5f7 100%);
+        }
+
+        .flight-cards {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .flight-card {
+            background: white;
+            border-radius: 18px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .flight-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .flight-traveler {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .flight-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .flight-route {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .airport {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .arrow {
+            color: #86868b;
+            font-size: 1.5rem;
+        }
+
+        .flight-details {
+            color: #6e6e73;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .hotel-section {
+            background: white;
+        }
+
+        .hotel-showcase {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 24px;
+            overflow: hidden;
+            margin-top: 3rem;
+            color: white;
+        }
+
+        .hotel-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .hotel-content {
+            padding: 3rem;
+        }
+
+        .hotel-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hotel-amenities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .amenity {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            border-radius: 12px;
+        }
+
+        .amenity-icon {
+            font-size: 1.5rem;
+        }
+
+        .hotel-booking {
+            margin-top: 2rem;
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hotel-booking:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .itinerary-section {
+            background: linear-gradient(180deg, #f5f5f7 0%, #fbfbfd 100%);
+        }
+
+        .timeline {
+            position: relative;
+            margin-top: 3rem;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: calc(25% - 1px);
+            top: 3rem;
+            width: 2px;
+            height: calc(100% + 1rem);
+            background: linear-gradient(180deg, #667eea 0%, rgba(102, 126, 234, 0.2) 100%);
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .day-number {
+            text-align: right;
+            padding-right: 2rem;
+        }
+
+        .day-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .day-date {
+            display: block;
+            margin-top: 0.5rem;
+            color: #86868b;
+            font-size: 0.9rem;
+        }
+
+        .day-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 18px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .day-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1d1d1f;
+        }
+
+        .day-content p {
+            color: #6e6e73;
+            margin-bottom: 0.75rem;
+        }
+
+        .day-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .highlight {
+            background: #f5f5f7;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #1d1d1f;
+        }
+
+        .location-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .location-card {
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            height: 300px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .location-card:hover {
+            transform: scale(1.02);
+        }
+
+        .location-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .location-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+            padding: 2rem;
+            color: white;
+        }
+
+        .location-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .location-type {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .budget-section {
+            background: white;
+        }
+
+        .budget-breakdown {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 24px;
+            padding: 3rem;
+            color: white;
+            margin-top: 3rem;
+        }
+
+        .budget-total {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .budget-total h3 {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .total-amount {
+            font-size: 4rem;
+            font-weight: 700;
+        }
+
+        .budget-items {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .budget-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .budget-item-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .budget-item-amount {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .budget-item-note {
+            flex-basis: 100%;
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .tips-section {
+            background: linear-gradient(180deg, #fbfbfd 0%, #f5f5f7 100%);
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tip-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 18px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .tip-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tip-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #1d1d1f;
+        }
+
+        .tip-card p {
+            color: #6e6e73;
+            line-height: 1.7;
+        }
+
+        footer {
+            background: #1d1d1f;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer p {
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .timeline-item::before {
+                display: none;
+            }
+
+            .day-number {
+                text-align: left;
+                padding-right: 0;
+            }
+
+            .hotel-content {
+                padding: 2rem;
+            }
+
+            .budget-breakdown {
+                padding: 2rem;
+            }
+
+            .total-amount {
+                font-size: 3rem;
+            }
+        }
+
+        .link-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 0.5rem;
+        }
+
+        .link-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
         }
     </style>
 </head>
-<body class="min-h-screen relative overflow-x-hidden">
-    <div class="absolute inset-x-0 -top-32 flex justify-center" aria-hidden="true">
-        <div class="floating-blob h-72 w-72 rounded-full bg-indigo-300/60"></div>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Puerto Vallarta</h1>
+            <p>A Luxury Beach Getaway</p>
+            <div class="trip-dates">November 14-20, 2025</div>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
     </div>
-    <div class="absolute -bottom-24 -right-20 floating-blob h-64 w-64 rounded-full bg-sky-200/70" aria-hidden="true"></div>
 
-    <main class="relative mx-auto flex w-full max-w-6xl flex-col gap-20 px-6 pb-24 pt-16 sm:px-10 lg:px-16">
-        <header class="grid gap-12 rounded-3xl bg-white/80 p-12 shadow-2xl shadow-indigo-100/70 ring-1 ring-white/60 sm:grid-cols-[1.1fr_0.9fr]">
-            <div class="flex flex-col gap-8">
-                <p class="text-sm uppercase tracking-[0.3em] text-slate-500">Executive Retreat &mdash; Discovery Deck</p>
-                <h1 class="text-4xl font-semibold leading-tight text-slate-900 sm:text-5xl lg:text-6xl">
-                    Puerto Vallarta Girls' Retreat
-                    <span class="block gradient-text text-4xl font-semibold sm:text-[3.4rem]">Luxury Escape &amp; Immersive Itinerary</span>
-                </h1>
-                <p class="text-lg leading-relaxed text-slate-600 sm:text-xl">
-                    A curated long weekend in Mexico designed for relaxation, reconnection, and elevated experiences.
-                    Explore a contemporary estate in the hills of Conchas Chinas, savor haute cuisine, and uncover the
-                    destination's coastal energy through bespoke excursions.
-                </p>
-                <div class="flex flex-wrap gap-3">
-                    <span class="tag rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-indigo-600">
-                        March 6 &ndash; 10, 2025
-                    </span>
-                    <span class="tag rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-indigo-600">
-                        Puerto Vallarta, MX
-                    </span>
-                    <span class="tag rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-indigo-600">
-                        Group of 6</span>
+    <section id="overview">
+        <div class="container">
+            <h2>Trip Overview</h2>
+            <p class="section-subtitle">Six unforgettable nights in Mexico's paradise</p>
+            
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <h3>👥 Travelers</h3>
+                    <p>Four friends, all 26 years old</p>
+                    <div class="travelers">
+                        <span class="traveler-tag">Rhea</span>
+                        <span class="traveler-tag">Sanika</span>
+                        <span class="traveler-tag">Sneha</span>
+                        <span class="traveler-tag">Shrila</span>
+                    </div>
+                </div>
+                
+                <div class="overview-card">
+                    <h3>📍 Destination</h3>
+                    <p>Puerto Vallarta, Mexico</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Romantic Zone / Zona Romántica</p>
+                </div>
+                
+                <div class="overview-card">
+                    <h3>🗓️ Duration</h3>
+                    <p>6 nights / 7 days</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Friday, Nov 14 - Thursday, Nov 20</p>
+                </div>
+                
+                <div class="overview-card">
+                    <h3>🎯 Vibe</h3>
+                    <p>Luxury meets adventure</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Beach clubs, nightlife, spa & culture</p>
                 </div>
             </div>
-            <figure class="relative overflow-hidden rounded-3xl">
-                <img
-                    src="https://images.unsplash.com/photo-1526481280695-3c46947a6bc9?auto=format&fit=crop&w=1200&q=80"
-                    alt="Sunset over a tropical coastline with modern villa"
-                    class="h-full w-full object-cover"
-                    loading="lazy"
-                />
-                <figcaption class="absolute bottom-6 left-6 rounded-full bg-white/80 px-4 py-1 text-xs font-medium text-slate-600 shadow-sm backdrop-blur">
-                    Conchas Chinas hillside, Puerto Vallarta
-                </figcaption>
-            </figure>
-        </header>
+        </div>
+    </section>
 
-        <section class="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
-            <article class="glass-card rounded-3xl p-10">
-                <h2 class="text-2xl font-semibold text-slate-900 sm:text-3xl">The Estate</h2>
-                <p class="mt-4 text-base leading-relaxed text-slate-600">
-                    Casa Horizonte is a private, architect-designed villa blending minimalist lines with organic
-                    textures. Floor-to-ceiling glass opens to a vanishing-edge pool overlooking Banderas Bay.
-                    Dedicated staff delivers daily housekeeping, chef-prepared brunch, and evening turndown service.
-                </p>
-                <dl class="mt-10 grid gap-6 text-sm text-slate-500 sm:grid-cols-2">
-                    <div class="flex flex-col gap-1 rounded-2xl bg-white/60 p-4 shadow-sm shadow-slate-200/50">
-                        <dt class="text-xs uppercase tracking-[0.3em] text-slate-400">Capacity</dt>
-                        <dd class="text-lg font-semibold text-slate-800">6 guests &middot; 3 king suites</dd>
+    <section class="flights-section">
+        <div class="container">
+            <h2>Flight Details</h2>
+            <p class="section-subtitle">Getting everyone to paradise</p>
+            
+            <div class="flight-cards">
+                <div class="flight-card">
+                    <div class="flight-header">
+                        <span class="flight-traveler">Rhea</span>
+                        <span class="flight-price">$671</span>
                     </div>
-                    <div class="flex flex-col gap-1 rounded-2xl bg-white/60 p-4 shadow-sm shadow-slate-200/50">
-                        <dt class="text-xs uppercase tracking-[0.3em] text-slate-400">Investment</dt>
-                        <dd class="text-lg font-semibold text-slate-800">$6,150 total stay</dd>
+                    <div class="flight-route">
+                        <span class="airport">SFO</span>
+                        <span class="arrow">✈️</span>
+                        <span class="airport">PVR</span>
                     </div>
-                    <div class="flex flex-col gap-1 rounded-2xl bg-white/60 p-4 shadow-sm shadow-slate-200/50">
-                        <dt class="text-xs uppercase tracking-[0.3em] text-slate-400">Amenities</dt>
-                        <dd class="text-lg font-semibold text-slate-800">Infinity pool, rooftop lounge, private cinema</dd>
-                    </div>
-                    <div class="flex flex-col gap-1 rounded-2xl bg-white/60 p-4 shadow-sm shadow-slate-200/50">
-                        <dt class="text-xs uppercase tracking-[0.3em] text-slate-400">Staff</dt>
-                        <dd class="text-lg font-semibold text-slate-800">Chef + concierge + housekeeper</dd>
-                    </div>
-                </dl>
-            </article>
-
-            <article class="flex flex-col gap-6 rounded-3xl bg-white/70 p-10 shadow-[0_25px_40px_-20px_rgba(79,70,229,0.25)]">
-                <h2 class="text-2xl font-semibold text-slate-900 sm:text-3xl">Signature Experiences</h2>
-                <ul class="mt-2 space-y-4 text-base leading-relaxed text-slate-600">
-                    <li class="flex gap-3">
-                        <span class="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-indigo-500"></span>
-                        Chef-led sunset tasting menu featuring heirloom Mexican cuisine and curated agave pairings.
-                    </li>
-                    <li class="flex gap-3">
-                        <span class="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-indigo-500"></span>
-                        Private catamaran charter to the Marietas Islands with onboard mixologist and ocean plunge.
-                    </li>
-                    <li class="flex gap-3">
-                        <span class="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-indigo-500"></span>
-                        Mindful morning: guided sound bath, breathwork, and beach yoga on Playa Amapas.
-                    </li>
-                    <li class="flex gap-3">
-                        <span class="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-indigo-500"></span>
-                        Design-forward shopping tour through Zona Rom&aacute;ntica with personal stylist.
-                    </li>
-                </ul>
-                <div class="mt-6 rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-sky-400 p-[1px]">
-                    <div class="rounded-[1.3rem] bg-white/90 p-6">
-                        <p class="text-sm uppercase tracking-[0.3em] text-slate-400">Snapshot</p>
-                        <p class="mt-2 text-lg font-semibold text-slate-800">Four nights &middot; Immersive &amp; restorative &middot; White-glove support</p>
+                    <div class="flight-details">
+                        <strong>Outbound:</strong> Fri Nov 14, 10:57 AM - 4:44 PM (3h 47m, non-stop)<br>
+                        Carrier: United or Alaska Airlines<br><br>
+                        <strong>Return:</strong> Thu Nov 20, 3:00 PM - 12:44 AM +1 (via Atlanta)<br>
+                        Carrier: Delta
                     </div>
                 </div>
-            </article>
-        </section>
 
-        <section class="rounded-3xl bg-white/80 p-10 shadow-2xl shadow-indigo-100/70 ring-1 ring-white/50">
-            <div class="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
-                <div class="max-w-xl">
-                    <h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">Itinerary At-a-Glance</h2>
-                    <p class="mt-4 text-base leading-relaxed text-slate-600">
-                        A rhythm of mindful mornings, curated culinary adventures, and oceanfront evenings keeps the
-                        group engaged and deeply connected to the destination.
-                    </p>
+                <div class="flight-card">
+                    <div class="flight-header">
+                        <span class="flight-traveler">Sneha</span>
+                        <span class="flight-price">$863</span>
+                    </div>
+                    <div class="flight-route">
+                        <span class="airport">DCA/IAD</span>
+                        <span class="arrow">✈️</span>
+                        <span class="airport">PVR</span>
+                    </div>
+                    <div class="flight-details">
+                        <strong>Outbound:</strong> Fri Nov 14, mid-morning (1 stop via Dallas/Houston)<br>
+                        Carrier: American or United<br><br>
+                        <strong>Return:</strong> Thu Nov 20, 3:00 PM - 12:44 AM +1 (via Atlanta)<br>
+                        Carrier: Delta - joins group flight
+                    </div>
                 </div>
-                <div class="flex items-center gap-4">
-                    <span class="rounded-full bg-indigo-50 px-5 py-2 text-sm font-semibold text-indigo-600">Private Driver</span>
-                    <span class="rounded-full bg-indigo-50 px-5 py-2 text-sm font-semibold text-indigo-600">Concierge App</span>
+
+                <div class="flight-card">
+                    <div class="flight-header">
+                        <span class="flight-traveler">Sanika & Shrila</span>
+                        <span class="flight-price">$809 each</span>
+                    </div>
+                    <div class="flight-route">
+                        <span class="airport">DTW</span>
+                        <span class="arrow">✈️</span>
+                        <span class="airport">PVR</span>
+                    </div>
+                    <div class="flight-details">
+                        <strong>Outbound:</strong> Fri Nov 14, 7:05 AM - 1:50 PM (via Atlanta)<br>
+                        Carrier: Delta<br><br>
+                        <strong>Return:</strong> Thu Nov 20, 3:00 PM - 12:44 AM +1 (via Atlanta)<br>
+                        Carrier: Delta - entire group returns together!
+                    </div>
                 </div>
             </div>
-            <ol class="mt-12 space-y-8 border-l border-slate-200 pl-8">
-                <li class="relative">
-                    <span class="absolute -left-11 flex h-12 w-12 items-center justify-center rounded-full bg-indigo-500 text-white font-semibold">Day 1</span>
-                    <h3 class="text-xl font-semibold text-slate-900">Arrivals &amp; Elevated Welcome</h3>
-                    <p class="mt-2 text-base text-slate-600">
-                        VIP transfer to the villa, hydrating welcome elixirs, and a twilight terrace dinner with live acoustic set.
-                    </p>
-                </li>
-                <li class="relative">
-                    <span class="absolute -left-11 flex h-12 w-12 items-center justify-center rounded-full bg-indigo-500 text-white font-semibold">Day 2</span>
-                    <h3 class="text-xl font-semibold text-slate-900">Wellness Immersion &amp; Rooftop Soir&eacute;e</h3>
-                    <p class="mt-2 text-base text-slate-600">
-                        Sunrise yoga on Playa Amapas, chef-prepared brunch, afternoon spa rituals, and rooftop mixology with panoramic sunsets.
-                    </p>
-                </li>
-                <li class="relative">
-                    <span class="absolute -left-11 flex h-12 w-12 items-center justify-center rounded-full bg-indigo-500 text-white font-semibold">Day 3</span>
-                    <h3 class="text-xl font-semibold text-slate-900">Ocean Expedition</h3>
-                    <p class="mt-2 text-base text-slate-600">
-                        Exclusive catamaran charter to hidden coves, guided snorkeling, onboard tasting menu, and bioluminescent night swim option.
-                    </p>
-                </li>
-                <li class="relative">
-                    <span class="absolute -left-11 flex h-12 w-12 items-center justify-center rounded-full bg-indigo-500 text-white font-semibold">Day 4</span>
-                    <h3 class="text-xl font-semibold text-slate-900">Design &amp; Culture Circuit</h3>
-                    <p class="mt-2 text-base text-slate-600">
-                        Boutique exploration in Zona Rom&aacute;ntica, private gallery preview, and dinner at Michelin-lauded Tintoque.
-                    </p>
-                </li>
-                <li class="relative">
-                    <span class="absolute -left-11 flex h-12 w-12 items-center justify-center rounded-full bg-indigo-500 text-white font-semibold">Day 5</span>
-                    <h3 class="text-xl font-semibold text-slate-900">Departure &amp; Reflection</h3>
-                    <p class="mt-2 text-base text-slate-600">
-                        Slow breakfast, mindfulness journaling, and coordinated luxury transfers to PVR.</p>
-                </li>
-            </ol>
-        </section>
+        </div>
+    </section>
 
-        <section class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-            <article class="glass-card rounded-3xl p-10">
-                <h2 class="text-2xl font-semibold text-slate-900 sm:text-3xl">Investment Overview</h2>
-                <div class="mt-6 space-y-6 text-base text-slate-600">
-                    <div class="flex items-center justify-between rounded-2xl bg-white/60 p-4 shadow-sm shadow-slate-200/50">
-                        <span>Villa buyout (4 nights)</span>
-                        <span class="font-semibold text-slate-900">$3,950</span>
+    <section class="hotel-section">
+        <div class="container">
+            <h2>Accommodation</h2>
+            <p class="section-subtitle">Your home away from home</p>
+            
+            <div class="hotel-showcase">
+                <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&q=80" alt="Luxury resort pool" class="hotel-image">
+                <div class="hotel-content">
+                    <h3>Almar Resort Luxury LGBT Beach Front Experience</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Adults-only luxury in the heart of Zona Romántica</p>
+                    
+                    <p><strong>Booking:</strong> 2 ocean-view standard rooms for 6 nights<br>
+                    <strong>Cost:</strong> ~$2,570 (including taxes & resort fees)<br>
+                    <strong>Rate:</strong> $180 per room per night</p>
+                    
+                    <div class="hotel-amenities">
+                        <div class="amenity">
+                            <span class="amenity-icon">🏖️</span>
+                            <span>Beach Access</span>
+                        </div>
+                        <div class="amenity">
+                            <span class="amenity-icon">🏊</span>
+                            <span>Rooftop Pools</span>
+                        </div>
+                        <div class="amenity">
+                            <span class="amenity-icon">💆</span>
+                            <span>Full Spa</span>
+                        </div>
+                        <div class="amenity">
+                            <span class="amenity-icon">🍹</span>
+                            <span>Beach Club</span>
+                        </div>
+                        <div class="amenity">
+                            <span class="amenity-icon">🌅</span>
+                            <span>Ocean Views</span>
+                        </div>
+                        <div class="amenity">
+                            <span class="amenity-icon">🎉</span>
+                            <span>Nightlife Access</span>
+                        </div>
                     </div>
-                    <div class="flex items-center justify-between rounded-2xl bg-white/60 p-4 shadow-sm shadow-slate-200/50">
-                        <span>Private experiences &amp; dining</span>
-                        <span class="font-semibold text-slate-900">$1,450</span>
-                    </div>
-                    <div class="flex items-center justify-between rounded-2xl bg-white/60 p-4 shadow-sm shadow-slate-200/50">
-                        <span>On-site staff gratuities</span>
-                        <span class="font-semibold text-slate-900">$450</span>
-                    </div>
-                    <div class="flex items-center justify-between rounded-2xl bg-white/60 p-4 shadow-sm shadow-slate-200/50">
-                        <span>Transportation &amp; concierge</span>
-                        <span class="font-semibold text-slate-900">$300</span>
-                    </div>
+                    
+                    <a href="https://www.almarresort.com" target="_blank" class="hotel-booking">Book Your Stay</a>
                 </div>
-                <div class="mt-8 flex items-center justify-between rounded-2xl bg-slate-900 px-6 py-5 text-white">
-                    <span class="text-sm uppercase tracking-[0.3em] text-slate-300">Total Program Value</span>
-                    <span class="text-2xl font-semibold">$6,150</span>
-                </div>
-            </article>
-
-            <article class="flex flex-col justify-between rounded-3xl bg-slate-900 px-10 py-12 text-white shadow-2xl shadow-slate-900/30">
-                <div class="space-y-6">
-                    <h2 class="text-3xl font-semibold">Why It Works</h2>
-                    <p class="text-base leading-relaxed text-slate-200">
-                        Strategically sequenced experiences support a balanced energy flow&mdash;pairing mindful grounding
-                        with high-impact moments. Dedicated hospitality teams maintain effortless execution, while the
-                        villa's design-forward setting feels both intimate and expansive.
-                    </p>
-                    <ul class="space-y-4 text-sm text-slate-200">
-                        <li class="flex gap-3">
-                            <span class="mt-1 h-2 w-2 rounded-full bg-indigo-300"></span>
-                            Elevated culinary program with local sourcing and contemporary technique.
-                        </li>
-                        <li class="flex gap-3">
-                            <span class="mt-1 h-2 w-2 rounded-full bg-indigo-300"></span>
-                            Flexible pacing accommodates recharge time and spontaneous exploration.
-                        </li>
-                        <li class="flex gap-3">
-                            <span class="mt-1 h-2 w-2 rounded-full bg-indigo-300"></span>
-                            Concierge-managed logistics reduce friction from arrival to departure.
-                        </li>
-                    </ul>
-                </div>
-                <div class="mt-10 flex flex-wrap items-center gap-4">
-                    <a
-                        href="#"
-                        class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-white/40 transition hover:shadow-xl hover:shadow-white/50"
-                    >Download Full Dossier</a>
-                    <a
-                        href="#"
-                        class="inline-flex items-center justify-center rounded-full bg-transparent px-6 py-3 text-sm font-semibold text-white ring-1 ring-white/30 transition hover:bg-white/10"
-                    >Schedule Planning Call</a>
-                </div>
-            </article>
-        </section>
-
-        <footer class="flex flex-col gap-6 rounded-3xl bg-white/70 px-10 py-12 text-sm text-slate-500 shadow-inner shadow-indigo-100/60 lg:flex-row lg:items-center lg:justify-between">
-            <div>
-                <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Curated by</p>
-                <p class="mt-2 text-base font-semibold text-slate-700">Sonder &amp; Sage Travel Collective</p>
-                <p class="mt-1 text-sm text-slate-500">Bespoke experiences for modern women on the move.</p>
             </div>
-            <div class="flex flex-wrap items-center gap-3 text-xs font-medium text-slate-400">
-                <span class="rounded-full bg-indigo-50 px-4 py-2 text-indigo-600">24/7 concierge</span>
-                <span class="rounded-full bg-indigo-50 px-4 py-2 text-indigo-600">Carbon-offset travel</span>
-                <span class="rounded-full bg-indigo-50 px-4 py-2 text-indigo-600">Safety-first partners</span>
+        </div>
+    </section>
+
+    <section class="itinerary-section">
+        <div class="container">
+            <h2>Daily Itinerary</h2>
+            <p class="section-subtitle">Your perfect week, planned out</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="day-number">
+                        <span class="day-badge">Day 1</span>
+                        <span class="day-date">Friday, Nov 14</span>
+                    </div>
+                    <div class="day-content">
+                        <h3>Arrival & Welcome</h3>
+                        <p>Arrive at PVR airport and transfer to Almar Resort (~20 min). Check in and enjoy welcome drinks at the beach club. Evening stroll along the Malecón oceanfront promenade, watch sunset from Los Muertos Pier, and grab authentic street tacos.</p>
+                        <div class="day-highlights">
+                            <span class="highlight">Airport Transfer</span>
+                            <span class="highlight">Hotel Check-in</span>
+                            <span class="highlight">Malecón Walk</span>
+                            <span class="highlight">Street Food</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="day-number">
+                        <span class="day-badge">Day 2</span>
+                        <span class="day-date">Saturday, Nov 15</span>
+                    </div>
+                    <div class="day-content">
+                        <h3>Beach Club & Nightlife</h3>
+                        <p>Relax at Mantamar Beach Club with cabanas and swim-up bar. Late breakfast at The Top rooftop bar. Explore Zona Romántica streets and Olas Altas Saturday Market. Evening: dinner at La Palapa or Café de Olla, then bar-hop along Ignacio L. Vallarta.</p>
+                        <div class="day-highlights">
+                            <span class="highlight">Beach Club</span>
+                            <span class="highlight">Saturday Market</span>
+                            <span class="highlight">La Palapa Dinner</span>
+                            <span class="highlight">Bar Hopping</span>
+                        </div>
+                        <a href="https://www.visitpuertovallarta.com/restaurants/la-palapa/" target="_blank" class="link-button">La Palapa →</a>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="day-number">
+                        <span class="day-badge">Day 3</span>
+                        <span class="day-date">Sunday, Nov 16</span>
+                    </div>
+                    <div class="day-content">
+                        <h3>Bay Cruise & Adventure</h3>
+                        <p>Catamaran or yacht cruise to Yelapa or Las Caletas ($120-$150/person, includes open bar and lunch). Swim, snorkel, and cliff-jump in hidden coves. Alternative: Sayulita & San Pancho tour for surfing vibes. Evening: casual dinner, Piano Bar at Casa Cupula, or drag show at Act2PV.</p>
+                        <div class="day-highlights">
+                            <span class="highlight">Catamaran Cruise</span>
+                            <span class="highlight">Snorkeling</span>
+                            <span class="highlight">Hidden Beaches</span>
+                            <span class="highlight">Act2PV Show</span>
+                        </div>
+                        <a href="https://www.act2pv.com" target="_blank" class="link-button">Act2PV Theatre →</a>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="day-number">
+                        <span class="day-badge">Day 4</span>
+                        <span class="day-date">Monday, Nov 17</span>
+                    </div>
+                    <div class="day-content">
+                        <h3>Culture, Art & Spa</h3>
+                        <p>Morning: explore Cuale Island markets, visit Galería Olinalá and art galleries, photo stop at Our Lady of Guadalupe Church. Afternoon spa packages at Almar Resort ($80-$150). Fine dining at Café des Artistes (tasting menu ~$80), then cocktails at El Colibrí speakeasy.</p>
+                        <div class="day-highlights">
+                            <span class="highlight">Art Galleries</span>
+                            <span class="highlight">Spa Day</span>
+                            <span class="highlight">Café des Artistes</span>
+                            <span class="highlight">Speakeasy</span>
+                        </div>
+                        <a href="https://www.cafedesartistes.com" target="_blank" class="link-button">Café des Artistes →</a>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="day-number">
+                        <span class="day-badge">Day 5</span>
+                        <span class="day-date">Tuesday, Nov 18</span>
+                    </div>
+                    <div class="day-content">
+                        <h3>Adventure & Tequila</h3>
+                        <p>Snorkeling at Los Arcos Marine Park or zip-lining through Sierra Madre jungle ($80-$110). Afternoon tequila tasting tour at Mundo de Tequila ($50-$75/person). Dinner at Gaby's Restaurant, then dance at Mandala or Strana super-clubs with VIP entry.</p>
+                        <div class="day-highlights">
+                            <span class="highlight">Los Arcos</span>
+                            <span class="highlight">Zip-lining</span>
+                            <span class="highlight">Tequila Tasting</span>
+                            <span class="highlight">Club Night</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="day-number">
+                        <span class="day-badge">Day 6</span>
+                        <span class="day-date">Wednesday, Nov 19</span>
+                    </div>
+                    <div class="day-content">
+                        <h3>Chill & Sunset Sail</h3>
+                        <p>Sleep in, walk Conchas Chinas beach (quieter southern section), brunch at Fredy's Tucan. Poolside relaxation or souvenir shopping at Galeria Vallarta. Sunset sailing charter around Banderas Bay ($70-$100/person). Farewell dinner at Hacienda San Ángel or Barcelona Tapas with panoramic views.</p>
+                        <div class="day-highlights">
+                            <span class="highlight">Beach Walk</span>
+                            <span class="highlight">Sunset Sailing</span>
+                            <span class="highlight">Farewell Dinner</span>
+                            <span class="highlight">Trip Memories</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="day-number">
+                        <span class="day-badge">Day 7</span>
+                        <span class="day-date">Thursday, Nov 20</span>
+                    </div>
+                    <div class="day-content">
+                        <h3>Departure Day</h3>
+                        <p>Final morning swim or breakfast. Check out by noon. Transfer to PVR airport for flights home. Entire group departs together on Delta flight at 3:00 PM via Atlanta, arriving in Detroit at 12:44 AM.</p>
+                        <div class="day-highlights">
+                            <span class="highlight">Final Swim</span>
+                            <span class="highlight">Checkout</span>
+                            <span class="highlight">Group Flight</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </footer>
-    </main>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2>Featured Locations</h2>
+            <p class="section-subtitle">Places you'll explore and love</p>
+            
+            <div class="location-gallery">
+                <div class="location-card">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80" alt="Los Muertos Beach">
+                    <div class="location-overlay">
+                        <div class="location-name">Los Muertos Beach</div>
+                        <div class="location-type">Main Beach & Pier</div>
+                    </div>
+                </div>
+                
+                <div class="location-card">
+                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80" alt="Malecón">
+                    <div class="location-overlay">
+                        <div class="location-name">Malecón</div>
+                        <div class="location-type">Oceanfront Promenade</div>
+                    </div>
+                </div>
+                
+                <div class="location-card">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80" alt="Zona Romántica">
+                    <div class="location-overlay">
+                        <div class="location-name">Zona Romántica</div>
+                        <div class="location-type">Nightlife District</div>
+                    </div>
+                </div>
+                
+                <div class="location-card">
+                    <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&q=80" alt="Los Arcos">
+                    <div class="location-overlay">
+                        <div class="location-name">Los Arcos</div>
+                        <div class="location-type">Marine Park</div>
+                    </div>
+                </div>
+                
+                <div class="location-card">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Yelapa">
+                    <div class="location-overlay">
+                        <div class="location-name">Yelapa</div>
+                        <div class="location-type">Hidden Beach Village</div>
+                    </div>
+                </div>
+                
+                <div class="location-card">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Tequila Tasting">
+                    <div class="location-overlay">
+                        <div class="location-name">Mundo de Tequila</div>
+                        <div class="location-type">Tasting Experience</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="budget-section">
+        <div class="container">
+            <h2>Budget Breakdown</h2>
+            <p class="section-subtitle">Total trip cost for four travelers</p>
+            
+            <div class="budget-breakdown">
+                <div class="budget-total">
+                    <h3>Total Trip Cost</h3>
+                    <div class="total-amount">$6,921</div>
+                    <p style="opacity: 0.9; margin-top: 0.5rem;">$79 buffer remaining from $7,000 budget</p>
+                </div>
+                
+                <div class="budget-items">
+                    <div class="budget-item">
+                        <span class="budget-item-name">✈️ Flights</span>
+                        <span class="budget-item-amount">$3,151</span>
+                        <span class="budget-item-note">Round-trip for all four travelers from different cities</span>
+                    </div>
+                    
+                    <div class="budget-item">
+                        <span class="budget-item-name">🏨 Accommodation</span>
+                        <span class="budget-item-amount">$2,570</span>
+                        <span class="budget-item-note">2 ocean-view rooms at Almar Resort for 6 nights (includes taxes & fees)</span>
+                    </div>
+                    
+                    <div class="budget-item">
+                        <span class="budget-item-name">🎉 Activities & Dining</span>
+                        <span class="budget-item-amount">$1,200</span>
+                        <span class="budget-item-note">~$200 per person for tours, spa, dining, clubs & transportation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tips-section">
+        <div class="container">
+            <h2>Travel Tips</h2>
+            <p class="section-subtitle">Everything you need to know before you go</p>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">📅</div>
+                    <h3>Book Early</h3>
+                    <p>November is high season in Puerto Vallarta. Book flights and accommodations as soon as possible to secure the best rates and availability. Consider adding Priority boarding for easier travel.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">🚕</div>
+                    <h3>Transportation</h3>
+                    <p>Use official airport taxis or arrange private transfers through the hotel (~$25-30). Zona Romántica is walkable, but taxis and Ubers are affordable for longer distances.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">💵</div>
+                    <h3>Currency</h3>
+                    <p>Mexico uses pesos (MXN). Many places accept USD, but paying in pesos usually gives better rates. Bring cash for tips and markets. ATMs are widely available.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">🛂</div>
+                    <h3>Documentation</h3>
+                    <p>Ensure passports are valid for at least 6 months beyond travel dates. U.S. citizens don't need visas for tourism, but always check current entry requirements before departure.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">💧</div>
+                    <h3>Health & Safety</h3>
+                    <p>Puerto Vallarta is generally safe. Stay aware at night, drink bottled water, use reef-safe sunscreen, and stay hydrated in the tropical climate.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">📱</div>
+                    <h3>Stay Connected</h3>
+                    <p>Check with your carrier about international plans. The resort offers complimentary Wi-Fi. Consider purchasing a local SIM card for better data coverage around the city.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h2 style="color: white; margin-bottom: 1rem;">Ready for Paradise?</h2>
+            <p>Puerto Vallarta awaits Rhea, Sanika, Sneha & Shrila</p>
+            <p style="margin-top: 2rem; font-size: 0.9rem;">November 14-20, 2025 • 6 nights of luxury, adventure & memories</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.overview-card, .flight-card, .day-content, .location-card, .tip-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
