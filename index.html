@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -994,6 +994,9 @@
         <div class="container">
             <h2>Flight Details</h2>
             <p class="section-subtitle">Getting everyone to paradise</p>
+            <div style="text-align: center; margin-bottom: 2rem; padding: 1rem; background: rgba(255, 204, 0, 0.1); border-radius: 12px; border-left: 4px solid #ffcc00;">
+                <p style="color: #b8860b; font-size: 0.9rem; margin: 0;"><strong>Price Disclaimer:</strong> Flight prices shown are estimates based on November 2025 searches and are subject to change. Actual prices may vary based on booking date, availability, and airline policies. Please check current rates when booking.</p>
+            </div>
             
             <div class="flight-cards">
                 <div class="flight-card">
@@ -1100,7 +1103,7 @@
             <div id="casa-maria" class="hotel-content active">
                 <div class="hotel-card">
                     <div class="image-gallery">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80" alt="Casa Maria Pool" class="gallery-main" id="casa-maria-img">
+                        <img src="https://r.profitroom.pl/casamariahotelboutique/images/gallery/202311231747060.WhatsApp_Image_2023_11_17_at_17.58.15_Easy_Resize.com.jpg" alt="Casa Maria Pool" class="gallery-main" id="casa-maria-img">
                         <button class="gallery-arrow prev" onclick="previousImage('casa-maria', event)">‹</button>
                         <button class="gallery-arrow next" onclick="nextImage('casa-maria', event)">›</button>
                         <div class="gallery-nav">
@@ -1232,7 +1235,7 @@
             <div id="rivera" class="hotel-content">
                 <div class="hotel-card">
                     <div class="image-gallery">
-                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1600&q=80" alt="Rivera Del Rio" class="gallery-main" id="rivera-img">
+                        <img src="https://tbb-prod-emea.imgix.net/attachments/room_type_photos/images/87359/87359/Carlotta_1.jpg?auto=format,compress&fit=crop&crop=entropy&w=1728&q=75" alt="Rivera Del Rio" class="gallery-main" id="rivera-img">
                         <button class="gallery-arrow prev" onclick="previousImage('rivera', event)">‹</button>
                         <button class="gallery-arrow next" onclick="nextImage('rivera', event)">›</button>
                         <div class="gallery-nav">
@@ -1364,7 +1367,7 @@
             <div id="almar" class="hotel-content">
                 <div class="hotel-card">
                     <div class="image-gallery">
-                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&q=80" alt="Almar Resort" class="gallery-main" id="almar-img">
+                        <img src="https://mantamar-hotel.s3.us-west-2.amazonaws.com/uploads/photo/file/1/MantamarBeachClub-Location6.jpg?X-Amz-Expires=600&X-Amz-Date=20251002T201103Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAX3DNHTACLZDQLBUJ%2F20251002%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=c590062a9352986866af4705302509dca56a0484048dcf6b4a3914001f64d5c3" alt="Almar Resort" class="gallery-main" id="almar-img">
                         <button class="gallery-arrow prev" onclick="previousImage('almar', event)">‹</button>
                         <button class="gallery-arrow next" onclick="nextImage('almar', event)">›</button>
                         <div class="gallery-nav">
@@ -1496,7 +1499,7 @@
             <div id="vallarta" class="hotel-content">
                 <div class="hotel-card">
                     <div class="image-gallery">
-                        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1600&q=80" alt="Vallarta Shores" class="gallery-main" id="vallarta-img">
+                        <img src="https://vallartashores.com/wp-content/uploads/2021/10/Vallarta-Shores-suite-7-19.jpeg" alt="Vallarta Shores" class="gallery-main" id="vallarta-img">
                         <button class="gallery-arrow prev" onclick="previousImage('vallarta', event)">‹</button>
                         <button class="gallery-arrow next" onclick="nextImage('vallarta', event)">›</button>
                         <div class="gallery-nav">
@@ -1822,8 +1825,8 @@
             <div class="budget-breakdown">
                 <div class="budget-total">
                     <h3>Total Trip Cost</h3>
-                    <div class="total-amount">$6,921</div>
-                    <p style="opacity: 0.9; margin-top: 0.5rem;">$79 buffer remaining from $7,000 budget</p>
+                    <div class="total-amount" id="total-cost">$6,351</div>
+                    <p style="opacity: 0.9; margin-top: 0.5rem;" id="budget-buffer">$649 buffer remaining from $7,000 budget</p>
                 </div>
                 
                 <div class="budget-items">
@@ -1835,8 +1838,8 @@
                     
                     <div class="budget-item">
                         <span class="budget-item-name">🏨 Accommodation</span>
-                        <span class="budget-item-amount">$2,570</span>
-                        <span class="budget-item-note">2 ocean-view rooms at Almar Resort for 6 nights (includes taxes & fees)</span>
+                        <span class="budget-item-amount" id="accommodation-cost">$1,040</span>
+                        <span class="budget-item-note" id="accommodation-note">6 nights at <span id="selected-hotel">Casa Maria Hotel</span> (includes taxes & fees)</span>
                     </div>
                     
                     <div class="budget-item">
@@ -2006,6 +2009,36 @@
             ]
         };
 
+        // Hotel pricing data for dynamic budget calculation
+        const hotelPricing = {
+            'casa-maria': {
+                total: 1040,
+                perPerson: 260,
+                name: 'Casa Maria Hotel'
+            },
+            'rivera': {
+                total: 1194,
+                perPerson: 299,
+                name: 'Rivera Del Rio'
+            },
+            'almar': {
+                total: 1549,
+                perPerson: 387,
+                name: 'Almar Resort'
+            },
+            'vallarta': {
+                total: 1800,
+                perPerson: 450,
+                name: 'Vallarta Shores'
+            }
+        };
+
+        // Fixed costs that don't change based on hotel selection
+        const fixedCosts = {
+            flights: 3151,
+            activities: 1200
+        };
+
         function showHotel(hotelId) {
             // Hide all hotel content
             document.querySelectorAll('.hotel-content').forEach(content => {
@@ -2023,6 +2056,9 @@
             // Add active class to clicked tab
             event.target.classList.add('active');
 
+            // Update budget breakdown with selected hotel pricing
+            updateBudget(hotelId);
+
             // Scroll to top of hotel section
             const hotelSection = document.querySelector('.hotel-section');
             const offset = 100;
@@ -2030,6 +2066,30 @@
                 top: hotelSection.offsetTop - offset,
                 behavior: 'smooth'
             });
+        }
+
+        // Function to update budget breakdown based on selected hotel
+        function updateBudget(hotelId) {
+            const hotel = hotelPricing[hotelId];
+            const totalCost = fixedCosts.flights + hotel.total + fixedCosts.activities;
+            const budgetBuffer = 7000 - totalCost;
+
+            // Update accommodation cost and hotel name
+            document.getElementById('accommodation-cost').textContent = `$${hotel.total.toLocaleString()}`;
+            document.getElementById('selected-hotel').textContent = hotel.name;
+
+            // Update total cost
+            document.getElementById('total-cost').textContent = `$${totalCost.toLocaleString()}`;
+
+            // Update budget buffer with appropriate styling
+            const bufferElement = document.getElementById('budget-buffer');
+            if (budgetBuffer >= 0) {
+                bufferElement.textContent = `$${budgetBuffer.toLocaleString()} buffer remaining from $7,000 budget`;
+                bufferElement.style.color = 'rgba(255, 255, 255, 0.9)';
+            } else {
+                bufferElement.textContent = `$${Math.abs(budgetBuffer).toLocaleString()} over $7,000 budget`;
+                bufferElement.style.color = '#ff6b6b';
+            }
         }
 
         // New arrow navigation functions
@@ -2070,6 +2130,11 @@
                 }
             });
         }
+
+        // Initialize page with Casa Maria data when loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            updateBudget('casa-maria'); // Initialize budget with Casa Maria pricing
+        });
     </script>
 </body>
 </html>
