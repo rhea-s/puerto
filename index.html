@@ -1,4 +1,4 @@
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -763,6 +763,178 @@
         .location-type {
             font-size: 0.9rem;
             opacity: 0.9;
+        }
+
+        /* Flip Cards Styling */
+        .flip-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            height: 400px;
+            perspective: 1000px;
+            position: relative;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner,
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            top: 0;
+            left: 0;
+        }
+
+        .flip-card-front {
+            z-index: 2;
+        }
+
+        .flip-card-back {
+            background: white;
+            transform: rotateY(180deg);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 1;
+        }
+
+        .flip-card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .flip-card-back h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .flip-card-back p {
+            color: #6e6e73;
+            line-height: 1.6;
+            flex-grow: 1;
+            font-size: 0.95rem;
+        }
+
+        .category-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 2;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-badge.beach {
+            color: #0891b2;
+        }
+
+        .category-badge.beach-culture {
+            color: #8b5cf6;
+        }
+
+        .category-badge.adventure {
+            color: #059669;
+        }
+
+        .category-badge.culture {
+            color: #dc2626;
+        }
+
+        .category-badge.luxury {
+            color: #d97706;
+        }
+
+        .card-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .cta-button:not(.secondary) {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .cta-button:not(.secondary):hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: #f5f5f7;
+            color: #667eea;
+            border: 2px solid #e5e5e7;
+        }
+
+        .cta-button.secondary:hover {
+            background: #e5e5e7;
+            border-color: #667eea;
+        }
+
+        /* Mobile Responsiveness for Flip Cards */
+        @media (max-width: 768px) {
+            .flip-cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .flip-card {
+                height: 380px;
+            }
+
+            .flip-card-back {
+                padding: 1.5rem;
+            }
+
+            .flip-card-back h3 {
+                font-size: 1.2rem;
+            }
+
+            .flip-card-back p {
+                font-size: 0.9rem;
+            }
         }
 
         .budget-section {
@@ -1760,57 +1932,234 @@
         </div>
     </section>
 
-    <section>
+    <section id="featured-locations">
         <div class="container">
             <h2>Featured Locations</h2>
             <p class="section-subtitle">Places you'll explore and love</p>
             
-            <div class="location-gallery">
-                <div class="location-card">
-                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80" alt="Los Muertos Beach">
-                    <div class="location-overlay">
-                        <div class="location-name">Los Muertos Beach</div>
-                        <div class="location-type">Main Beach & Pier</div>
+            <div class="flip-cards-grid">
+                <!-- Card 1: Malecón Boardwalk -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://canoa.com.mx/wp-content/webp-express/webp-images/uploads/2024/02/nightlife-featured-image-800-x-600-72dpi.jpg.webp">
+                            <div class="category-badge beach-culture">Culture & Nightlife</div>
+                            <div class="location-overlay">
+                                <div class="location-name">Malecón Boardwalk</div>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Malecón Boardwalk</h3>
+                            <p>Puerto Vallarta's iconic oceanfront promenade, lined with sculptures, lively bars, and street performers. After dark, it becomes the heart of PV's nightlife with bustling clubs and stunning ocean views.</p>
+                            <div class="card-links">
+                                <a href="https://www.google.com/maps/place/Malec%C3%B3n+Puerto+Vallarta/@20.6096146,-105.2343542,17z/" target="_blank" class="cta-button">
+                                    📍 Open in Maps
+                                </a>
+                                <a href="https://www.visitpuertovallarta.com/things-to-do/attractions/malecon/" target="_blank" class="cta-button secondary">
+                                    ℹ️ Tourism Guide
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="location-card">
-                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80" alt="Malecón">
-                    <div class="location-overlay">
-                        <div class="location-name">Malecón</div>
-                        <div class="location-type">Oceanfront Promenade</div>
+
+                <!-- Card 2: Los Muertos Beach & Pier -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://image-tc.galaxy.tf/wijpeg-6crv30rid2gdsezwti5wj6r7h/puerto-vallarta-jalisco-mexico-8_standard.jpg?crop=1%2C0%2C1899%2C1424" alt="Los Muertos Beach and Pier">
+                            <div class="category-badge beach">Beach</div>
+                            <div class="location-overlay">
+                                <div class="location-name">Los Muertos Beach & Pier</div>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Los Muertos Beach & Pier</h3>
+                            <p>PV's most popular city beach, famous for its vibrant atmosphere and iconic sail-shaped pier. Enjoy swimming, jet-skiing, or relaxing under palapas by day. By evening, watch spectacular sunsets over Banderas Bay.</p>
+                            <div class="card-links">
+                                <a href="https://www.google.com/maps/place/Playa+Los+Muertos/@20.6024388,-105.2377935,17z/" target="_blank" class="cta-button">
+                                    📍 Open in Maps
+                                </a>
+                                <a href="https://www.visitpuertovallarta.com/beaches/playa-los-muertos/" target="_blank" class="cta-button secondary">
+                                    ℹ️ Beach Guide
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="location-card">
-                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80" alt="Zona Romántica">
-                    <div class="location-overlay">
-                        <div class="location-name">Zona Romántica</div>
-                        <div class="location-type">Nightlife District</div>
+
+                <!-- Card 3: Los Arcos Marine Park -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://cms.vallartalifestyles.com/jcnsxosc2bflwqa/wp-content/uploads/2021/06/1500.jpeg" alt="Los Arcos Marine Park">
+                            <div class="category-badge adventure">Nature & Adventure</div>
+                            <div class="location-overlay">
+                                <div class="location-name">Los Arcos Marine Park</div>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Los Arcos Marine Park</h3>
+                            <p>A National Marine Park featuring towering granite arches and underwater caves teeming with tropical fish. Perfect for snorkeling and diving, with pelicans and blue-footed boobies nesting on the rocks.</p>
+                            <div class="card-links">
+                                <a href="https://www.google.com/maps/place/Los+Arcos+National+Marine+Park/@20.5214444,-105.2708333,15z/" target="_blank" class="cta-button">
+                                    📍 Open in Maps
+                                </a>
+                                <a href="https://www.viator.com/Puerto-Vallarta-attractions/Los-Arcos-National-Marine-Park/d628-a782" target="_blank" class="cta-button secondary">
+                                    🎟️ Book Snorkel Tour
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="location-card">
-                    <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&q=80" alt="Los Arcos">
-                    <div class="location-overlay">
-                        <div class="location-name">Los Arcos</div>
-                        <div class="location-type">Marine Park</div>
+
+                <!-- Card 4: Marietas Islands & Hidden Beach -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/06/74/cc/09.jpg" alt="Marietas Islands Hidden Beach">
+                            <div class="category-badge adventure">Eco-Adventure</div>
+                            <div class="location-overlay">
+                                <div class="location-name">Marietas Islands</div>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Marietas Islands & Hidden Beach</h3>
+                            <p>A UNESCO Biosphere Reserve featuring the famous Playa Escondida inside a crater, accessible only by swimming through a tunnel. World-class snorkeling, whale watching, and blue-footed boobies await.</p>
+                            <div class="card-links">
+                                <a href="https://www.google.com/maps/place/Islas+Marietas/@20.7000000,-105.5666667,14z/" target="_blank" class="cta-button">
+                                    📍 Open in Maps
+                                </a>
+                                <a href="https://vallarta-adventures.com/tours/marietas-islands/" target="_blank" class="cta-button secondary">
+                                    🎟️ Official Tour
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="location-card">
-                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Yelapa">
-                    <div class="location-overlay">
-                        <div class="location-name">Yelapa</div>
-                        <div class="location-type">Hidden Beach Village</div>
+
+                <!-- Card 5: Vallarta Botanical Gardens -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://images.squarespace-cdn.com/content/v1/56c13cc00442627a08632989/6ee062c0-1120-41bb-9130-c3396cf7c578/pvbotaniccacti2.jpg" alt="Vallarta Botanical Gardens">
+                            <div class="category-badge culture">Nature & Culture</div>
+                            <div class="location-overlay">
+                                <div class="location-name">Vallarta Botanical Gardens</div>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Vallarta Botanical Gardens</h3>
+                            <p>A 64-acre tropical oasis showcasing Mexico's diverse flora, including orchids and giant strangler figs. Wander jungle trails, swim in the Horcones River's emerald pools, or dine at the on-site restaurant.</p>
+                            <div class="card-links">
+                                <a href="https://www.google.com/maps/place/Vallarta+Botanical+Gardens/@20.3761111,-105.3575000,15z/" target="_blank" class="cta-button">
+                                    📍 Open in Maps
+                                </a>
+                                <a href="https://www.vbgardens.org/" target="_blank" class="cta-button secondary">
+                                    ℹ️ Official Site
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="location-card">
-                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Tequila Tasting">
-                    <div class="location-overlay">
-                        <div class="location-name">Mundo de Tequila</div>
-                        <div class="location-type">Tasting Experience</div>
+
+                <!-- Card 6: Our Lady of Guadalupe Church -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://puertovallartavillas.com/wp-content/uploads/2020/05/Church-scaled.jpeg" alt="Our Lady of Guadalupe Church">
+                            <div class="category-badge culture">Culture & History</div>
+                            <div class="location-overlay">
+                                <div class="location-name">Our Lady of Guadalupe</div>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Our Lady of Guadalupe Church</h3>
+                            <p>Puerto Vallarta's iconic crown-topped church dominates the downtown skyline. Step inside to find white-washed walls, a gilded altar, and stained-glass windows creating a serene, colorful atmosphere.</p>
+                            <div class="card-links">
+                                <a href="https://www.google.com/maps/place/Parish+of+Our+Lady+of+Guadalupe/@20.6101389,-105.2308056,17z/" target="_blank" class="cta-button">
+                                    📍 Open in Maps
+                                </a>
+                                <a href="https://www.visitpuertovallarta.com/things-to-do/attractions/church-of-our-lady-of-guadalupe/" target="_blank" class="cta-button secondary">
+                                    ℹ️ More Info
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7: Yelapa Village & Waterfall -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://bucketlistbri.com/wp-content/uploads/2019/06/visit-yelapa-mexico.jpg" alt="Yelapa Village">
+                            <div class="category-badge adventure">Adventure & Beach</div>
+                            <div class="location-overlay">
+                                <div class="location-name">Yelapa Village</div>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Yelapa Village & Waterfall</h3>
+                            <p>A remote beach village accessible only by boat, tucked into a jungle-fringed cove. Hike to a jungle waterfall, enjoy fresh grilled fish, and experience authentic local life in this car-free paradise.</p>
+                            <div class="card-links">
+                                <a href="https://www.google.com/maps/place/Yelapa,+Jalisco,+Mexico/@20.4947222,-105.3927778,14z/" target="_blank" class="cta-button">
+                                    📍 Open in Maps
+                                </a>
+                                <a href="https://www.puertovallarta.net/what_to_do/yelapa.php" target="_blank" class="cta-button secondary">
+                                    ℹ️ Yelapa Guide
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8: Sayulita Surf Town -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://cdn.sanity.io/images/xhhnkk4g/production/acc5a2912f72f3a191dcf63729ad16a51f7af9e8-1080x720.webp?w=3840&q=65&fit=clip&auto=format" alt="Sayulita Surf Town">
+                            <div class="category-badge beach-culture">Beach & Nightlife</div>
+                            <div class="location-overlay">
+                                <div class="location-name">Sayulita Surf Town</div>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Sayulita Surf Town</h3>
+                            <p>A bohemian surf town an hour north of PV, known for colorful streets and Pacific waves. By day, surf and do yoga; by night, enjoy taco stands and beachside bars in this hippie-chic paradise.</p>
+                            <div class="card-links">
+                                <a href="https://www.google.com/maps/place/Sayulita,+Nayarit,+Mexico/@20.8697222,-105.4402778,14z/" target="_blank" class="cta-button">
+                                    📍 Open in Maps
+                                </a>
+                                <a href="https://www.rivieranayarit.com/destinations/sayulita/" target="_blank" class="cta-button secondary">
+                                    ℹ️ Tourism Info
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 9: Rhythms of the Night -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://www.vallartanayaritblog.com/wp-content/uploads/2018/07/savia-4-1024x683.jpg" alt="Rhythms of the Night Show">
+                            <div class="category-badge luxury">Luxury Dinner Show</div>
+                            <div class="location-overlay">
+                                <div class="location-name">Rhythms of the Night</div>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Rhythms of the Night Cruise</h3>
+                            <p>An enchanted evening with sunset catamaran cruise, gourmet beachside dinner under the stars, and an immersive cultural show with acrobats and fire dancers in a jungle amphitheater.</p>
+                            <div class="card-links">
+                                <a href="https://www.google.com/maps/place/Las+Caletas+Beach+Hideaway/@20.4738889,-105.4388889,15z/" target="_blank" class="cta-button">
+                                    📍 Departure Point
+                                </a>
+                                <a href="https://vallarta-adventures.com/tours/rhythms-of-the-night/" target="_blank" class="cta-button secondary">
+                                    🎟️ Book Now
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1941,50 +2290,6 @@
         });
 
         // Hotel comparison functionality
-        
-        /* ============================================
-           TO UPDATE WITH REAL HOTEL IMAGES:
-           ============================================
-           
-           Visit these official hotel photo galleries to grab real image URLs:
-           
-           1. CASA MARIA HOTEL:
-              - Official site: https://casamariahotel.mx/
-              - Booking.com photos: https://www.booking.com/hotel/mx/casa-maria-amp-gallery.html
-              - TripAdvisor photos: https://www.tripadvisor.com/Hotel_Review-g150793-d17649889-Reviews-Casa_Maria_Hotel_Boutique_Gallery-Puerto_Vallarta.html
-              → Look for: pool views, room interiors, rooftop terrace, art gallery
-           
-           2. RIVERA DEL RIO:
-              - Official site: https://www.riveradelrio.com/
-              - Carlotta Suite page: https://www.riveradelrio.com/rooms/carlotta-suite.html
-              - Booking.com photos: https://www.booking.com/hotel/mx/rivera-del-rio.html
-              - TripAdvisor: https://www.tripadvisor.com/Hotel_Review-g150793-d308275-Reviews-Hotel_Boutique_Rivera_del_Rio-Puerto_Vallarta.html
-              → Look for: Carlotta Suite interior, pools, river views, historic architecture
-           
-           3. ALMAR RESORT:
-              - Official site: https://www.almarresort.com/
-              - Booking.com photos: https://www.booking.com/hotel/mx/almar-resort-luxury-all-suites-amp-spa.html
-              - TripAdvisor photos: https://www.tripadvisor.com/Hotel_Review-g150793-d2643729-Reviews-Almar_Resort_Luxury_Lgbt_Beach_Front_Experience-Puerto_Vallarta.html
-              - Mantamar Beach Club: https://mantamar.com/
-              - The Top Sky Bar: https://thetopskybar.com/
-              → Look for: beachfront suites, Eden Pool, Mantamar Beach Club, Top Sky Bar views, spa areas
-           
-           4. VALLARTA SHORES:
-              - Official site: https://vallartashores.com/
-              - Booking.com photos: https://www.booking.com/hotel/mx/shore-condohotel.html
-              - TripAdvisor photos: https://www.tripadvisor.com/Hotel_Review-g150793-d225452-Reviews-Vallarta_Shores-Puerto_Vallarta.html
-              → Look for: beachfront suites, ocean-view balconies, infinity pool, living areas
-           
-           INSTRUCTIONS:
-           1. Right-click on hotel photos → "Copy Image Address"
-           2. Replace the URLs below in each hotel's array
-           3. Keep 3 images per hotel for the gallery rotation
-           4. Ensure images are high-resolution (minimum 1200px wide)
-           5. Test image loading and verify URLs work before finalizing
-           
-           CURRENT STATUS: Real hotel images are already integrated below!
-           
-        ============================================ */
         
         const hotelImages = {
             'casa-maria': [
@@ -2134,6 +2439,17 @@
         // Initialize page with Casa Maria data when loaded
         document.addEventListener('DOMContentLoaded', function() {
             updateBudget('casa-maria'); // Initialize budget with Casa Maria pricing
+            
+            // Add mobile tap-to-flip functionality for flip cards
+            const flipCards = document.querySelectorAll('.flip-card');
+            flipCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // On mobile, toggle the flipped class on tap
+                    if (window.innerWidth <= 768) {
+                        this.classList.toggle('flipped');
+                    }
+                });
+            });
         });
     </script>
 </body>
