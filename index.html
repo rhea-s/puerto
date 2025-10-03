@@ -2363,14 +2363,6 @@
 
             // Update budget breakdown with selected hotel pricing
             updateBudget(hotelId);
-
-            // Scroll to top of hotel section
-            const hotelSection = document.querySelector('.hotel-section');
-            const offset = 100;
-            window.scrollTo({
-                top: hotelSection.offsetTop - offset,
-                behavior: 'smooth'
-            });
         }
 
         // Function to update budget breakdown based on selected hotel
