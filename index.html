@@ -278,7 +278,9 @@
             padding: 2rem;
             border-right: 1px solid #e5e5e7;
             text-align: center;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
         }
 
         .comparison-item:last-child {
@@ -287,6 +289,28 @@
 
         .comparison-item:hover {
             background: #f5f5f7;
+            transform: translateY(-2px);
+        }
+
+        .comparison-item.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .comparison-item.active .hotel-name-small,
+        .comparison-item.active .price-large,
+        .comparison-item.active .price-per-person {
+            color: white;
+        }
+
+        .comparison-item.active::after {
+            content: 'âœ" Selected';
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            opacity: 0.9;
         }
 
         .hotel-name-small {
@@ -1070,6 +1094,10 @@
                 font-size: 2rem;
             }
 
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
             .comparison-item {
                 border-right: none;
                 border-bottom: 1px solid #e5e5e7;
@@ -1077,6 +1105,10 @@
 
             .comparison-item:last-child {
                 border-bottom: none;
+            }
+
+            .comparison-item.active {
+                border-bottom-color: transparent;
             }
 
             .highlights {
@@ -1240,35 +1272,27 @@
                     <p style="color: #86868b; font-size: 0.95rem;">6 nights (Nov 14-20, 2025) for 4 travelers</p>
                 </div>
                 <div class="comparison-grid">
-                    <div class="comparison-item">
+                    <div class="comparison-item active" data-hotel="casa-maria" onclick="showHotel('casa-maria')">
                         <div class="hotel-name-small">Casa Maria</div>
                         <div class="price-large">$1,040</div>
                         <div class="price-per-person">$260 per person</div>
                     </div>
-                    <div class="comparison-item">
+                    <div class="comparison-item" data-hotel="rivera" onclick="showHotel('rivera')">
                         <div class="hotel-name-small">Rivera Del Rio</div>
                         <div class="price-large">$1,194</div>
                         <div class="price-per-person">$299 per person</div>
                     </div>
-                    <div class="comparison-item">
+                    <div class="comparison-item" data-hotel="almar" onclick="showHotel('almar')">
                         <div class="hotel-name-small">Almar Resort</div>
                         <div class="price-large">$1,549</div>
                         <div class="price-per-person">$387 per person</div>
                     </div>
-                    <div class="comparison-item">
+                    <div class="comparison-item" data-hotel="vallarta" onclick="showHotel('vallarta')">
                         <div class="hotel-name-small">Vallarta Shores</div>
                         <div class="price-large">$1,800</div>
                         <div class="price-per-person">$450 per person</div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Tab Navigation -->
-            <div class="tab-nav">
-                <button class="tab-button active" onclick="showHotel('casa-maria')">Casa Maria Hotel</button>
-                <button class="tab-button" onclick="showHotel('rivera')">Rivera Del Rio</button>
-                <button class="tab-button" onclick="showHotel('almar')">Almar Resort</button>
-                <button class="tab-button" onclick="showHotel('vallarta')">Vallarta Shores</button>
             </div>
 
             <!-- Hotel 1: Casa Maria -->
@@ -2350,16 +2374,16 @@
                 content.classList.remove('active');
             });
 
-            // Remove active class from all tabs
-            document.querySelectorAll('.tab-button').forEach(btn => {
-                btn.classList.remove('active');
+            // Remove active class from all comparison items
+            document.querySelectorAll('.comparison-item').forEach(item => {
+                item.classList.remove('active');
             });
 
             // Show selected hotel
             document.getElementById(hotelId).classList.add('active');
             
-            // Add active class to clicked tab
-            event.target.classList.add('active');
+            // Add active class to clicked comparison item
+            document.querySelector(`.comparison-item[data-hotel="${hotelId}"]`).classList.add('active');
 
             // Update budget breakdown with selected hotel pricing
             updateBudget(hotelId);
