@@ -1521,6 +1521,130 @@
     }
 }
 
+
+
+/* Mobile Feature-Based Comparison */
+.mobile-comparison {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .comparison-table-container {
+        display: none;
+    }
+    
+    .mobile-comparison {
+        display: block;
+        margin-top: 2rem;
+    }
+}
+
+.comparison-feature-section {
+    background: white;
+    border-radius: 18px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.feature-section-header {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    color: #1d1d1f;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hotel-comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.hotel-comparison-item {
+    background: #f5f5f7;
+    padding: 1rem;
+    border-radius: 12px;
+    position: relative;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.hotel-comparison-item.winner {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    border-color: #fbbf24;
+    box-shadow: 0 2px 10px rgba(251, 191, 36, 0.2);
+}
+
+.hotel-comparison-item.winner::before {
+    content: '⭐';
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.hotel-name-mini {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #1d1d1f;
+    margin-bottom: 0.5rem;
+}
+
+.hotel-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 0.25rem;
+}
+
+.hotel-comparison-item.winner .hotel-value {
+    color: #d97706;
+}
+
+.hotel-detail {
+    font-size: 0.8rem;
+    color: #6e6e73;
+    line-height: 1.4;
+}
+
+.comparison-note {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: #f5f5f7;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: #6e6e73;
+    border-left: 3px solid #667eea;
+}
+
+/* Visual indicators */
+.value-positive {
+    color: #059669;
+    font-weight: 600;
+}
+
+.value-negative {
+    color: #dc2626;
+}
+
+.value-neutral {
+    color: #6e6e73;
+}
+
+/* Special styling for price section */
+.price-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.price-detail {
+    font-size: 0.75rem;
+    color: #86868b;
+}
+
 </style>
 </head>
 <body>
@@ -1774,6 +1898,270 @@
                         </tbody>
                     </table>
                 </div>
+
+            <!-- Mobile Feature-Based Comparison -->
+            <div class="mobile-comparison">
+                
+                <!-- Pricing Section -->
+                <div class="comparison-feature-section">
+                    <div class="feature-section-header">💰 Pricing</div>
+                    <div class="hotel-comparison-grid">
+                        <div class="hotel-comparison-item winner">
+                            <div class="hotel-name-mini">Casa Maria</div>
+                            <div class="hotel-value price-value">$1,040</div>
+                            <div class="hotel-detail price-detail">$260 per person</div>
+                        </div>
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Rivera Del Rio</div>
+                            <div class="hotel-value price-value">$1,194</div>
+                            <div class="hotel-detail price-detail">$299 per person</div>
+                        </div>
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Almar Resort</div>
+                            <div class="hotel-value price-value">$1,549</div>
+                            <div class="hotel-detail price-detail">$387 per person</div>
+                        </div>
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Vallarta Shores</div>
+                            <div class="hotel-value price-value">$1,800</div>
+                            <div class="hotel-detail price-detail">$450 per person</div>
+                        </div>
+                    </div>
+                    <div class="comparison-note">⭐ = Best value</div>
+                </div>
+
+                <!-- Beach Access Section -->
+                <div class="comparison-feature-section">
+                    <div class="feature-section-header">🏖️ Beach Access</div>
+                    <div class="hotel-comparison-grid">
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Casa Maria</div>
+                            <div class="hotel-value">2 min walk</div>
+                            <div class="hotel-detail">Heart of Zona Romántica</div>
+                        </div>
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Rivera Del Rio</div>
+                            <div class="hotel-value">15 min walk</div>
+                            <div class="hotel-detail">Quiet riverside area</div>
+                        </div>
+                        <div class="hotel-comparison-item winner">
+                            <div class="hotel-name-mini">Almar Resort</div>
+                            <div class="hotel-value">ON the beach</div>
+                            <div class="hotel-detail">Los Muertos Beach</div>
+                        </div>
+                        <div class="hotel-comparison-item winner">
+                            <div class="hotel-name-mini">Vallarta Shores</div>
+                            <div class="hotel-value">ON the beach</div>
+                            <div class="hotel-detail">Los Muertos Beach</div>
+                        </div>
+                    </div>
+                    <div class="comparison-note">⭐ = Direct beach access</div>
+                </div>
+
+                <!-- Room Configuration Section -->
+                <div class="comparison-feature-section">
+                    <div class="feature-section-header">🛏️ Room Setup</div>
+                    <div class="hotel-comparison-grid">
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Casa Maria</div>
+                            <div class="hotel-value">Standard Suite</div>
+                            <div class="hotel-detail">2 Queen Beds<br>Shared room</div>
+                        </div>
+                        <div class="hotel-comparison-item winner">
+                            <div class="hotel-name-mini">Rivera Del Rio</div>
+                            <div class="hotel-value">Carlotta Suite</div>
+                            <div class="hotel-detail">2 Bedrooms<br>Private entrance + pool</div>
+                        </div>
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Almar Resort</div>
+                            <div class="hotel-value">Garden Suite</div>
+                            <div class="hotel-detail">Suite with garden view<br>Shared room</div>
+                        </div>
+                        <div class="hotel-comparison-item winner">
+                            <div class="hotel-name-mini">Vallarta Shores</div>
+                            <div class="hotel-value">2-Bed Beachfront</div>
+                            <div class="hotel-detail">2 King Beds<br>Separate bedrooms</div>
+                        </div>
+                    </div>
+                    <div class="comparison-note">⭐ = Separate bedrooms for privacy</div>
+                </div>
+
+                <!-- Breakfast Section -->
+                <div class="comparison-feature-section">
+                    <div class="feature-section-header">🍳 Breakfast</div>
+                    <div class="hotel-comparison-grid">
+                        <div class="hotel-comparison-item winner">
+                            <div class="hotel-name-mini">Casa Maria</div>
+                            <div class="hotel-value value-positive">✓ FREE</div>
+                            <div class="hotel-detail">Daily breakfast included</div>
+                        </div>
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Rivera Del Rio</div>
+                            <div class="hotel-value">$12/person</div>
+                            <div class="hotel-detail">Optional add-on</div>
+                        </div>
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Almar Resort</div>
+                            <div class="hotel-value value-negative">✗ Not included</div>
+                            <div class="hotel-detail">Restaurants on-site</div>
+                        </div>
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Vallarta Shores</div>
+                            <div class="hotel-value value-negative">✗ Not included</div>
+                            <div class="hotel-detail">Full kitchen available</div>
+                        </div>
+                    </div>
+                    <div class="comparison-note">⭐ = Included in price</div>
+                </div>
+
+                <!-- Kitchen/Cooking Section -->
+                <div class="comparison-feature-section">
+                    <div class="feature-section-header">🍴 Kitchen Access</div>
+                    <div class="hotel-comparison-grid">
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Casa Maria</div>
+                            <div class="hotel-value value-negative">✗ Mini-bar only</div>
+                            <div class="hotel-detail">No cooking facilities</div>
+                        </div>
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Rivera Del Rio</div>
+                            <div class="hotel-value value-positive">✓ Shared kitchen</div>
+                            <div class="hotel-detail">State-of-the-art kitchen</div>
+                        </div>
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Almar Resort</div>
+                            <div class="hotel-value value-negative">✗ Mini-bar</div>
+                            <div class="hotel-detail">2 restaurants on-site</div>
+                        </div>
+                        <div class="hotel-comparison-item winner">
+                            <div class="hotel-name-mini">Vallarta Shores</div>
+                            <div class="hotel-value value-positive">✓ FULL kitchen</div>
+                            <div class="hotel-detail">Private, fully equipped</div>
+                        </div>
+                    </div>
+                    <div class="comparison-note">⭐ = Private full kitchen</div>
+                </div>
+
+                <!-- Pools Section -->
+                <div class="comparison-feature-section">
+                    <div class="feature-section-header">🏊 Swimming Pools</div>
+                    <div class="hotel-comparison-grid">
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Casa Maria</div>
+                            <div class="hotel-value">1 pool</div>
+                            <div class="hotel-detail">Rooftop pool</div>
+                        </div>
+                        <div class="hotel-comparison-item winner">
+                            <div class="hotel-name-mini">Rivera Del Rio</div>
+                            <div class="hotel-value">4 pools</div>
+                            <div class="hotel-detail">3 pools + rooftop jacuzzi<br>+ private 15ft pool</div>
+                        </div>
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Almar Resort</div>
+                            <div class="hotel-value">2 pools</div>
+                            <div class="hotel-detail">Eden Pool + beach club</div>
+                        </div>
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Vallarta Shores</div>
+                            <div class="hotel-value">1 pool</div>
+                            <div class="hotel-detail">Beachfront infinity pool</div>
+                        </div>
+                    </div>
+                    <div class="comparison-note">⭐ = Most pool options including private</div>
+                </div>
+
+                <!-- Nightlife/Entertainment Section -->
+                <div class="comparison-feature-section">
+                    <div class="feature-section-header">🎉 Nightlife & Entertainment</div>
+                    <div class="hotel-comparison-grid">
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Casa Maria</div>
+                            <div class="hotel-value">Happy hour</div>
+                            <div class="hotel-detail">Pool bar, near nightlife</div>
+                        </div>
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Rivera Del Rio</div>
+                            <div class="hotel-value">Quiet</div>
+                            <div class="hotel-detail">Peaceful, relaxing</div>
+                        </div>
+                        <div class="hotel-comparison-item winner">
+                            <div class="hotel-name-mini">Almar Resort</div>
+                            <div class="hotel-value">Built-in party</div>
+                            <div class="hotel-detail">DJs, shows, sky bar<br>Beach club</div>
+                        </div>
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Vallarta Shores</div>
+                            <div class="hotel-value">5 min walk</div>
+                            <div class="hotel-detail">Near bars & clubs</div>
+                        </div>
+                    </div>
+                    <div class="comparison-note">⭐ = Entertainment on-site, no travel needed</div>
+                </div>
+
+                <!-- Spa Section -->
+                <div class="comparison-feature-section">
+                    <div class="feature-section-header">💆 Spa Services</div>
+                    <div class="hotel-comparison-grid">
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Casa Maria</div>
+                            <div class="hotel-value value-negative">✗ No spa</div>
+                            <div class="hotel-detail">Must go off-site</div>
+                        </div>
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Rivera Del Rio</div>
+                            <div class="hotel-value value-positive">✓ Available</div>
+                            <div class="hotel-detail">Spa services on-site</div>
+                        </div>
+                        <div class="hotel-comparison-item winner">
+                            <div class="hotel-name-mini">Almar Resort</div>
+                            <div class="hotel-value value-positive">✓ Full spa</div>
+                            <div class="hotel-detail">Complete spa facility</div>
+                        </div>
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Vallarta Shores</div>
+                            <div class="hotel-value value-positive">✓ Massage</div>
+                            <div class="hotel-detail">Massage services</div>
+                        </div>
+                    </div>
+                    <div class="comparison-note">⭐ = Full-service spa facility</div>
+                </div>
+
+                <!-- Best For Section -->
+                <div class="comparison-feature-section">
+                    <div class="feature-section-header">🎯 Best For</div>
+                    <div class="hotel-comparison-grid">
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Casa Maria</div>
+                            <div class="hotel-value">Budget + Social</div>
+                            <div class="hotel-detail">Best price, perfect location, friendly vibe</div>
+                        </div>
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Rivera Del Rio</div>
+                            <div class="hotel-value">Unique + Private</div>
+                            <div class="hotel-detail">Historic character, separate bedrooms, private pool</div>
+                        </div>
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Almar Resort</div>
+                            <div class="hotel-value">Party + Luxury</div>
+                            <div class="hotel-detail">All-inclusive feel, beachfront, built-in entertainment</div>
+                        </div>
+                        <div class="hotel-comparison-item">
+                            <div class="hotel-name-mini">Vallarta Shores</div>
+                            <div class="hotel-value">Space + Comfort</div>
+                            <div class="hotel-detail">Most space, full kitchen, beachfront privacy</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View Details Button -->
+                <div style="text-align: center; margin: 2rem 0;">
+                    <button class="view-toggle-btn" onclick="toggleView('detailed')">
+                        📸 View Detailed Hotel Photos & Info
+                    </button>
+                </div>
+
+            </div>
+
             </div>
 
             <!-- Detailed Individual Views -->
@@ -1788,18 +2176,21 @@
                         <div class="selection-cta">👆 Click to view details</div>
                     </div>
                     <div class="selection-card" data-hotel="rivera" onclick="showHotel('rivera')">
+                        <div class="selection-badge">✓ Selected</div>
                         <div class="hotel-name-small">Rivera Del Rio</div>
                         <div class="price-large">$1,194</div>
                         <div class="price-per-person">$299 per person</div>
                         <div class="selection-cta">👆 Click to view details</div>
                     </div>
                     <div class="selection-card" data-hotel="almar" onclick="showHotel('almar')">
+                        <div class="selection-badge">✓ Selected</div>
                         <div class="hotel-name-small">Almar Resort</div>
                         <div class="price-large">$1,549</div>
                         <div class="price-per-person">$387 per person</div>
                         <div class="selection-cta">👆 Click to view details</div>
                     </div>
                     <div class="selection-card" data-hotel="vallarta" onclick="showHotel('vallarta')">
+                        <div class="selection-badge">✓ Selected</div>
                         <div class="hotel-name-small">Vallarta Shores</div>
                         <div class="price-large">$1,800</div>
                         <div class="price-per-person">$450 per person</div>
@@ -2997,10 +3388,16 @@ function selectHotelFromTable(hotelId) {
             });
 
             // Show selected hotel
-            document.getElementById(hotelId).classList.add('active');
+            const hotelElement = document.getElementById(hotelId);
+            if (hotelElement) {
+                hotelElement.classList.add('active');
+            }
             
             // Add active class to clicked selection card
-            document.querySelector(`.selection-card[data-hotel="${hotelId}"]`).classList.add('active');
+            const selectionCard = document.querySelector(`.selection-card[data-hotel="${hotelId}"]`);
+            if (selectionCard) {
+                selectionCard.classList.add('active');
+            }
 
             // Update budget breakdown with selected hotel pricing
             updateBudget(hotelId);
@@ -3084,22 +3481,26 @@ function selectHotelFromTable(hotelId) {
                 });
 
         // // Sticky Navigation Functionality
-        let lastScrollTop = 0;
         const stickyNav = document.getElementById('sticky-nav');
-        const heroHeight = document.querySelector('.hero').offsetHeight;
+        const heroElement = document.querySelector('.hero');
         
-        window.addEventListener('scroll', function() {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // Show nav after scrolling past hero section
-            if (scrollTop > heroHeight - 100) {
-                stickyNav.classList.add('visible');
-            } else {
-                stickyNav.classList.remove('visible');
-            }
-            
-            lastScrollTop = scrollTop;
-        });
+        if (stickyNav && heroElement) {
+            let lastScrollTop = 0;
+            const heroHeight = heroElement.offsetHeight;
+
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Show nav after scrolling past hero section
+                if (scrollTop > heroHeight - 100) {
+                    stickyNav.classList.add('visible');
+                } else {
+                    stickyNav.classList.remove('visible');
+                }
+                
+                lastScrollTop = scrollTop;
+            });
+        }
         
         // Smooth scroll functions for navigation links
         function scrollToHotels(event) {
