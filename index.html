@@ -3571,35 +3571,44 @@ function selectHotelFromTable(hotelId) {
                 'budget': 'a[onclick*="scrollToBudget"]'
             };
 
+            let currentSection = null;
+
             const sectionObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Find which section is currently in view
-                        const sectionId = sections.find(s => {
-                            const element = document.querySelector(s.selector);
-                            return element === entry.target;
-                        })?.id;
+                // Sort entries by intersection ratio to prioritize the most visible section
+                const intersectingEntries = entries.filter(e => e.isIntersecting)
+                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
 
-                        if (sectionId) {
-                            // Remove nav-highlight from all nav links
-                            document.querySelectorAll('.nav-link').forEach(link => {
-                                link.classList.remove('nav-highlight');
-                            });
+                if (intersectingEntries.length > 0) {
+                    // Get the most visible section
+                    const mostVisibleEntry = intersectingEntries[0];
 
-                            // Add nav-highlight to the corresponding nav link
-                            const navLinkSelector = navLinkMap[sectionId];
-                            if (navLinkSelector) {
-                                const activeLink = document.querySelector(navLinkSelector);
-                                if (activeLink) {
-                                    activeLink.classList.add('nav-highlight');
-                                }
+                    // Find which section is currently in view
+                    const sectionId = sections.find(s => {
+                        const element = document.querySelector(s.selector);
+                        return element === mostVisibleEntry.target;
+                    })?.id;
+
+                    if (sectionId && sectionId !== currentSection) {
+                        currentSection = sectionId;
+
+                        // Remove nav-highlight from all nav links
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('nav-highlight');
+                        });
+
+                        // Add nav-highlight to the corresponding nav link
+                        const navLinkSelector = navLinkMap[sectionId];
+                        if (navLinkSelector) {
+                            const activeLink = document.querySelector(navLinkSelector);
+                            if (activeLink) {
+                                activeLink.classList.add('nav-highlight');
                             }
                         }
                     }
-                });
+                }
             }, {
-                threshold: [0, 0.1, 0.2], // Multiple thresholds for better detection
-                rootMargin: '-100px 0px -75% 0px' // Top 100px offset for sticky nav, focus on top 25% of viewport
+                threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5], // Multiple thresholds for better detection
+                rootMargin: '-100px 0px -66% 0px' // Top 100px offset for sticky nav
             });
 
             // Observe all sections
@@ -3609,6 +3618,13 @@ function selectHotelFromTable(hotelId) {
                     sectionObserver.observe(element);
                 }
             });
+
+            // Fallback: Highlight Overview by default when page loads
+            const overviewLink = document.querySelector('a[href="#overview"]');
+            if (overviewLink) {
+                overviewLink.classList.add('nav-highlight');
+                currentSection = 'overview';
+            }
         });
     </script>
 </body>
