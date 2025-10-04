@@ -1374,7 +1374,7 @@
 }
 
 /* Mobile Responsive */
-@media (max-width: 768px) {
+@media (max-width: 968px) {
     .comparison-table-container {
         padding: 0.5rem;
     }
@@ -1528,7 +1528,7 @@
     display: none;
 }
 
-@media (max-width: 968px) {
+@media (max-width: 768px) {
     .comparison-table-container {
         display: none;
     }
@@ -1698,6 +1698,17 @@
             </div>
         </div>
     </section>
+
+    <!-- Sticky Navigation Bar -->
+    <nav id="sticky-nav" class="sticky-nav">
+        <div class="sticky-nav-container">
+            <a href="#overview" class="nav-link">📋 Overview</a>
+            <a href="#" onclick="scrollToHotels(event)" class="nav-link nav-highlight">🏨 Hotels</a>
+            <a href="#" onclick="scrollToFlights(event)" class="nav-link">✈️ Flights</a>
+            <a href="#" onclick="scrollToItinerary(event)" class="nav-link">📅 Itinerary</a>
+            <a href="#" onclick="scrollToBudget(event)" class="nav-link">💰 Budget</a>
+        </div>
+    </nav>
 
 <section class="hotel-section">
         <div class="container">
@@ -3489,6 +3500,8 @@ function selectHotelFromTable(hotelId) {
             const heroHeight = heroElement.offsetHeight;
 
             window.addEventListener('scroll', function() {
+                if (!stickyNav) return; // Safety check
+                
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 
                 // Show nav after scrolling past hero section
