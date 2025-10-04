@@ -1417,6 +1417,110 @@
     }
 }
 
+
+
+/* Sticky Navigation Bar */
+.sticky-nav {
+    position: fixed;
+    top: -100px;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: top 0.3s ease;
+    border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.sticky-nav.visible {
+    top: 0;
+}
+
+.sticky-nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.nav-link {
+    padding: 0.625rem 1.25rem;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #1d1d1f;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    background: white;
+    border: 2px solid #e5e5e7;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    background: #f5f5f7;
+    border-color: #667eea;
+    transform: translateY(-2px);
+}
+
+.nav-link.nav-highlight {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.nav-link.nav-highlight:hover {
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .sticky-nav-container {
+        padding: 0.75rem 1rem;
+        gap: 0.375rem;
+    }
+    
+    .nav-link {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .sticky-nav-container {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .nav-link {
+        flex-shrink: 0;
+    }
+    
+    /* Hide scrollbar but keep functionality */
+    .sticky-nav-container::-webkit-scrollbar {
+        height: 4px;
+    }
+    
+    .sticky-nav-container::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    .sticky-nav-container::-webkit-scrollbar-thumb {
+        background: rgba(102, 126, 234, 0.3);
+        border-radius: 2px;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -1471,74 +1575,7 @@
         </div>
     </section>
 
-    <section class="flights-section">
-        <div class="container">
-            <h2>Flight Details</h2>
-            <p class="section-subtitle">Getting everyone to paradise</p>
-            <div style="text-align: center; margin-bottom: 2rem; padding: 1rem; background: rgba(255, 204, 0, 0.1); border-radius: 12px; border-left: 4px solid #ffcc00;">
-                <p style="color: #b8860b; font-size: 0.9rem; margin: 0;"><strong>Price Disclaimer:</strong> Flight prices shown are estimates based on preliminary searches and are subject to change. Actual prices may vary based on booking date, availability, and airline policies. Please check current rates when booking.</p>
-            </div>
-            
-            <div class="flight-cards">
-                <div class="flight-card">
-                    <div class="flight-header">
-                        <span class="flight-traveler">Rhea</span>
-                        <span class="flight-price">$671</span>
-                    </div>
-                    <div class="flight-route">
-                        <span class="airport">SFO</span>
-                        <span class="arrow">✈️</span>
-                        <span class="airport">PVR</span>
-                    </div>
-                    <div class="flight-details">
-                        <strong>Outbound:</strong> Fri Nov 14, 10:57 AM - 4:44 PM (3h 47m, non-stop)<br>
-                        Carrier: United or Alaska Airlines<br><br>
-                        <strong>Return:</strong> Thu Nov 20, 3:00 PM - 12:44 AM +1 (via Atlanta)<br>
-                        Carrier: Delta
-                    </div>
-                </div>
-
-                <div class="flight-card">
-                    <div class="flight-header">
-                        <span class="flight-traveler">Sneha</span>
-                        <span class="flight-price">$863</span>
-                    </div>
-                    <div class="flight-route">
-                        <span class="airport">DCA/IAD</span>
-                        <span class="arrow">✈️</span>
-                        <span class="airport">PVR</span>
-                    </div>
-                    <div class="flight-details">
-                        <strong>Outbound:</strong> Fri Nov 14, mid-morning (1 stop via Dallas/Houston)<br>
-                        Carrier: American or United<br><br>
-                        <strong>Return:</strong> Thu Nov 20, 3:00 PM - 12:44 AM +1 (via Atlanta)<br>
-                        Carrier: Delta - joins group flight
-                    </div>
-                </div>
-
-                <div class="flight-card">
-                    <div class="flight-header">
-                        <span class="flight-traveler">Sanika & Shrila</span>
-                        <span class="flight-price">$809 each</span>
-                    </div>
-                    <div class="flight-route">
-                        <span class="airport">DTW</span>
-                        <span class="arrow">✈️</span>
-                        <span class="airport">PVR</span>
-                    </div>
-                    <div class="flight-details">
-                        <strong>Outbound:</strong> Fri Nov 14, 7:05 AM - 1:50 PM (via Atlanta)<br>
-                        Carrier: Delta<br><br>
-                        <strong>Return:</strong> Thu Nov 20, 3:00 PM - 12:44 AM +1 (via Atlanta)<br>
-                        Carrier: Delta - entire group returns together!
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- REPLACEMENT HOTEL SECTION START -->
-    <section class="hotel-section">
+<section class="hotel-section">
         <div class="container">
             <h2>Accommodation Options</h2>
             <p class="section-subtitle">Compare 4 carefully selected hotels · 6 nights (Nov 14-20, 2025)</p>
@@ -2303,7 +2340,108 @@
         </div>
     </section>
 
-    <section class="itinerary-section">
+<section class="budget-section">
+        <div class="container">
+            <h2>Budget Breakdown</h2>
+            <p class="section-subtitle">Total trip cost for four travelers</p>
+            
+            <div class="budget-breakdown">
+                <div class="budget-total">
+                    <h3>Total Trip Cost</h3>
+                    <div class="total-amount" id="total-cost">$6,351</div>
+                    <p style="opacity: 0.9; margin-top: 0.5rem;" id="budget-buffer">$649 buffer remaining from $7,000 budget</p>
+                </div>
+                
+                <div class="budget-items">
+                    <div class="budget-item">
+                        <span class="budget-item-name">✈️ Flights</span>
+                        <span class="budget-item-amount">$3,151</span>
+                        <span class="budget-item-note">Round-trip for all four travelers from different cities</span>
+                    </div>
+                    
+                    <div class="budget-item">
+                        <span class="budget-item-name">🏨 Accommodation</span>
+                        <span class="budget-item-amount" id="accommodation-cost">$1,040</span>
+                        <span class="budget-item-note" id="accommodation-note">6 nights at <span id="selected-hotel">Casa Maria Hotel</span> (includes taxes & fees)</span>
+                    </div>
+                    
+                    <div class="budget-item">
+                        <span class="budget-item-name">🎉 Activities & Dining</span>
+                        <span class="budget-item-amount">$1,200</span>
+                        <span class="budget-item-note">~$300 per person for tours, spa, dining, clubs & transportation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="flights-section">
+        <div class="container">
+            <h2>Flight Details</h2>
+            <p class="section-subtitle">Getting everyone to paradise</p>
+            <div style="text-align: center; margin-bottom: 2rem; padding: 1rem; background: rgba(255, 204, 0, 0.1); border-radius: 12px; border-left: 4px solid #ffcc00;">
+                <p style="color: #b8860b; font-size: 0.9rem; margin: 0;"><strong>Price Disclaimer:</strong> Flight prices shown are estimates based on preliminary searches and are subject to change. Actual prices may vary based on booking date, availability, and airline policies. Please check current rates when booking.</p>
+            </div>
+            
+            <div class="flight-cards">
+                <div class="flight-card">
+                    <div class="flight-header">
+                        <span class="flight-traveler">Rhea</span>
+                        <span class="flight-price">$671</span>
+                    </div>
+                    <div class="flight-route">
+                        <span class="airport">SFO</span>
+                        <span class="arrow">✈️</span>
+                        <span class="airport">PVR</span>
+                    </div>
+                    <div class="flight-details">
+                        <strong>Outbound:</strong> Fri Nov 14, 10:57 AM - 4:44 PM (3h 47m, non-stop)<br>
+                        Carrier: United or Alaska Airlines<br><br>
+                        <strong>Return:</strong> Thu Nov 20, 3:00 PM - 12:44 AM +1 (via Atlanta)<br>
+                        Carrier: Delta
+                    </div>
+                </div>
+
+                <div class="flight-card">
+                    <div class="flight-header">
+                        <span class="flight-traveler">Sneha</span>
+                        <span class="flight-price">$863</span>
+                    </div>
+                    <div class="flight-route">
+                        <span class="airport">DCA/IAD</span>
+                        <span class="arrow">✈️</span>
+                        <span class="airport">PVR</span>
+                    </div>
+                    <div class="flight-details">
+                        <strong>Outbound:</strong> Fri Nov 14, mid-morning (1 stop via Dallas/Houston)<br>
+                        Carrier: American or United<br><br>
+                        <strong>Return:</strong> Thu Nov 20, 3:00 PM - 12:44 AM +1 (via Atlanta)<br>
+                        Carrier: Delta - joins group flight
+                    </div>
+                </div>
+
+                <div class="flight-card">
+                    <div class="flight-header">
+                        <span class="flight-traveler">Sanika & Shrila</span>
+                        <span class="flight-price">$809 each</span>
+                    </div>
+                    <div class="flight-route">
+                        <span class="airport">DTW</span>
+                        <span class="arrow">✈️</span>
+                        <span class="airport">PVR</span>
+                    </div>
+                    <div class="flight-details">
+                        <strong>Outbound:</strong> Fri Nov 14, 7:05 AM - 1:50 PM (via Atlanta)<br>
+                        Carrier: Delta<br><br>
+                        <strong>Return:</strong> Thu Nov 20, 3:00 PM - 12:44 AM +1 (via Atlanta)<br>
+                        Carrier: Delta - entire group returns together!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="itinerary-section">
         <div class="container">
             <h2>Daily Itinerary</h2>
             <p class="section-subtitle">Your perfect week, planned out</p>
@@ -2433,7 +2571,7 @@
         </div>
     </section>
 
-    <section id="featured-locations">
+<section id="featured-locations">
         <div class="container">
             <h2>Featured Locations</h2>
             <p class="section-subtitle">Places you'll explore and love</p>
@@ -2667,42 +2805,7 @@
         </div>
     </section>
 
-    <section class="budget-section">
-        <div class="container">
-            <h2>Budget Breakdown</h2>
-            <p class="section-subtitle">Total trip cost for four travelers</p>
-            
-            <div class="budget-breakdown">
-                <div class="budget-total">
-                    <h3>Total Trip Cost</h3>
-                    <div class="total-amount" id="total-cost">$6,351</div>
-                    <p style="opacity: 0.9; margin-top: 0.5rem;" id="budget-buffer">$649 buffer remaining from $7,000 budget</p>
-                </div>
-                
-                <div class="budget-items">
-                    <div class="budget-item">
-                        <span class="budget-item-name">✈️ Flights</span>
-                        <span class="budget-item-amount">$3,151</span>
-                        <span class="budget-item-note">Round-trip for all four travelers from different cities</span>
-                    </div>
-                    
-                    <div class="budget-item">
-                        <span class="budget-item-name">🏨 Accommodation</span>
-                        <span class="budget-item-amount" id="accommodation-cost">$1,040</span>
-                        <span class="budget-item-note" id="accommodation-note">6 nights at <span id="selected-hotel">Casa Maria Hotel</span> (includes taxes & fees)</span>
-                    </div>
-                    
-                    <div class="budget-item">
-                        <span class="budget-item-name">🎉 Activities & Dining</span>
-                        <span class="budget-item-amount">$1,200</span>
-                        <span class="budget-item-note">~$300 per person for tours, spa, dining, clubs & transportation</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="tips-section">
+<section class="tips-section">
         <div class="container">
             <h2>Travel Tips</h2>
             <p class="section-subtitle">Everything you need to know before you go</p>
@@ -2746,6 +2849,8 @@
             </div>
         </div>
     </section>
+
+
 
     <footer>
         <div class="container">
@@ -2977,6 +3082,58 @@ function selectHotelFromTable(hotelId) {
                         this.classList.toggle('flipped');
                     }
                 });
+
+        // // Sticky Navigation Functionality
+        let lastScrollTop = 0;
+        const stickyNav = document.getElementById('sticky-nav');
+        const heroHeight = document.querySelector('.hero').offsetHeight;
+        
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Show nav after scrolling past hero section
+            if (scrollTop > heroHeight - 100) {
+                stickyNav.classList.add('visible');
+            } else {
+                stickyNav.classList.remove('visible');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+        
+        // Smooth scroll functions for navigation links
+        function scrollToHotels(event) {
+            event.preventDefault();
+            const hotelSection = document.querySelector('.hotel-section');
+            if (hotelSection) {
+                hotelSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+        
+        function scrollToFlights(event) {
+            event.preventDefault();
+            const flightsSection = document.querySelector('.flights-section');
+            if (flightsSection) {
+                flightsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+        
+        function scrollToItinerary(event) {
+            event.preventDefault();
+            const itinerarySection = document.querySelector('.itinerary-section');
+            if (itinerarySection) {
+                itinerarySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+        
+        function scrollToBudget(event) {
+            event.preventDefault();
+            const budgetSection = document.querySelector('.budget-section');
+            if (budgetSection) {
+                budgetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+        
             });
         });
     </script>
