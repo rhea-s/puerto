@@ -1140,7 +1140,284 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
         }
-    </style>
+    
+
+/* View Toggle Buttons */
+.view-toggle-btn {
+    background: white;
+    border: 2px solid #e5e5e7;
+    padding: 0.875rem 2rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 0.5rem;
+    color: #1d1d1f;
+}
+
+.view-toggle-btn:hover {
+    border-color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+}
+
+.view-toggle-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Comparison Table Styles */
+.comparison-table-view {
+    margin-top: 2rem;
+}
+
+.comparison-table-container {
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    padding: 1rem;
+}
+
+.hotel-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.hotel-comparison-table th,
+.hotel-comparison-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #f5f5f7;
+}
+
+.feature-column {
+    width: 20%;
+    font-weight: 500;
+    background: #fbfbfd;
+    position: sticky;
+    left: 0;
+    z-index: 2;
+}
+
+.hotel-column {
+    width: 20%;
+    text-align: center;
+    background: white;
+}
+
+.hotel-header-cell h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #1d1d1f;
+}
+
+.price-badge {
+    display: inline-block;
+    padding: 0.35rem 0.875rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 0.25rem;
+}
+
+.price-badge.best-value {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+}
+
+.price-badge.unique {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    color: white;
+}
+
+.price-badge.party {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+}
+
+.price-badge.luxury {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+}
+
+.feature-label {
+    font-weight: 500;
+    color: #6e6e73;
+    background: #fbfbfd;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+}
+
+.price-row {
+    background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
+}
+
+.price-row td {
+    font-size: 1.1rem;
+    padding: 1.25rem 1rem;
+}
+
+.highlight-cell {
+    background: linear-gradient(135deg, #fffbeb 0%, #fff 100%);
+    font-weight: 600;
+    color: #667eea;
+}
+
+.section-header-row {
+    background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
+}
+
+.section-header-row td {
+    font-size: 1rem;
+    padding: 1rem;
+    color: #1d1d1f;
+    border-top: 2px solid #e5e5e7;
+}
+
+.action-row td {
+    padding: 1.5rem 1rem;
+    border-top: 2px solid #e5e5e7;
+}
+
+.select-hotel-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    border: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.select-hotel-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Improved Selection Cards */
+.quick-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.selection-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 18px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    border: 3px solid transparent;
+}
+
+.selection-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.2);
+    border-color: #667eea;
+}
+
+.selection-card.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+}
+
+.selection-card.active .hotel-name-small,
+.selection-card.active .price-large,
+.selection-card.active .price-per-person,
+.selection-card.active .selection-cta {
+    color: white;
+}
+
+.selection-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 0.35rem 0.875rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: none;
+}
+
+.selection-card.active .selection-badge {
+    display: block;
+}
+
+.selection-cta {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: #667eea;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+.selection-card.active .selection-cta {
+    color: white;
+    opacity: 1;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .comparison-table-container {
+        padding: 0.5rem;
+    }
+    
+    .hotel-comparison-table {
+        font-size: 0.85rem;
+    }
+    
+    .hotel-comparison-table th,
+    .hotel-comparison-table td {
+        padding: 0.75rem 0.5rem;
+    }
+    
+    .feature-column {
+        width: 30%;
+    }
+    
+    .hotel-column {
+        width: 17.5%;
+    }
+    
+    .hotel-header-cell h3 {
+        font-size: 0.9rem;
+    }
+    
+    .price-badge {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .view-toggle-btn {
+        font-size: 0.9rem;
+        padding: 0.75rem 1.5rem;
+        margin: 0.25rem;
+    }
+    
+    .quick-selection-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+</style>
 </head>
 <body>
     <div class="hero">
@@ -1260,40 +1537,240 @@
         </div>
     </section>
 
+    <!-- REPLACEMENT HOTEL SECTION START -->
     <section class="hotel-section">
         <div class="container">
             <h2>Accommodation Options</h2>
-            <p class="section-subtitle">Compare 4 carefully selected hotels</p>
+            <p class="section-subtitle">Compare 4 carefully selected hotels · 6 nights (Nov 14-20, 2025)</p>
             
-            <!-- Quick Comparison -->
-            <div class="quick-comparison">
-                <div class="comparison-header">
-                    <h3>Quick Price Comparison</h3>
-                    <p style="color: #86868b; font-size: 0.95rem;">6 nights (Nov 14-20, 2025) for 4 travelers</p>
+            <!-- View Toggle Buttons -->
+            <div style="text-align: center; margin: 2rem 0 3rem;">
+                <button class="view-toggle-btn active" id="comparison-toggle" onclick="toggleView('comparison')">
+                    📊 Full Comparison Table
+                </button>
+                <button class="view-toggle-btn" id="detailed-toggle" onclick="toggleView('detailed')">
+                    🏨 Detailed Individual Views
+                </button>
+            </div>
+
+            <!-- Full Comparison Table View -->
+            <div id="comparison-view" class="comparison-table-view">
+                <div class="comparison-table-container">
+                    <table class="hotel-comparison-table">
+                        <thead>
+                            <tr>
+                                <th class="feature-column">Feature</th>
+                                <th class="hotel-column casa-maria-col">
+                                    <div class="hotel-header-cell">
+                                        <h3>Casa Maria</h3>
+                                        <div class="price-badge best-value">Best Value ⭐</div>
+                                    </div>
+                                </th>
+                                <th class="hotel-column rivera-col">
+                                    <div class="hotel-header-cell">
+                                        <h3>Rivera Del Rio</h3>
+                                        <div class="price-badge unique">Most Unique</div>
+                                    </div>
+                                </th>
+                                <th class="hotel-column almar-col">
+                                    <div class="hotel-header-cell">
+                                        <h3>Almar Resort</h3>
+                                        <div class="price-badge party">Party Central 🎉</div>
+                                    </div>
+                                </th>
+                                <th class="hotel-column vallarta-col">
+                                    <div class="hotel-header-cell">
+                                        <h3>Vallarta Shores</h3>
+                                        <div class="price-badge luxury">Most Space</div>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="price-row">
+                                <td class="feature-label"><strong>💰 Total Cost</strong></td>
+                                <td class="highlight-cell"><strong>$1,040</strong></td>
+                                <td>$1,194</td>
+                                <td>$1,549</td>
+                                <td>$1,800</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-label">Per Person</td>
+                                <td class="highlight-cell">$260</td>
+                                <td>$299</td>
+                                <td>$387</td>
+                                <td>$450</td>
+                            </tr>
+                            <tr class="section-header-row">
+                                <td colspan="5"><strong>🛏️ Room Details</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="feature-label">Room Type</td>
+                                <td>Standard Queen Suite</td>
+                                <td>Carlotta 2-Bed Suite</td>
+                                <td>Garden View Suite</td>
+                                <td>2-Bedroom Beachfront</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-label">Beds</td>
+                                <td>2 Queen Beds</td>
+                                <td>2 Bedrooms</td>
+                                <td>Suite with garden view</td>
+                                <td>2 King Beds</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-label">Private Pool</td>
+                                <td>❌</td>
+                                <td class="highlight-cell">✅ 15-foot mosaic pool</td>
+                                <td>❌</td>
+                                <td>❌</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-label">Full Kitchen</td>
+                                <td>❌ Mini-bar only</td>
+                                <td>✅ Shared kitchen access</td>
+                                <td>❌ Mini-bar</td>
+                                <td class="highlight-cell">✅ Full private kitchen</td>
+                            </tr>
+                            <tr class="section-header-row">
+                                <td colspan="5"><strong>🏖️ Location & Beach Access</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="feature-label">Beach Distance</td>
+                                <td class="highlight-cell">2 minute walk</td>
+                                <td>15 minute walk</td>
+                                <td class="highlight-cell">ON the beach ⭐</td>
+                                <td class="highlight-cell">ON the beach ⭐</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-label">Neighborhood</td>
+                                <td>Heart of Zona Romántica</td>
+                                <td>Quiet riverside area</td>
+                                <td>Los Muertos Beach</td>
+                                <td>Los Muertos Beach</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-label">Walkability to Nightlife</td>
+                                <td class="highlight-cell">Excellent - 2-5 min</td>
+                                <td>Good - 10-15 min</td>
+                                <td class="highlight-cell">Built-in nightlife ⭐</td>
+                                <td>Excellent - 5 min</td>
+                            </tr>
+                            <tr class="section-header-row">
+                                <td colspan="5"><strong>✨ Key Amenities</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="feature-label">Breakfast Included</td>
+                                <td class="highlight-cell">✅ Free daily</td>
+                                <td>💵 $12 per person</td>
+                                <td>❌</td>
+                                <td>❌</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-label">Swimming Pools</td>
+                                <td>1 Rooftop pool</td>
+                                <td class="highlight-cell">4 pools + rooftop jacuzzi</td>
+                                <td>2 pools + beach club</td>
+                                <td>1 Infinity pool</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-label">On-site Dining</td>
+                                <td>Pool bar + happy hour</td>
+                                <td>Limited (breakfast option)</td>
+                                <td class="highlight-cell">2 restaurants + sushi bar</td>
+                                <td>Room service available</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-label">Spa Services</td>
+                                <td>❌</td>
+                                <td>✅ Available</td>
+                                <td class="highlight-cell">✅ Full-service spa</td>
+                                <td>✅ Massage services</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-label">Entertainment/Nightlife</td>
+                                <td>Daily happy hour</td>
+                                <td>Quiet & peaceful</td>
+                                <td class="highlight-cell">DJs, shows, sky bar ⭐</td>
+                                <td>Nearby bars & clubs</td>
+                            </tr>
+                            <tr>
+                                <td class="feature-label">Adults Only</td>
+                                <td>✅ 18+</td>
+                                <td>❌</td>
+                                <td>✅ 18+</td>
+                                <td>❌</td>
+                            </tr>
+                            <tr class="section-header-row">
+                                <td colspan="5"><strong>🎯 Best For</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="feature-label">Ideal For</td>
+                                <td>Budget-conscious travelers who want social atmosphere & perfect location</td>
+                                <td>Those seeking unique character, privacy, and historic charm</td>
+                                <td>Party lovers who want all-inclusive feel with built-in entertainment</td>
+                                <td>Groups wanting space, privacy, cooking facilities & beach access</td>
+                            </tr>
+                            <tr class="action-row">
+                                <td class="feature-label"></td>
+                                <td>
+                                    <button class="select-hotel-btn" onclick="selectHotelFromTable('casa-maria')">
+                                        📸 View Full Details
+                                    </button>
+                                </td>
+                                <td>
+                                    <button class="select-hotel-btn" onclick="selectHotelFromTable('rivera')">
+                                        📸 View Full Details
+                                    </button>
+                                </td>
+                                <td>
+                                    <button class="select-hotel-btn" onclick="selectHotelFromTable('almar')">
+                                        📸 View Full Details
+                                    </button>
+                                </td>
+                                <td>
+                                    <button class="select-hotel-btn" onclick="selectHotelFromTable('vallarta')">
+                                        📸 View Full Details
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="comparison-grid">
-                    <div class="comparison-item active" data-hotel="casa-maria" onclick="showHotel('casa-maria')">
+            </div>
+
+            <!-- Detailed Individual Views -->
+            <div id="detailed-view" class="detailed-hotels-view" style="display: none;">
+                <!-- Quick Selection Cards with Better Visual Feedback -->
+                <div class="quick-selection-grid">
+                    <div class="selection-card active" data-hotel="casa-maria" onclick="showHotel('casa-maria')">
+                        <div class="selection-badge">✓ Selected</div>
                         <div class="hotel-name-small">Casa Maria</div>
                         <div class="price-large">$1,040</div>
                         <div class="price-per-person">$260 per person</div>
+                        <div class="selection-cta">👆 Click to view details</div>
                     </div>
-                    <div class="comparison-item" data-hotel="rivera" onclick="showHotel('rivera')">
+                    <div class="selection-card" data-hotel="rivera" onclick="showHotel('rivera')">
                         <div class="hotel-name-small">Rivera Del Rio</div>
                         <div class="price-large">$1,194</div>
                         <div class="price-per-person">$299 per person</div>
+                        <div class="selection-cta">👆 Click to view details</div>
                     </div>
-                    <div class="comparison-item" data-hotel="almar" onclick="showHotel('almar')">
+                    <div class="selection-card" data-hotel="almar" onclick="showHotel('almar')">
                         <div class="hotel-name-small">Almar Resort</div>
                         <div class="price-large">$1,549</div>
                         <div class="price-per-person">$387 per person</div>
+                        <div class="selection-cta">👆 Click to view details</div>
                     </div>
-                    <div class="comparison-item" data-hotel="vallarta" onclick="showHotel('vallarta')">
+                    <div class="selection-card" data-hotel="vallarta" onclick="showHotel('vallarta')">
                         <div class="hotel-name-small">Vallarta Shores</div>
                         <div class="price-large">$1,800</div>
                         <div class="price-per-person">$450 per person</div>
+                        <div class="selection-cta">👆 Click to view details</div>
                     </div>
                 </div>
-            </div>
+<!-- REPLACEMENT HOTEL SECTION END -->
+
 
             <!-- Hotel 1: Casa Maria -->
             <div id="casa-maria" class="hotel-content active">
@@ -2312,6 +2789,41 @@
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
         });
+
+        // View toggle functionality
+function toggleView(viewType) {
+    const comparisonView = document.getElementById('comparison-view');
+    const detailedView = document.getElementById('detailed-view');
+    const comparisonToggle = document.getElementById('comparison-toggle');
+    const detailedToggle = document.getElementById('detailed-toggle');
+    
+    if (viewType === 'comparison') {
+        comparisonView.style.display = 'block';
+        detailedView.style.display = 'none';
+        comparisonToggle.classList.add('active');
+        detailedToggle.classList.remove('active');
+    } else {
+        comparisonView.style.display = 'none';
+        detailedView.style.display = 'block';
+        comparisonToggle.classList.remove('active');
+        detailedToggle.classList.add('active');
+    }
+}
+
+// Select hotel from comparison table and switch to detailed view
+function selectHotelFromTable(hotelId) {
+    // Switch to detailed view
+    toggleView('detailed');
+    
+    // Scroll to the detailed section
+    document.getElementById('detailed-view').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    
+    // After a brief delay for scroll, show the hotel
+    setTimeout(() => {
+        showHotel(hotelId);
+    }, 500);
+}
+
 
         // Hotel comparison functionality
         
