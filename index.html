@@ -1703,7 +1703,7 @@
     <nav id="sticky-nav" class="sticky-nav">
         <div class="sticky-nav-container">
             <a href="#overview" class="nav-link">📋 Overview</a>
-            <a href="#" onclick="scrollToHotels(event)" class="nav-link nav-highlight">🏨 Hotels</a>
+            <a href="#" onclick="scrollToHotels(event)" class="nav-link">🏨 Hotels</a>
             <a href="#" onclick="scrollToFlights(event)" class="nav-link">✈️ Flights</a>
             <a href="#" onclick="scrollToItinerary(event)" class="nav-link">📅 Itinerary</a>
             <a href="#" onclick="scrollToBudget(event)" class="nav-link">💰 Budget</a>
@@ -3263,13 +3263,50 @@
     </footer>
 
     <script>
-        // Smooth scrolling for anchor links
+        // Smooth scroll functions for navigation links (Global scope for onclick handlers)
+        function scrollToHotels(event) {
+            event.preventDefault();
+            const hotelSection = document.querySelector('.hotel-section');
+            if (hotelSection) {
+                hotelSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function scrollToFlights(event) {
+            event.preventDefault();
+            const flightsSection = document.querySelector('.flights-section');
+            if (flightsSection) {
+                flightsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function scrollToItinerary(event) {
+            event.preventDefault();
+            const itinerarySection = document.querySelector('.itinerary-section');
+            if (itinerarySection) {
+                itinerarySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function scrollToBudget(event) {
+            event.preventDefault();
+            const budgetSection = document.querySelector('.budget-section');
+            if (budgetSection) {
+                budgetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Smooth scrolling for anchor links (with validation)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+                const href = this.getAttribute('href');
+                // Only handle valid selectors (not just '#' or empty)
+                if (href && href.length > 1) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
                 }
             });
         });
@@ -3480,7 +3517,7 @@ function selectHotelFromTable(hotelId) {
         // Initialize page with Casa Maria data when loaded
         document.addEventListener('DOMContentLoaded', function() {
             updateBudget('casa-maria'); // Initialize budget with Casa Maria pricing
-            
+
             // Add mobile tap-to-flip functionality for flip cards
             const flipCards = document.querySelectorAll('.flip-card');
             flipCards.forEach(card => {
@@ -3490,64 +3527,87 @@ function selectHotelFromTable(hotelId) {
                         this.classList.toggle('flipped');
                     }
                 });
-
-        // // Sticky Navigation Functionality
-        const stickyNav = document.getElementById('sticky-nav');
-        const heroElement = document.querySelector('.hero');
-        
-        if (stickyNav && heroElement) {
-            let lastScrollTop = 0;
-            const heroHeight = heroElement.offsetHeight;
-
-            window.addEventListener('scroll', function() {
-                if (!stickyNav) return; // Safety check
-                
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
-                // Show nav after scrolling past hero section
-                if (scrollTop > heroHeight - 100) {
-                    stickyNav.classList.add('visible');
-                } else {
-                    stickyNav.classList.remove('visible');
-                }
-                
-                lastScrollTop = scrollTop;
             });
-        }
-        
-        // Smooth scroll functions for navigation links
-        function scrollToHotels(event) {
-            event.preventDefault();
-            const hotelSection = document.querySelector('.hotel-section');
-            if (hotelSection) {
-                hotelSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Sticky Navigation Functionality
+            const stickyNav = document.getElementById('sticky-nav');
+            const heroElement = document.querySelector('.hero');
+
+            if (stickyNav && heroElement) {
+                let lastScrollTop = 0;
+                const heroHeight = heroElement.offsetHeight;
+
+                window.addEventListener('scroll', function() {
+                    if (!stickyNav) return; // Safety check
+
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                    // Show nav after scrolling past hero section
+                    if (scrollTop > heroHeight - 100) {
+                        stickyNav.classList.add('visible');
+                    } else {
+                        stickyNav.classList.remove('visible');
+                    }
+
+                    lastScrollTop = scrollTop;
+                });
             }
-        }
-        
-        function scrollToFlights(event) {
-            event.preventDefault();
-            const flightsSection = document.querySelector('.flights-section');
-            if (flightsSection) {
-                flightsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        }
-        
-        function scrollToItinerary(event) {
-            event.preventDefault();
-            const itinerarySection = document.querySelector('.itinerary-section');
-            if (itinerarySection) {
-                itinerarySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        }
-        
-        function scrollToBudget(event) {
-            event.preventDefault();
-            const budgetSection = document.querySelector('.budget-section');
-            if (budgetSection) {
-                budgetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        }
-        
+
+            // Active section highlighting with Intersection Observer
+            const sections = [
+                { id: 'overview', selector: '#overview' },
+                { id: 'hotels', selector: '.hotel-section' },
+                { id: 'flights', selector: '.flights-section' },
+                { id: 'itinerary', selector: '.itinerary-section' },
+                { id: 'budget', selector: '.budget-section' }
+            ];
+
+            // Map sections to their corresponding nav links
+            const navLinkMap = {
+                'overview': 'a[href="#overview"]',
+                'hotels': 'a[onclick*="scrollToHotels"]',
+                'flights': 'a[onclick*="scrollToFlights"]',
+                'itinerary': 'a[onclick*="scrollToItinerary"]',
+                'budget': 'a[onclick*="scrollToBudget"]'
+            };
+
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Find which section is currently in view
+                        const sectionId = sections.find(s => {
+                            const element = document.querySelector(s.selector);
+                            return element === entry.target;
+                        })?.id;
+
+                        if (sectionId) {
+                            // Remove nav-highlight from all nav links
+                            document.querySelectorAll('.nav-link').forEach(link => {
+                                link.classList.remove('nav-highlight');
+                            });
+
+                            // Add nav-highlight to the corresponding nav link
+                            const navLinkSelector = navLinkMap[sectionId];
+                            if (navLinkSelector) {
+                                const activeLink = document.querySelector(navLinkSelector);
+                                if (activeLink) {
+                                    activeLink.classList.add('nav-highlight');
+                                }
+                            }
+                        }
+                    }
+                });
+            }, {
+                threshold: [0, 0.1, 0.2], // Multiple thresholds for better detection
+                rootMargin: '-100px 0px -75% 0px' // Top 100px offset for sticky nav, focus on top 25% of viewport
+            });
+
+            // Observe all sections
+            sections.forEach(section => {
+                const element = document.querySelector(section.selector);
+                if (element) {
+                    sectionObserver.observe(element);
+                }
             });
         });
     </script>
