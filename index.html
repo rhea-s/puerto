@@ -2886,16 +2886,16 @@ function selectHotelFromTable(hotelId) {
                 content.classList.remove('active');
             });
 
-            // Remove active class from all comparison items
-            document.querySelectorAll('.comparison-item').forEach(item => {
-                item.classList.remove('active');
+            // Remove active class from all selection cards
+            document.querySelectorAll('.selection-card').forEach(card => {
+                card.classList.remove('active');
             });
 
             // Show selected hotel
             document.getElementById(hotelId).classList.add('active');
             
-            // Add active class to clicked comparison item
-            document.querySelector(`.comparison-item[data-hotel="${hotelId}"]`).classList.add('active');
+            // Add active class to clicked selection card
+            document.querySelector(`.selection-card[data-hotel="${hotelId}"]`).classList.add('active');
 
             // Update budget breakdown with selected hotel pricing
             updateBudget(hotelId);
