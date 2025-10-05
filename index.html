@@ -1707,6 +1707,8 @@
             <a href="#" onclick="scrollToBudget(event)" class="nav-link">💰 Budget</a>
             <a href="#" onclick="scrollToFlights(event)" class="nav-link">✈️ Flights</a>
             <a href="#" onclick="scrollToItinerary(event)" class="nav-link">📅 Itinerary</a>
+            <a href="#" onclick="scrollToLocations(event)" class="nav-link">📍 Locations</a>
+            <a href="#" onclick="scrollToTips(event)" class="nav-link">💡 Tips</a>
         </div>
     </nav>
 
@@ -3296,6 +3298,22 @@
             }
         }
 
+        function scrollToLocations(event) {
+            event.preventDefault();
+            const locationsSection = document.querySelector('#featured-locations');
+            if (locationsSection) {
+                locationsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function scrollToTips(event) {
+            event.preventDefault();
+            const tipsSection = document.querySelector('.tips-section');
+            if (tipsSection) {
+                tipsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
         // Smooth scrolling for anchor links (with validation)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -3554,13 +3572,15 @@ function selectHotelFromTable(hotelId) {
             }
 
             // Active section highlighting based on actual section positions
-            // Sections in actual page order: Overview → Hotels → Budget → Flights → Itinerary
+            // Sections in actual page order: Overview → Hotels → Budget → Flights → Itinerary → Locations → Tips
             const sections = [
                 { id: 'overview', selector: '#overview' },
                 { id: 'hotels', selector: '.hotel-section' },
                 { id: 'budget', selector: '.budget-section' },
                 { id: 'flights', selector: '.flights-section' },
-                { id: 'itinerary', selector: '.itinerary-section' }
+                { id: 'itinerary', selector: '.itinerary-section' },
+                { id: 'locations', selector: '#featured-locations' },
+                { id: 'tips', selector: '.tips-section' }
             ];
 
             // Map sections to their corresponding nav links
@@ -3569,7 +3589,9 @@ function selectHotelFromTable(hotelId) {
                 'hotels': 'a[onclick*="scrollToHotels"]',
                 'flights': 'a[onclick*="scrollToFlights"]',
                 'itinerary': 'a[onclick*="scrollToItinerary"]',
-                'budget': 'a[onclick*="scrollToBudget"]'
+                'budget': 'a[onclick*="scrollToBudget"]',
+                'locations': 'a[onclick*="scrollToLocations"]',
+                'tips': 'a[onclick*="scrollToTips"]'
             };
 
             let currentSection = null;
@@ -3653,6 +3675,10 @@ function selectHotelFromTable(hotelId) {
                         clickedSection = 'flights';
                     } else if (this.getAttribute('onclick')?.includes('scrollToItinerary')) {
                         clickedSection = 'itinerary';
+                    } else if (this.getAttribute('onclick')?.includes('scrollToLocations')) {
+                        clickedSection = 'locations';
+                    } else if (this.getAttribute('onclick')?.includes('scrollToTips')) {
+                        clickedSection = 'tips';
                     }
 
                     if (clickedSection) {
