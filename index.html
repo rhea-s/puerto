@@ -1704,9 +1704,9 @@
         <div class="sticky-nav-container">
             <a href="#overview" class="nav-link">📋 Overview</a>
             <a href="#" onclick="scrollToHotels(event)" class="nav-link">🏨 Hotels</a>
+            <a href="#" onclick="scrollToBudget(event)" class="nav-link">💰 Budget</a>
             <a href="#" onclick="scrollToFlights(event)" class="nav-link">✈️ Flights</a>
             <a href="#" onclick="scrollToItinerary(event)" class="nav-link">📅 Itinerary</a>
-            <a href="#" onclick="scrollToBudget(event)" class="nav-link">💰 Budget</a>
         </div>
     </nav>
 
@@ -3553,13 +3553,14 @@ function selectHotelFromTable(hotelId) {
                 });
             }
 
-            // Active section highlighting with Intersection Observer
+            // Active section highlighting - different logic for mobile vs desktop
+            // Sections in actual page order: Overview → Hotels → Budget → Flights → Itinerary
             const sections = [
                 { id: 'overview', selector: '#overview' },
                 { id: 'hotels', selector: '.hotel-section' },
+                { id: 'budget', selector: '.budget-section' },
                 { id: 'flights', selector: '.flights-section' },
-                { id: 'itinerary', selector: '.itinerary-section' },
-                { id: 'budget', selector: '.budget-section' }
+                { id: 'itinerary', selector: '.itinerary-section' }
             ];
 
             // Map sections to their corresponding nav links
@@ -3574,55 +3575,89 @@ function selectHotelFromTable(hotelId) {
             let currentSection = null;
             let isScrolling = false;
             let scrollTimeout;
+            const isMobile = window.innerWidth <= 768;
 
-            const sectionObserver = new IntersectionObserver((entries) => {
-                // Don't update highlights while programmatically scrolling
-                if (isScrolling) return;
+            // Helper function to update nav highlight
+            function updateNavHighlight(sectionId) {
+                if (sectionId && sectionId !== currentSection) {
+                    currentSection = sectionId;
 
-                // Sort entries by intersection ratio to prioritize the most visible section
-                const intersectingEntries = entries.filter(e => e.isIntersecting)
-                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+                    // Remove nav-highlight from all nav links
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('nav-highlight');
+                    });
 
-                if (intersectingEntries.length > 0) {
-                    // Get the most visible section
-                    const mostVisibleEntry = intersectingEntries[0];
-
-                    // Find which section is currently in view
-                    const sectionId = sections.find(s => {
-                        const element = document.querySelector(s.selector);
-                        return element === mostVisibleEntry.target;
-                    })?.id;
-
-                    if (sectionId && sectionId !== currentSection) {
-                        currentSection = sectionId;
-
-                        // Remove nav-highlight from all nav links
-                        document.querySelectorAll('.nav-link').forEach(link => {
-                            link.classList.remove('nav-highlight');
-                        });
-
-                        // Add nav-highlight to the corresponding nav link
-                        const navLinkSelector = navLinkMap[sectionId];
-                        if (navLinkSelector) {
-                            const activeLink = document.querySelector(navLinkSelector);
-                            if (activeLink) {
-                                activeLink.classList.add('nav-highlight');
-                            }
+                    // Add nav-highlight to the corresponding nav link
+                    const navLinkSelector = navLinkMap[sectionId];
+                    if (navLinkSelector) {
+                        const activeLink = document.querySelector(navLinkSelector);
+                        if (activeLink) {
+                            activeLink.classList.add('nav-highlight');
                         }
                     }
                 }
-            }, {
-                threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5], // Multiple thresholds for better detection
-                rootMargin: '-100px 0px -66% 0px' // Top 100px offset for sticky nav
-            });
+            }
 
-            // Observe all sections
-            sections.forEach(section => {
-                const element = document.querySelector(section.selector);
-                if (element) {
-                    sectionObserver.observe(element);
-                }
-            });
+            if (isMobile) {
+                // Mobile: Use scroll percentage based detection
+                // Section order: Overview → Hotels → Budget → Flights → Itinerary
+                window.addEventListener('scroll', function() {
+                    if (isScrolling) return;
+
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    const scrollPercent = (scrollTop / docHeight) * 100;
+
+                    let sectionId;
+                    if (scrollPercent < 15) {
+                        sectionId = 'overview';
+                    } else if (scrollPercent < 40) {
+                        sectionId = 'hotels';
+                    } else if (scrollPercent < 60) {
+                        sectionId = 'budget';
+                    } else if (scrollPercent < 80) {
+                        sectionId = 'flights';
+                    } else {
+                        sectionId = 'itinerary';
+                    }
+
+                    updateNavHighlight(sectionId);
+                });
+            } else {
+                // Desktop: Use Intersection Observer
+                const sectionObserver = new IntersectionObserver((entries) => {
+                    // Don't update highlights while programmatically scrolling
+                    if (isScrolling) return;
+
+                    // Sort entries by intersection ratio to prioritize the most visible section
+                    const intersectingEntries = entries.filter(e => e.isIntersecting)
+                        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+                    if (intersectingEntries.length > 0) {
+                        // Get the most visible section
+                        const mostVisibleEntry = intersectingEntries[0];
+
+                        // Find which section is currently in view
+                        const sectionId = sections.find(s => {
+                            const element = document.querySelector(s.selector);
+                            return element === mostVisibleEntry.target;
+                        })?.id;
+
+                        updateNavHighlight(sectionId);
+                    }
+                }, {
+                    threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5], // Multiple thresholds for better detection
+                    rootMargin: '-100px 0px -66% 0px' // Top 100px offset for sticky nav
+                });
+
+                // Observe all sections
+                sections.forEach(section => {
+                    const element = document.querySelector(section.selector);
+                    if (element) {
+                        sectionObserver.observe(element);
+                    }
+                });
+            }
 
             // Add click listeners to nav links to prevent conflicts
             document.querySelectorAll('.nav-link').forEach(link => {
