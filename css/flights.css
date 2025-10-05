@@ -1,0 +1,62 @@
+        .flights-section {
+            background: linear-gradient(180deg, #fbfbfd 0%, #f5f5f7 100%);
+        }
+
+        .flight-cards {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .flight-card {
+            background: white;
+            border-radius: 18px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .flight-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .flight-traveler {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .flight-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .flight-route {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .airport {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .arrow {
+            color: #86868b;
+            font-size: 1.5rem;
+        }
+
+        .flight-details {
+            color: #6e6e73;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }

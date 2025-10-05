@@ -1,0 +1,71 @@
+        .budget-section {
+            background: white;
+        }
+
+        .budget-breakdown {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 24px;
+            padding: 3rem;
+            color: white;
+            margin-top: 3rem;
+        }
+
+        .budget-total {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .budget-total h3 {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .total-amount {
+            font-size: 4rem;
+            font-weight: 700;
+        }
+
+        .budget-items {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .budget-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .budget-item-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .budget-item-amount {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .budget-item-note {
+            flex-basis: 100%;
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .tips-section {
+            background: linear-gradient(180deg, #fbfbfd 0%, #f5f5f7 100%);
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
