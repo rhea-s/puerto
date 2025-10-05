@@ -3572,8 +3572,13 @@ function selectHotelFromTable(hotelId) {
             };
 
             let currentSection = null;
+            let isScrolling = false;
+            let scrollTimeout;
 
             const sectionObserver = new IntersectionObserver((entries) => {
+                // Don't update highlights while programmatically scrolling
+                if (isScrolling) return;
+
                 // Sort entries by intersection ratio to prioritize the most visible section
                 const intersectingEntries = entries.filter(e => e.isIntersecting)
                     .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
@@ -3617,6 +3622,22 @@ function selectHotelFromTable(hotelId) {
                 if (element) {
                     sectionObserver.observe(element);
                 }
+            });
+
+            // Add click listeners to nav links to prevent conflicts
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    // Disable observer updates during scroll
+                    isScrolling = true;
+
+                    // Clear any existing timeout
+                    clearTimeout(scrollTimeout);
+
+                    // Re-enable observer after scroll completes (1 second)
+                    scrollTimeout = setTimeout(() => {
+                        isScrolling = false;
+                    }, 1000);
+                });
             });
 
             // Fallback: Highlight Overview by default when page loads
