@@ -3625,6 +3625,12 @@ function selectHotelFromTable(hotelId) {
                 });
             } else {
                 // Desktop: Use Intersection Observer
+                // Pre-fetch all section elements and store references
+                const sectionElements = sections.map(s => ({
+                    id: s.id,
+                    element: document.querySelector(s.selector)
+                })).filter(s => s.element !== null);
+
                 const sectionObserver = new IntersectionObserver((entries) => {
                     // Don't update highlights while programmatically scrolling
                     if (isScrolling) return;
@@ -3637,11 +3643,10 @@ function selectHotelFromTable(hotelId) {
                         // Get the most visible section
                         const mostVisibleEntry = intersectingEntries[0];
 
-                        // Find which section is currently in view
-                        const sectionId = sections.find(s => {
-                            const element = document.querySelector(s.selector);
-                            return element === mostVisibleEntry.target;
-                        })?.id;
+                        // Find which section is currently in view using stored element references
+                        const sectionId = sectionElements.find(s =>
+                            s.element === mostVisibleEntry.target
+                        )?.id;
 
                         updateNavHighlight(sectionId);
                     }
@@ -3650,12 +3655,9 @@ function selectHotelFromTable(hotelId) {
                     rootMargin: '-100px 0px -66% 0px' // Top 100px offset for sticky nav
                 });
 
-                // Observe all sections
-                sections.forEach(section => {
-                    const element = document.querySelector(section.selector);
-                    if (element) {
-                        sectionObserver.observe(element);
-                    }
+                // Observe all sections using stored references
+                sectionElements.forEach(section => {
+                    sectionObserver.observe(section.element);
                 });
             }
 
