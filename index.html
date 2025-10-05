@@ -3553,7 +3553,7 @@ function selectHotelFromTable(hotelId) {
                 });
             }
 
-            // Active section highlighting - different logic for mobile vs desktop
+            // Active section highlighting based on actual section positions
             // Sections in actual page order: Overview → Hotels → Budget → Flights → Itinerary
             const sections = [
                 { id: 'overview', selector: '#overview' },
@@ -3575,7 +3575,19 @@ function selectHotelFromTable(hotelId) {
             let currentSection = null;
             let isScrolling = false;
             let scrollTimeout;
-            const isMobile = window.innerWidth <= 768;
+
+            // Calculate actual section positions
+            const sectionPositions = sections.map(s => {
+                const element = document.querySelector(s.selector);
+                if (element) {
+                    return {
+                        id: s.id,
+                        top: element.offsetTop,
+                        bottom: element.offsetTop + element.offsetHeight
+                    };
+                }
+                return null;
+            }).filter(s => s !== null);
 
             // Helper function to update nav highlight
             function updateNavHighlight(sectionId) {
@@ -3598,82 +3610,65 @@ function selectHotelFromTable(hotelId) {
                 }
             }
 
-            if (isMobile) {
-                // Mobile: Use scroll percentage based detection
-                // Section order: Overview → Hotels → Budget → Flights → Itinerary
-                window.addEventListener('scroll', function() {
-                    if (isScrolling) return;
+            // Position-based scroll detection for all devices
+            window.addEventListener('scroll', function() {
+                if (isScrolling) return;
 
-                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-                    const scrollPercent = (scrollTop / docHeight) * 100;
+                // Get scroll position with offset for sticky nav (100px)
+                const scrollPos = window.scrollY + 150;
 
-                    let sectionId;
-                    if (scrollPercent < 15) {
-                        sectionId = 'overview';
-                    } else if (scrollPercent < 40) {
-                        sectionId = 'hotels';
-                    } else if (scrollPercent < 60) {
-                        sectionId = 'budget';
-                    } else if (scrollPercent < 80) {
-                        sectionId = 'flights';
-                    } else {
-                        sectionId = 'itinerary';
-                    }
+                // Find which section we're currently in
+                let currentSectionData = sectionPositions.find(s =>
+                    scrollPos >= s.top && scrollPos < s.bottom
+                );
 
-                    updateNavHighlight(sectionId);
-                });
-            } else {
-                // Desktop: Use Intersection Observer
-                // Pre-fetch all section elements and store references
-                const sectionElements = sections.map(s => ({
-                    id: s.id,
-                    element: document.querySelector(s.selector)
-                })).filter(s => s.element !== null);
+                // If not found (e.g., at very bottom), use last section
+                if (!currentSectionData && sectionPositions.length > 0) {
+                    currentSectionData = sectionPositions[sectionPositions.length - 1];
+                }
 
-                const sectionObserver = new IntersectionObserver((entries) => {
-                    // Don't update highlights while programmatically scrolling
-                    if (isScrolling) return;
-
-                    // Sort entries by intersection ratio to prioritize the most visible section
-                    const intersectingEntries = entries.filter(e => e.isIntersecting)
-                        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-                    if (intersectingEntries.length > 0) {
-                        // Get the most visible section
-                        const mostVisibleEntry = intersectingEntries[0];
-
-                        // Find which section is currently in view using stored element references
-                        const sectionId = sectionElements.find(s =>
-                            s.element === mostVisibleEntry.target
-                        )?.id;
-
-                        updateNavHighlight(sectionId);
-                    }
-                }, {
-                    threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5], // Multiple thresholds for better detection
-                    rootMargin: '-100px 0px -66% 0px' // Top 100px offset for sticky nav
-                });
-
-                // Observe all sections using stored references
-                sectionElements.forEach(section => {
-                    sectionObserver.observe(section.element);
-                });
-            }
+                if (currentSectionData) {
+                    updateNavHighlight(currentSectionData.id);
+                }
+            });
 
             // Add click listeners to nav links to prevent conflicts
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', function() {
+                    // Immediately highlight the clicked link
+                    document.querySelectorAll('.nav-link').forEach(l => {
+                        l.classList.remove('nav-highlight');
+                    });
+                    this.classList.add('nav-highlight');
+
+                    // Determine which section was clicked
+                    let clickedSection = null;
+                    if (this.getAttribute('href') === '#overview') {
+                        clickedSection = 'overview';
+                    } else if (this.getAttribute('onclick')?.includes('scrollToHotels')) {
+                        clickedSection = 'hotels';
+                    } else if (this.getAttribute('onclick')?.includes('scrollToBudget')) {
+                        clickedSection = 'budget';
+                    } else if (this.getAttribute('onclick')?.includes('scrollToFlights')) {
+                        clickedSection = 'flights';
+                    } else if (this.getAttribute('onclick')?.includes('scrollToItinerary')) {
+                        clickedSection = 'itinerary';
+                    }
+
+                    if (clickedSection) {
+                        currentSection = clickedSection;
+                    }
+
                     // Disable observer updates during scroll
                     isScrolling = true;
 
                     // Clear any existing timeout
                     clearTimeout(scrollTimeout);
 
-                    // Re-enable observer after scroll completes (1 second)
+                    // Re-enable observer after scroll completes (500ms - matches smooth scroll duration)
                     scrollTimeout = setTimeout(() => {
                         isScrolling = false;
-                    }, 1000);
+                    }, 500);
                 });
             });
 
